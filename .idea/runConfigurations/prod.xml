@@ -1,0 +1,14 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="prod" type="js.build_tools.gulp" factoryName="Gulp.js">
+    <node-options />
+    <gulpfile>$PROJECT_DIR$/gulpfile.js</gulpfile>
+    <tasks>
+      <task>prod</task>
+    </tasks>
+    <arguments />
+    <envs>
+      <env name="NODE_ENV" value="PRODUCTION" />
+    </envs>
+    <method />
+  </configuration>
+</component>

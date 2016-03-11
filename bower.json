@@ -1,0 +1,8 @@
+{
+  "name": "DemiLune",
+  "version": "0.1",
+  "dependencies": {
+    "es6-module-loader": "0.17.8",
+    "system.js": "0.19.1"
+  }
+}

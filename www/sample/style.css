@@ -1,0 +1,21 @@
+body
+{    
+	background-attachment: fixed;
+    height: 100%;
+}
+
+#container
+{
+    width: 640px;
+    height: 480px;
+    border: 3px solid #000;
+    position: relative;
+    margin: auto auto;
+    background: #FFF;
+    text-align: center;
+}
+
+h1
+{
+	text-align: center;
+}

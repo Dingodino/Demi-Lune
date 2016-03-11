@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Test Input</title>
+
+    <base href="..">
+
+    <link href="sample/style.css" rel="stylesheet" type="text/css" />
+
+    <script charset="UTF-8" src="libs/es6-module-loader/dist/es6-module-loader.js"></script>
+    <script charset="UTF-8" src="libs/system.js/dist/system.js"></script>
+    <script charset="UTF-8" src="libs/system.js/dist/system-polyfills.js"></script>
+</head>
+<body>
+<h1>Test Input</h1>
+<div id='container'>
+    <canvas id="canvas" width="640" height="480">
+        HTML5 not supported !
+    </canvas>
+</div>
+
+<script>
+    System.import('sample/test_input.js');
+</script>
+
+</body>
+</html>

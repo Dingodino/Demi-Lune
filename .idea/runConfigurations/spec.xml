@@ -1,0 +1,14 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="spec" type="js.build_tools.gulp" factoryName="Gulp.js">
+    <node-options />
+    <gulpfile>$PROJECT_DIR$/gulpfile.js</gulpfile>
+    <tasks>
+      <task>spec</task>
+    </tasks>
+    <arguments />
+    <envs>
+      <env name="NODE_ENV" value="TESTS" />
+    </envs>
+    <method />
+  </configuration>
+</component>
