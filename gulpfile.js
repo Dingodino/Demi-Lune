@@ -24,7 +24,7 @@ var rootFolder = '.',
     outputFolder = rootFolder + '/build/www',
     distFolder = rootFolder + '/dist',
     //packageFolder = rootFolder + '/zip',
-    libFolder = wwwFolder + '/libs/**/*.{css,png,jpg,js,map}',
+    libFolder = rootFolder + '/node_modules',
 
     specFolder = wwwFolder + '/spec',
     outputSpecFolder = outputFolder + '/spec',
@@ -55,10 +55,9 @@ gulp.task('babelSrc', function ()
     return src.pipe(changed(outputFolder + '/src'))
         .pipe(debug({title: 'babel:'}))
         .pipe(sourcemaps.init())
-        .pipe(babel({modules: 'system',
-            experimental: true,
+        .pipe(babel({
             compact: false,
-            optional: []
+            presets: ['es2015']
         }))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(outputFolder + '/src'));
@@ -74,9 +73,8 @@ gulp.task('babelIndexjs', function ()
     return src.pipe(changed(outputFolder))
         .pipe(debug({title: 'babelIndexjs:'}))
         .pipe(sourcemaps.init())
-        .pipe(babel({modules: 'system',
-            experimental: true,
-            optional: []
+        .pipe(babel({
+            presets: ['es2015']
         }))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(outputFolder));
@@ -105,7 +103,10 @@ gulp.task('copyRootFiles', ['clean:rootFiles'], function() {
 
 gulp.task('copylibs', function() {
 
-    var src = gulp.src([libFolder]);
+    var src = gulp.src([libFolder + '/es6-module-loader/dist/es6-module-loader.js',
+        libFolder + '/traceur/dist/commonjs/traceur.js',
+        libFolder + '/systemjs/dist/system.js',
+        libFolder + '/systemjs/dist/system-polyfills.js']);
 
     if (development) {
         src = src.pipe(watch([libFolder], { interval: watchInterval })).pipe(plumber());
@@ -141,9 +142,8 @@ gulp.task('babelSpec', function() {
         .pipe(debug({title: 'copy spec:'}))
         .pipe(plumber())
         .pipe(sourcemaps.init())
-        .pipe(babel({modules: 'system',
-            experimental: true,
-            optional: [],
+        .pipe(babel({
+            presets: ['es2015'],
             compact: false
         }))
         .pipe(sourcemaps.write('.'))
@@ -158,9 +158,8 @@ gulp.task('babelSample', function() {
         .pipe(debug({title: 'copy sample:'}))
         .pipe(plumber())
         //.pipe(sourcemaps.init())
-        .pipe(babel({modules: 'system',
-            experimental: true,
-            optional: [],
+        .pipe(babel({
+            presets: ['es2015'],
             compact: false
         }))
         .pipe(sourcemaps.write('.'))
@@ -193,7 +192,7 @@ gulp.task('clean:all', function () {
 });
 
 gulp.task('minify', function(cb) {
-    var builder = new Builder(outputFolder, wwwFolder + '/app.system.config.js');
+    var builder = new Builder(outputFolder, wwwFolder + '/system.config.js');
 
     console.log('minifiying code...');
 
@@ -215,9 +214,10 @@ gulp.task('minify', function(cb) {
 });
 
 gulp.task('copy:libs', function() {
-    return gulp.src([outputFolder + '/libs/**/es6-module-loader.js',
-        outputFolder + '/libs/**/system.js',
-        outputFolder + '/libs/**/system-polyfills.js'])
+    return gulp.src([outputFolder + '/libs/es6-module-loader.js',
+        outputFolder + '/libs/traceur.js',
+        outputFolder + '/libs/system.js',
+        outputFolder + '/libs/system-polyfills.js'])
         .pipe(debug({title: 'libs:'}))
         .pipe(changed(distFolder + '/libs'))
         .pipe(gulp.dest(distFolder + '/libs'));
@@ -230,17 +230,12 @@ gulp.task('copy:rootFiles', function() {
         .pipe(gulp.dest(distFolder));
 });
 
-//gulp.task('package', ['copy:rootFiles', 'copy:libs'], function () {
-//    return gulp.src(distFolder + '/**/*')
-//        .pipe(zip.dest(packageFolder + '/demilune.zip'));
-//});
-
 
 /** Defaut = dev */
 gulp.task('default', ['dev']);
 
 var minifyAndDeploy = function(cb) {
-    var builder = new Builder(outputFolder, wwwFolder + '/app.system.config.js');
+    var builder = new Builder(outputFolder, wwwFolder + '/system.config.js');
 
     console.log('minifiying code...');
 

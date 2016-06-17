@@ -1,11 +1,10 @@
 // set our baseURL reference path
 System.config({
-    defaultJSExtensions: true,
+    defaultJSExtensions: '.js',
     map: {
         'systemjs'          : 'libs/system.js',
         'system-polyfills'  : 'libs/system-polyfills.js',
         'es6-module-loader' : "libs/es6-module-loader.js"
-    }
+    },
+    globalEvaluationScope: false
 });
-
-System.import('index.js');

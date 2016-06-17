@@ -8,20 +8,20 @@ module.exports = function (config)
 
         basePath: '',
 
-        plugins: ['karma-systemjs', 'karma-junit-reporter', 'karma-jasmine-jquery', 'karma-jasmine', 'karma-coverage', 'karma-phantomjs-launcher', 'karma-phantomjs2-launcher', 'karma-chrome-launcher'],
+        plugins: ['karma-systemjs', 'karma-junit-reporter', 'karma-jasmine-jquery', 'karma-jasmine', 'karma-coverage', 'karma-phantomjs-launcher', 'karma-chrome-launcher'],
         frameworks: ['systemjs', 'jasmine-jquery', 'jasmine'],
-
-        proxies: {
-            '/libs/': '/base/libs/',
-            '/src/': '/base/src/',
-            '/spec/': '/base/spec/'
-        },
 
         browsers: [
                     /*'Chrome_without_security'*/
                     'PhantomJS_without_security'
-                    /*'PhantomJS2_without_security'*/
                     ],
+
+        proxies: {
+            '/node_modules/': '/base/node_modules/',
+            '/libs/': '/base/libs/',
+            '/src/': '/base/src/',
+            '/spec/': '/base/spec/'
+        },
 
         // you can define custom flags
         customLaunchers: {
@@ -31,10 +31,6 @@ module.exports = function (config)
             },
             PhantomJS_without_security: {
                 base: 'PhantomJS',
-                flags: ['--web-security=false']
-            },
-            PhantomJS2_without_security: {
-                base: 'PhantomJS2',
                 flags: ['--web-security=false']
             }
         },
