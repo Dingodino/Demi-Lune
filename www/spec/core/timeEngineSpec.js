@@ -27,8 +27,44 @@ describe("TimeEngine", function ()
 
         expect(TimeEngine.m_FpsText).not.toBeNull();
         expect(TimeEngine.m_FpsText).not.toBeUndefined();
-        // TODO : expect(TimeEngine.m_FpsText).instanceof(Text2D);
 
         done();
+    });
+
+    it("should be updated", function ( done )
+    {
+        expect(TimeEngine).not.toBeNull();
+        expect(TimeEngine).not.toBeUndefined();
+
+        var oldTime = TimeEngine.m_fTime;
+        var oldTotalTime = TimeEngine.m_fTotalTime;
+
+        setTimeout(function()
+        {
+            TimeEngine.update();
+
+            expect(TimeEngine.m_fTime).not.toBeNull();
+            expect(TimeEngine.m_fTime).not.toBeUndefined();
+            expect(TimeEngine.m_fTime != oldTime).toBeTruthy();
+
+            expect(TimeEngine.m_fTotalTime).not.toBeNull();
+            expect(TimeEngine.m_fTotalTime).not.toBeUndefined();
+            expect(TimeEngine.m_fTotalTime != oldTotalTime).toBeTruthy();
+
+            var fDeltaTime = TimeEngine.getDeltaTime();
+            expect(fDeltaTime).not.toBeNull();
+            expect(fDeltaTime).not.toBeUndefined();
+            expect(fDeltaTime).toBeGreaterThan(0.95);
+            expect(fDeltaTime).toBeLessThan(2);
+
+            var iFps = TimeEngine.getFPS();
+            expect(iFps).not.toBeNull();
+            expect(iFps).not.toBeUndefined();
+            expect(iFps).toBeGreaterThan(30);
+            expect(iFps).toBeLessThan(70);
+
+            done();
+
+        }, 100);
     });
 });

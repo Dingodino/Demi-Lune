@@ -130,6 +130,7 @@ export default class ParallaxLayer extends Renderable
         var v2LayerPos = new b2Vec2(this.m_SceneNode.m_v2WorldPos.x, this.m_SceneNode.m_v2WorldPos.y);
         var v2LayerScale = this.m_SceneNode.m_v2WorldScale;
         var v2CamPos = CameraEngine.m_SceneNode.m_v2Pos;
+        var v2PosInScreen, context;
         if (this.m_bRepeatOnX)
         {
             var fLayerPosXMin = v2CamPos.x - RenderEngine.getCanvasHalfSize().x;
@@ -137,13 +138,12 @@ export default class ParallaxLayer extends Renderable
             var fDistanceX = v2CamPos.x - v2LayerPos.x;
             var fDelta = (fDistanceX / v2LayerScale.x) % 1;
             v2LayerPos.x = fLayerPosXMin - (1.0 - fDelta) * v2LayerScale.x;
-            var v2PosInScreen;
 
             while (v2LayerPos.x - v2LayerScale.x * 0.5 < fLayerPosXMax)
             {
                 v2PosInScreen = RenderEngine.convertScenePosToScreenPos(v2LayerPos, v2CamPos);
 
-                var context = RenderEngine.context;
+                context = RenderEngine.context;
                 context.save();
                 context.translate(v2PosInScreen.x, v2PosInScreen.y);
                 context.rotate(this.m_SceneNode.m_fWorldOrientation);
@@ -156,9 +156,9 @@ export default class ParallaxLayer extends Renderable
         }
         else
         {
-            var v2PosInScreen = RenderEngine.convertScenePosToScreenPos(v2LayerPos, v2CamPos);
+            v2PosInScreen = RenderEngine.convertScenePosToScreenPos(v2LayerPos, v2CamPos);
 
-            var context = RenderEngine.context;
+            context = RenderEngine.context;
             context.save();
             context.translate(v2PosInScreen.x, v2PosInScreen.y);
             context.rotate(this.m_SceneNode.m_fWorldOrientation);

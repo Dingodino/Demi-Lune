@@ -10,77 +10,119 @@ var gulp = require('gulp'),
     preprocess = require('gulp-preprocess'),
     watch = require('gulp-watch'),
     clean = require('gulp-clean'),
+    eslint = require('gulp-eslint'),
     Builder = require('systemjs-builder'),
     Server = require('karma').Server,
     runSequence = require('run-sequence');
-    //zip = require('gulp-vinyl-zip');
 
 // some paths
 var rootFolder = '.',
     wwwFolder = rootFolder + '/www',
-    sourceFolder = wwwFolder + '/src',
-    es6Path = sourceFolder + '/**/*.js',
-    assetsSources = sourceFolder + '/resources/**/*.{ttf,otf,iff,woff,eof,svg,css,html,png,gif,jpg,xml,json,xaml,mp3,pdf,xps,swf,emf,mp4,wmv}',
-    outputFolder = rootFolder + '/build/www',
-    distFolder = rootFolder + '/dist',
-    //packageFolder = rootFolder + '/zip',
+    buildFolder = rootFolder + '/build',
     libFolder = rootFolder + '/node_modules',
 
+    sourceFolder = wwwFolder + '/src',
+    sources = sourceFolder + '/**/*.js',
+
     specFolder = wwwFolder + '/spec',
-    outputSpecFolder = outputFolder + '/spec',
-    es6SpecPath = specFolder + '/**/*.js',
+    specSources = specFolder + '/**/*.js',
 
     sampleFolder = wwwFolder + '/sample',
-    outputSampleFolder = distFolder + '/sample',
-    es6SamplePath = sampleFolder + '/*.js';
+    sampleSources = sampleFolder + '/*.js';
 
+// Environment
 var production = process.env.NODE_ENV == 'PRODUCTION';
 var tests = process.env.NODE_ENV == 'TESTS';
 var development = (process.env.NODE_ENV == 'DEVELOPMENT' || (!production && !tests));
+var watcher = process.env.NODE_ENV == 'WATCH';
+buildFolder = production ? rootFolder + '/dist' : buildFolder;
 
-// 500 to limit cpu usage on recent node... default is 100ms
+// 2000 to limit cpu usage... default is 100ms
 var watchInterval = 2000;
 
-/*
- * Creates Babel. This tasks will cause ES6 to be transpiled to ES5.
- */
+
+/********************************************************************
+ * Transpile sources
+ ********************************************************************/
+
 gulp.task('babelSrc', function ()
 {
-    var src = gulp.src([es6Path]);
+    var src = gulp.src([sources]);
 
-    if (development) {
-        src = src.pipe(watch([es6Path], { interval: watchInterval })).pipe(plumber());
-    }
-
-    return src.pipe(changed(outputFolder + '/src'))
-        .pipe(debug({title: 'babel:'}))
+    return src.pipe(changed(buildFolder + '/src'))
+        .pipe(debug({title: 'Transpile sources:'}))
         .pipe(sourcemaps.init())
-        .pipe(babel({
-            compact: false,
-            presets: ['es2015']
-        }))
+        .pipe(babel({compact: false, presets: ['es2015']}))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(outputFolder + '/src'));
+        .pipe(gulp.dest(buildFolder + '/src'));
 });
-gulp.task('babelIndexjs', function ()
+gulp.task('babelIndex', function ()
 {
     var src = gulp.src([wwwFolder + '/index.js']);
 
-    if (development) {
-        src = src.pipe(watch([wwwFolder + '/index.js'], { interval: watchInterval })).pipe(plumber());
-    }
-
-    return src.pipe(changed(outputFolder))
-        .pipe(debug({title: 'babelIndexjs:'}))
+    return src.pipe(changed(buildFolder))
+        .pipe(debug({title: 'Transpile index.js:'}))
         .pipe(sourcemaps.init())
-        .pipe(babel({
-            presets: ['es2015']
-        }))
+        .pipe(babel({presets: ['es2015']}))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(outputFolder));
+        .pipe(gulp.dest(buildFolder));
 });
 
-gulp.task('copyRootFiles', ['clean:rootFiles'], function() {
+gulp.task('transpileSources', function(callback) {
+    runSequence('babelSrc',
+        'babelIndex',
+        callback);
+});
+
+
+/********************************************************************
+ * Transpile specs
+ ********************************************************************/
+
+gulp.task('transpileSpecs', function() {
+
+    var src = gulp.src([specSources]);
+
+    return src.pipe(changed(buildFolder + '/spec'))
+        .pipe(debug({title: 'Transpile specs:'}))
+        .pipe(plumber())
+        .pipe(sourcemaps.init())
+        .pipe(babel({presets: ['es2015'], compact: false}))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(buildFolder + '/spec'))
+});
+
+
+/********************************************************************
+ * Transpile samples
+ ********************************************************************/
+
+gulp.task('transpileSamples', function() {
+
+    var src = gulp.src([sampleSources]);
+
+    return src.pipe(changed(buildFolder + '/sample'))
+        .pipe(debug({title: 'Transpile samples:'}))
+        .pipe(plumber())
+        .pipe(babel({presets: ['es2015'], compact: false}))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(buildFolder + '/sample'))
+});
+
+
+/********************************************************************
+ * Copy files
+ ********************************************************************/
+
+gulp.task('cleanRootFiles', function () {
+
+    var src = gulp.src([buildFolder + '/index.html', buildFolder + '/app.system.config.js', buildFolder + '/appLauncher.js']);
+
+    if (tests == false) src = gulp.src([buildFolder + '/index.html', buildFolder + '/spec.system.config.js', buildFolder + '/specLauncher.js']);
+
+    return src.pipe(clean({force: true}));
+});
+gulp.task('copyRootFiles', ['cleanRootFiles'], function() {
 
     if (development || production)
     {
@@ -91,204 +133,138 @@ gulp.task('copyRootFiles', ['clean:rootFiles'], function() {
         var src = gulp.src([wwwFolder + '/specLauncher.js', wwwFolder + '/spec.system.config.js', wwwFolder + '/karma.config.js']);
     }
 
-    if (development) {
-        src = src.pipe(watch([wwwFolder + '/appLauncher.js', wwwFolder + '/app.system.config.js', wwwFolder + '/karma.config.js'], { interval: watchInterval })).pipe(plumber());
-    }
+    return src.pipe(changed(buildFolder))
+        .pipe(debug({title: 'Copy root files:'}))
+        .pipe(gulp.dest(buildFolder));
+});
+gulp.task('parseAndCopyRootFiles', ['copyRootFiles'], function() {
 
-    return src.pipe(changed(outputFolder))
-        .pipe(debug({title: 'copy root files:'}))
-        .pipe(gulp.dest(outputFolder));
+    var src = gulp.src([wwwFolder + '/index.html']);
 
+    return src.pipe(changed(buildFolder))
+        .pipe(debug({title: 'Parse and update index.html:'}))
+        .pipe(preprocess({context: { DEPLOY_MODE: development ? 'DEVELOPMENT' : production ? 'PRODUCTION' : 'TESTS'}}))
+        .pipe(gulp.dest(buildFolder))
 });
 
-gulp.task('copylibs', function() {
+gulp.task('copySampleFiles', function() {
+
+    var src = gulp.src([sampleFolder + '/*.html', sampleFolder + '/*.png', sampleFolder + '/*.css', sampleFolder + '/*.ogg']);
+
+    return src.pipe(changed(buildFolder + '/sample'))
+        .pipe(debug({title: 'Copy sample files:'}))
+        .pipe(gulp.dest(buildFolder + '/sample'));
+});
+
+
+/********************************************************************
+ * Copy dependencies
+ ********************************************************************/
+
+gulp.task('copyLibs', function() {
 
     var src = gulp.src([libFolder + '/es6-module-loader/dist/es6-module-loader.js',
         libFolder + '/traceur/dist/commonjs/traceur.js',
         libFolder + '/systemjs/dist/system.js',
-        libFolder + '/systemjs/dist/system-polyfills.js']);
+        libFolder + '/systemjs/dist/system-polyfills.js',
+        libFolder + '/lodash/lodash.min.js']);
 
-    if (development) {
-        src = src.pipe(watch([libFolder], { interval: watchInterval })).pipe(plumber());
-    }
-
-    return src.pipe(changed(outputFolder + '/libs'))
-        .pipe(debug({title: 'copy Libs:'}))
-        .pipe(gulp.dest(outputFolder + '/libs'));
-});
-
-gulp.task('html', ['copyRootFiles'], function() {
-
-    var src = gulp.src([wwwFolder + '/index.html']);
-
-    if (development) {
-        src = src.pipe(watch([wwwFolder + '/index.html'], { interval: watchInterval })).pipe(plumber());
-    }
-
-    return src.pipe(changed(outputFolder))
-        .pipe(debug({title: 'parse and update index.html:'}))
-        .pipe(preprocess({context: { DEPLOY_MODE: development ? 'DEVELOPMENT' : production ? 'PRODUCTION' : 'TESTS'}}))
-        .pipe(gulp.dest(outputFolder))
-});
-gulp.task('babelSpec', function() {
-
-    var src = gulp.src([es6SpecPath]);
-
-    if (development) {
-        src = src.pipe(watch([es6SpecPath], { interval: watchInterval })).pipe(plumber());
-    }
-
-    return src.pipe(changed(outputSpecFolder))
-        .pipe(debug({title: 'copy spec:'}))
-        .pipe(plumber())
-        .pipe(sourcemaps.init())
-        .pipe(babel({
-            presets: ['es2015'],
-            compact: false
-        }))
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(outputSpecFolder))
-});
-
-gulp.task('babelSample', function() {
-
-    var src = gulp.src([es6SamplePath]);
-
-    return src.pipe(changed(outputSampleFolder))
-        .pipe(debug({title: 'copy sample:'}))
-        .pipe(plumber())
-        //.pipe(sourcemaps.init())
-        .pipe(babel({
-            presets: ['es2015'],
-            compact: false
-        }))
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(outputSampleFolder))
-});
-gulp.task('copySample', function() {
-
-    var src = gulp.src([sampleFolder + '/*.html', sampleFolder + '/*.png', sampleFolder + '/*.css', sampleFolder + '/*.ogg']);
-
-    return src.pipe(changed(outputSampleFolder))
-        .pipe(debug({title: 'copy sample files:'}))
-        .pipe(gulp.dest(outputSampleFolder));
+    return src.pipe(changed(buildFolder + '/libs'))
+        .pipe(debug({title: 'Copy libs:'}))
+        .pipe(gulp.dest(buildFolder + '/libs'));
 });
 
 
-gulp.task('clean:rootFiles', function () {
+/********************************************************************
+ * Minify
+ ********************************************************************/
 
-    var src = gulp.src([outputFolder + '/index.html', outputFolder + '/app.system.config.js', outputFolder + '/appLauncher.js']);
+gulp.task('minify', function(cb) {
+    var builder = new Builder(buildFolder, wwwFolder + '/system.config.js');
 
-    if (tests == false) {
-        src = gulp.src([outputFolder + '/index.html', outputFolder + '/spec.system.config.js', outputFolder + '/specLauncher.js']);
-    }
+    console.log('Minifiy code...');
 
-    return src.pipe(clean({force: true}));
+    builder
+        .buildStatic('index.js', buildFolder + '/demilune.js',
+        {
+            sfx: true,
+            sourceMaps: false,
+            minify: true
+        })
+        .then(function() {
+            console.log('Minifiy complete');
+        })
+        .catch(function(err) {
+            console.log('Minifiy error');
+            console.log(err);
+        });
 });
 
-gulp.task('clean:all', function () {
-    return gulp.src(outputFolder)
+
+/********************************************************************
+ * Test runner
+ ********************************************************************/
+
+gulp.task('runTests', function() {
+    new Server({ configFile: __dirname + '/build/karma.config.js' }).start();
+});
+
+
+/********************************************************************
+ * Final tasks (to clean, build, deploy, ...)
+ ********************************************************************/
+
+// Defaut = dev
+gulp.task('default', ['dev']);
+
+// Clean the project
+gulp.task('clean', function () {
+    return gulp.src(['build', 'dist', 'coverage', 'test_output'])
         .pipe(clean({force: true}));
 });
 
-gulp.task('minify', function(cb) {
-    var builder = new Builder(outputFolder, wwwFolder + '/system.config.js');
-
-    console.log('minifiying code...');
-
-    builder
-        .buildStatic('index.js', distFolder + '/demilune.js',
-        {sfx: true,
-            sourceMaps: false,
-            minify: false
-        })
-        .then(function() {
-            console.log('Build complete');
-            // then let's deploy root folder but keep only necessary files
-            //gulp.run('package');
-        })
-        .catch(function(err) {
-            console.log('Build error');
-            console.log(err);
-        });
+// Check code
+gulp.task('lint', function () {
+    return gulp.src([
+        // src
+        sourceFolder + '/**/*.js',
+        // specs
+        specFolder + '/**/*.js',
+        // not box2D !
+        '!' + sourceFolder + '/physic/Box2dWeb.js',
+        // not node_modules !
+        '!node_modules/**'])
+        // eslint() attaches the lint output to the "eslint" property
+        // of the file object so it can be used by other modules.
+        .pipe(eslint({configFile: 'www/.eslintrc', fix: true}))
+        // eslint.format() outputs the lint results to the console.
+        // Alternatively use eslint.formatEach() (see Docs).
+        .pipe(eslint.format())
+        // To have the process exit with an error code (1) on
+        // lint error, return the stream and pipe to failAfterError last.
+        .pipe(eslint.failAfterError());
 });
 
-gulp.task('copy:libs', function() {
-    return gulp.src([outputFolder + '/libs/es6-module-loader.js',
-        outputFolder + '/libs/traceur.js',
-        outputFolder + '/libs/system.js',
-        outputFolder + '/libs/system-polyfills.js'])
-        .pipe(debug({title: 'libs:'}))
-        .pipe(changed(distFolder + '/libs'))
-        .pipe(gulp.dest(distFolder + '/libs'));
+// Build the project (dev and prod)
+gulp.task('dev', function(callback) {
+    runSequence('transpileSources',
+        'parseAndCopyRootFiles',
+        'copyLibs',
+        callback);
 });
 
-gulp.task('copy:rootFiles', function() {
-    return gulp.src([outputFolder + '/index.html'])
-        .pipe(debug({title: 'rootFiles:'}))
-        .pipe(changed(distFolder))
-        .pipe(gulp.dest(distFolder));
+gulp.task('spec', function(callback) {
+    runSequence('dev',
+        'transpileSpecs',
+        'runTests',
+        callback);
 });
 
-
-/** Defaut = dev */
-gulp.task('default', ['dev']);
-
-var minifyAndDeploy = function(cb) {
-    var builder = new Builder(outputFolder, wwwFolder + '/system.config.js');
-
-    console.log('minifiying code...');
-
-    builder
-        .buildStatic('index.js', distFolder + '/demilune.js',
-            {sfx: true,
-                sourceMaps: false,
-                minify: false
-            })
-        .then(function() {
-            console.log('Build complete');
-            // then let's deploy root folder but keep only necessary files
-            //gulp.run('package');
-        })
-        .catch(function(err) {
-            console.log('Build error');
-            console.log(err);
-        });
-};
-
-var runTests = function () {
-
-    new Server({ configFile: __dirname + '/build/www/karma.config.js' }).start();
-};
-
-gulp.task('clean', ['clean:rootFiles']);
-
-gulp.task('dev', function() {
-    runSequence('clean',
-        'babelSrc',
-        'babelIndexjs',
-        'html',
-        'copylibs');
-});
-
-gulp.task('spec', function() {
-    runSequence('clean',
-        'babelSrc',
-        'babelIndexjs',
-        'html',
-        'copylibs',
-        'babelSpec',
-        runTests);
-});
-
-gulp.task('prod', function() {
-    runSequence('clean',
-        'babelSrc',
-        'babelIndexjs',
-        'html',
-        'copylibs',
-        'babelSample',
-        'copySample',
-        'copy:libs',
-        minifyAndDeploy);
+gulp.task('prod', function(callback) {
+    runSequence('lint',
+        'dev',
+        'transpileSamples',
+        'copySampleFiles',
+        'minify',
+        callback);
 });

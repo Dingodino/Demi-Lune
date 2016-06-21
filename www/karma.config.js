@@ -40,7 +40,7 @@ module.exports = function (config)
         },
 
         coverageReporter: {
-            dir: '../../coverage/',
+            dir: '../coverage/',
             reporters: [
                 // reporters not supporting the `file` property
                 { type: 'html', subdir: 'report-html' },
@@ -59,7 +59,7 @@ module.exports = function (config)
 
         // the default configuration
         junitReporter: {
-            outputDir: '../../test_output', // results will be saved as $outputDir/$browserName.xml
+            outputDir: '../test_output', // results will be saved as $outputDir/$browserName.xml
             outputFile: 'test-results.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
             suite: '' // suite will become the package name attribute in xml testsuite element
         },

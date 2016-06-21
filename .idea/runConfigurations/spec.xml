@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="spec" type="js.build_tools.gulp" factoryName="Gulp.js">
-    <node-interpreter>C:/Program Files/nodejs/node.exe</node-interpreter>
+    <node-interpreter>project</node-interpreter>
     <node-options />
     <gulpfile>$PROJECT_DIR$/gulpfile.js</gulpfile>
     <tasks>

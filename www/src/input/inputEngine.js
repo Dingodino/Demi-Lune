@@ -59,11 +59,11 @@ class InputEngine
      */
     initialize ()
     {
-        for (var i = 0; i < this.m_Keyboard.m_aKeys.length; i++)
+        for (let i = 0; i < this.m_Keyboard.m_aKeys.length; i++)
         {
             this.m_Keyboard.m_aKeys[i] = InputState.NONE;
         }
-        for (var i = 0; i < this.m_Mouse.m_aButtons.length; i++)
+        for (let i = 0; i < this.m_Mouse.m_aButtons.length; i++)
         {
             this.m_Mouse.m_aButtons[i] = InputState.NONE;
         }
@@ -136,25 +136,25 @@ if (canvas)
         v2Offset.y = 0;
         var canvas = document.getElementById('canvas');
         var currentElement = canvas;
-        do
+        while(currentElement)
         {
             v2Offset.x += currentElement.offsetLeft;
             v2Offset.y += currentElement.offsetTop;
+            currentElement = currentElement.offsetParent
         }
-        while(currentElement = currentElement.offsetParent)
 
         v2MousePos.x -= v2Offset.x;
         v2MousePos.y -= v2Offset.y;
     }
 
     // Touch event listener
-    canvas.ontouchstart = function onTouchStart(a_Event)
+    canvas.ontouchstart = function onTouchStart()
     {
         TouchScreen.m_State = InputState.GOTO_PRESSED;
     }
 
     // Touch event listener
-    canvas.ontouchend = function onTouchEnd(a_Event)
+    canvas.ontouchend = function onTouchEnd()
     {
         TouchScreen.m_State = InputState.GOTO_RELEASED;
     }

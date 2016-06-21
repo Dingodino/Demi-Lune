@@ -24,8 +24,6 @@
 
 "use strict";
 
-import CameraEngine from "src/scene/cameraEngine";
-import RenderEngine from "src/render/renderEngine";
 import Text2D from "src/render/text2D";
 
 

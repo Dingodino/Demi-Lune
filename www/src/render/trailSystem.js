@@ -70,14 +70,14 @@ export default class TrailSystem
         var iDiff = a_ParticleCount - this.m_iParticleCount;
         if (iDiff > 0)
         {
-            for (var i = 0; i < iDiff; i++)
+            for (let i = 0; i < iDiff; i++)
             {
                 this.m_aTrailParticles.push(new TrailParticle());
             }
         }
         else if (iDiff < 0)
         {
-            for (var i = 0; i < -iDiff; i++)
+            for (let i = 0; i < -iDiff; i++)
             {
                 // TODO : save particle to remove
                 if (this.m_aTrailParticles.length > 0)
@@ -101,16 +101,16 @@ export default class TrailSystem
     {
         // Update particle emission
         var fdt = TimeEngine.getDeltaTime();
-        for (var i = 0; i < this.m_aTrailEmitters.length; i++)
+        for (let i = 0; i < this.m_aTrailEmitters.length; i++)
         {
-            var trailEmitter = this.m_aTrailEmitters[i];
+            let trailEmitter = this.m_aTrailEmitters[i];
             trailEmitter.emit(fdt);
         }
     
         // Update particle dynamic
-        for (var i = 0; i < this.m_aTrailEmitters.length; i++)
+        for (let i = 0; i < this.m_aTrailEmitters.length; i++)
         {
-            var trailEmitter = this.m_aTrailEmitters[i];
+            let trailEmitter = this.m_aTrailEmitters[i];
             trailEmitter.update();
         }
     }

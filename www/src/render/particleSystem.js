@@ -70,14 +70,14 @@ export default class ParticleSystem
         var iDiff = a_ParticleCount - this.m_iParticleCount;
         if (iDiff > 0)
         {
-            for (var i = 0; i < iDiff; i++)
+            for (let i = 0; i < iDiff; i++)
             {
                 this.m_aParticles.push(new Particle());
             }
         }
         else if (iDiff < 0)
         {
-            for (var i = 0; i < -iDiff; i++)
+            for (let i = 0; i < -iDiff; i++)
             {
                 // TODO : save particle to remove
                 if (this.m_aParticles.length > 0)
@@ -101,16 +101,16 @@ export default class ParticleSystem
     {
         // Update particle emission
         var fdt = TimeEngine.getDeltaTime();
-        for (var i = 0; i < this.m_aParticleEmitters.length; i++)
+        for (let i = 0; i < this.m_aParticleEmitters.length; i++)
         {
-            var particleEmitter = this.m_aParticleEmitters[i];
+            let particleEmitter = this.m_aParticleEmitters[i];
             particleEmitter.emit(fdt);
         }
 
         // Update particle dynamic
-        for (var i = 0; i < this.m_aParticleEmitters.length; i++)
+        for (let i = 0; i < this.m_aParticleEmitters.length; i++)
         {
-            var particleEmitter = this.m_aParticleEmitters[i];
+            let particleEmitter = this.m_aParticleEmitters[i];
             particleEmitter.update();
         }
     }

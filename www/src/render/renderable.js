@@ -24,7 +24,6 @@
 
 "use strict";
 
-import Text2D from "src/render/text2D";
 import SceneNode from "src/scene/sceneNode";
 
 

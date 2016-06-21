@@ -27,7 +27,6 @@
 import "src/core/constants";
 import * as Utils from "src/core/math"; // TODO : polyfill Math
 import Color from "src/core/color";
-import Particle from "src/render/particle";
 import SceneNode from "src/scene/sceneNode";
 import RenderEngine from "src/render/renderEngine";
 import TimeEngine from "src/core/timeEngine";
@@ -439,19 +438,19 @@ export default class ParticleEmitter
 
         // Remove killed particles
         var particleToRemove = new Array();
-        for (var i = 0; i < this.m_aParticles.length; i++)
+        for (let i = 0; i < this.m_aParticles.length; i++)
         {
-            var particle = this.m_aParticles[i];
+            let particle = this.m_aParticles[i];
             if (particle.m_fLife < 0)
             {
                 particleToRemove.push(particle);
                 this.m_ParticleSystem.pushParticle(particle);
             }
         }
-        for (var i = 0; i < particleToRemove.length; i++)
+        for (let i = 0; i < particleToRemove.length; i++)
         {
-            var particle = particleToRemove[i];
-            for (var j = 0; j < this.m_aParticles.length; j++)
+            let particle = particleToRemove[i];
+            for (let j = 0; j < this.m_aParticles.length; j++)
             {
                 if (this.m_aParticles[j] == particle)
                 {
@@ -461,9 +460,9 @@ export default class ParticleEmitter
         }
 
         // Update particles
-        for (var i = 0; i < this.m_aParticles.length; i++)
+        for (let i = 0; i < this.m_aParticles.length; i++)
         {
-            var particle = this.m_aParticles[i];
+            let particle = this.m_aParticles[i];
             particle.update(fdt);
         }
 
@@ -486,23 +485,23 @@ export default class ParticleEmitter
         // Draw particles
         if (this.m_ParticleSystem.m_Image != null)
         {
-            for (var i = 0; i < this.m_aParticles.length; i++)
+            for (let i = 0; i < this.m_aParticles.length; i++)
             {
-                var particle = this.m_aParticles[i];
+                let particle = this.m_aParticles[i];
 
-                var v2Position = new b2Vec2(particle.m_v2Position.x, particle.m_v2Position.y);
+                v2Position = new b2Vec2(particle.m_v2Position.x, particle.m_v2Position.y);
                 if (this.m_bFollowEmitter)
                 {
                     v2Position.x += this.m_SceneNode.m_v2WorldPos.x;
                     v2Position.y += this.m_SceneNode.m_v2WorldPos.y;
                 }
 
-                var v2PosInScreen = RenderEngine.convertScenePosToScreenPos(v2Position, v2CamPos);
+                let v2PosInScreen = RenderEngine.convertScenePosToScreenPos(v2Position, v2CamPos);
                 v2Scale.x = particle.m_v2Scale.x;
                 v2Scale.y = particle.m_v2Scale.y;
                 fOrientation = particle.m_fOrientation;
 
-                var context = RenderEngine.context;
+                let context = RenderEngine.context;
                 context.save();
                 context.globalCompositeOperation = this.m_Blending;
                 context.translate(v2PosInScreen.x, v2PosInScreen.y);
@@ -514,25 +513,25 @@ export default class ParticleEmitter
         }
         else
         {
-            for (var i = 0; i < this.m_aParticles.length; i++)
+            for (let i = 0; i < this.m_aParticles.length; i++)
             {
-                var particle = this.m_aParticles[i];
+                let particle = this.m_aParticles[i];
 
-                var v2Position = new b2Vec2(particle.m_v2Position.x, particle.m_v2Position.y);
+                v2Position = new b2Vec2(particle.m_v2Position.x, particle.m_v2Position.y);
                 if (this.m_bFollowEmitter)
                 {
                     v2Position.x += this.m_SceneNode.m_v2WorldPos.x;
                     v2Position.y += this.m_SceneNode.m_v2WorldPos.y;
                 }
 
-                var v2PosInScreen = RenderEngine.convertScenePosToScreenPos(v2Position, v2CamPos);
+                let v2PosInScreen = RenderEngine.convertScenePosToScreenPos(v2Position, v2CamPos);
                 v2Scale.x = particle.m_v2Scale.x;
                 v2Scale.y = particle.m_v2Scale.y;
                 fOrientation = particle.m_fOrientation;
                 fRatio = particle.m_fLife / particle.m_fLifeInit;
                 f1mRatio = 1 - fRatio;
 
-                var context = RenderEngine.context;
+                let context = RenderEngine.context;
                 context.save();
                 context.globalCompositeOperation = this.m_Blending;
                 context.translate(v2PosInScreen.x, v2PosInScreen.y);

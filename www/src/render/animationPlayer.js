@@ -208,7 +208,6 @@ export default class AnimationPlayer extends Renderable
             this.m_fCurrentTime -= animation.m_fDuration;
         }
     
-        var v2FrameSize = this.m_SpriteSheet.m_v2FrameSize;
         var iFrameCount = animation.m_iFrameCount;
         var iFrameIndex = animation.m_aFrameIndexes[Math.floor(this.m_fCurrentTime * iFrameCount/ animation.m_fDuration)];
         this.m_iCurrentFrameLine = Math.floor(iFrameIndex / this.m_SpriteSheet.m_iColumnCount);

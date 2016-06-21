@@ -228,19 +228,19 @@ export default class TrailEmitter
 
         // Remove killed particles
         var particleToRemove = new Array();
-        for (var i = 0; i < this.m_aTrailParticles.length; i++)
+        for (let i = 0; i < this.m_aTrailParticles.length; i++)
         {
-            var particle = this.m_aTrailParticles[i];
+            let particle = this.m_aTrailParticles[i];
             if (particle.m_fLife < 0)
             {
                 particleToRemove.push(particle);
                 this.m_TrailSystem.pushParticle(particle);
             }
         }
-        for (var i = 0; i < particleToRemove.length; i++)
+        for (let i = 0; i < particleToRemove.length; i++)
         {
-            var particle = particleToRemove[i];
-            for (var j = 0; j < this.m_aTrailParticles.length; j++)
+            let particle = particleToRemove[i];
+            for (let j = 0; j < this.m_aTrailParticles.length; j++)
             {
                 if (this.m_aTrailParticles[j] == particle)
                 {
@@ -250,9 +250,9 @@ export default class TrailEmitter
         }
 
         // Update particles
-        for (var i = 0; i < this.m_aTrailParticles.length; i++)
+        for (let i = 0; i < this.m_aTrailParticles.length; i++)
         {
-            var particle = this.m_aTrailParticles[i];
+            let particle = this.m_aTrailParticles[i];
             particle.update(fdt);
         }
 
@@ -287,7 +287,6 @@ export default class TrailEmitter
             v2PositionEnd.y = particle.m_v2PositionEnd.y;
 
             var v2PosStartInScreen = RenderEngine.convertScenePosToScreenPos(v2PositionStart, v2CamPos);
-            var v2PosEndInScreen = RenderEngine.convertScenePosToScreenPos(v2PositionEnd, v2CamPos);
 
             v2Dir.x = v2PositionEnd.x - v2PositionStart.x;
             v2Dir.y = v2PositionEnd.y - v2PositionStart.y;

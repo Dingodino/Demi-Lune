@@ -24,6 +24,8 @@
 
 "use strict";
 
+import "libs/lodash.min.js";
+
 
 class CallbackEngine
 {
@@ -65,54 +67,47 @@ class CallbackEngine
     update ( dt )
     {
         var deltaTime = dt * 1000;
+        var self = this;
 
         // Update timeout callbacks
         var callbackIDsToRemove = [];
         var callbackIDsToReset = [];
         var postRenderCallbackIDsToRemove = [];
-        var index;
-        var obj;
-        var length = this.timeoutCallbacks.length;
-        for ( index = 0; index < length; index++ )
+        _.forEach(this.timeoutCallbacks, function(obj)
         {
-            obj = this.timeoutCallbacks[index];
             if ( obj ) // TODO : why ?
             {
                 obj.time += deltaTime;
                 if ( obj.time >= obj.delay )
                 {
-                    this._callCallback(obj);
+                    self._callCallback(obj);
                     callbackIDsToRemove.push(obj.callbackID);
                 }
             }
-        }
+        });
 
         // Update interval callbacks
-        length = this.intervalCallbacks.length;
-        for ( index = 0; index < length; index++ )
+        _.forEach(this.intervalCallbacks, function (obj)
         {
-            obj = this.intervalCallbacks[index];
             if ( obj )
             {
                 obj.time += deltaTime;
                 if ( obj.time >= obj.delay )
                 {
-                    this._callCallback(obj);
+                    self._callCallback(obj);
                     callbackIDsToReset.push(obj.callbackID);
                 }
             }
-        }
+        });
 
         // Update post render callbacks
-        length = this.postRenderCallbacks.length;
-        for ( index = 0; index < length; index++ )
+        _.forEach(this.postRenderCallbacks, function (obj)
         {
-            obj = this.postRenderCallbacks[index];
             if ( obj.count <= 0 )
             {
                 if ( !obj.toBeRemoved )
                 {
-                    this._callCallback(obj);
+                    self._callCallback(obj);
                 }
                 postRenderCallbackIDsToRemove.push(obj.callbackID);
             }
@@ -120,7 +115,7 @@ class CallbackEngine
             {
                 obj.count -= 1;
             }
-        }
+        });
 
         this._clear(callbackIDsToRemove, callbackIDsToReset, postRenderCallbackIDsToRemove);
     }
@@ -156,22 +151,10 @@ class CallbackEngine
      */
     unsubscribeTimeoutCallback ( id )
     {
-        var cb;
-        var index;
-        var toRemove = null;
-        for ( index in this.timeoutCallbacks )
+        _.remove(this.timeoutCallbacks, function (obj)
         {
-            cb = this.timeoutCallbacks[index];
-            if ( cb.callbackID == id )
-            {
-                toRemove = index;
-                break;
-            }
-        }
-        if ( toRemove != null )
-        {
-            this.timeoutCallbacks.splice(toRemove, 1);
-        }
+            return obj.callbackID == id;
+        });
     }
 
     /**
@@ -199,22 +182,10 @@ class CallbackEngine
      */
     unsubscribeIntervalCallback ( id )
     {
-        var cb;
-        var index;
-        var toRemove = null;
-        for ( index in this.intervalCallbacks )
+        _.remove(this.intervalCallbacks, function (obj)
         {
-            cb = this.intervalCallbacks[index];
-            if ( cb.callbackID == id )
-            {
-                toRemove = index;
-                break;
-            }
-        }
-        if ( toRemove != null )
-        {
-            this.intervalCallbacks.splice(toRemove, 1);
-        }
+            return obj.callbackID == id;
+        });
     }
 
     /**
@@ -240,18 +211,10 @@ class CallbackEngine
      */
     unsubscribePostRenderCallback ( id )
     {
-        var cb;
-        var index;
-        var toRemove = null;
-        for ( index in this.postRenderCallbacks )
+        _.remove(this.postRenderCallbacks, function (obj)
         {
-            cb = this.postRenderCallbacks[index];
-            if ( cb.callbackID == id )
-            {
-                cb.toBeRemoved = true;
-                break;
-            }
-        }
+            return obj.callbackID == id;
+        });
     }
 
     /**
@@ -275,51 +238,38 @@ class CallbackEngine
      */
     _clear ( callbackIDsToRemove, callbackIDsToReset, postRenderCallbackIDsToRemove )
     {
+        var self = this;
+
+        // TODO : use a map ?
         // Remove old timeout callbacks
-        while (callbackIDsToRemove.length > 0)
+        _.forEach(callbackIDsToRemove, function (id)
         {
-            var callbackIDToRemove = callbackIDsToRemove.shift();
-            for ( var index in this.timeoutCallbacks )
+            _.remove(self.timeoutCallbacks, function (obj)
             {
-                var callback = this.timeoutCallbacks[index];
-                if ( callback.callbackID == callbackIDToRemove )
-                {
-                    this.timeoutCallbacks.splice(index, 1);
-                    break;
-                }
-            }
-        }
+                return obj.callbackID == id;
+            });
+        });
 
         // Reset old interval callbacks
-        while (callbackIDsToReset.length > 0)
+        _.forEach(callbackIDsToReset, function (id)
         {
-            var callbackIDToReset = callbackIDsToReset.shift();
-            for ( var index in this.intervalCallbacks )
+            _.forEach(self.intervalCallbacks, function (obj)
             {
-                var callback = this.intervalCallbacks[index];
-                if ( callback.callbackID == callbackIDToReset )
+                if (obj.callbackID == id)
                 {
-                    // Reset the time
-                    callback.time = 0;
-                    break;
+                    obj.time = 0;
                 }
-            }
-        }
+            });
+        });
 
         // Remove old timeout callbacks
-        while (postRenderCallbackIDsToRemove.length > 0)
+        _.forEach(postRenderCallbackIDsToRemove, function (id)
         {
-            var callbackIDToRemove = postRenderCallbackIDsToRemove.shift();
-            for ( var index in this.postRenderCallbacks )
+            _.remove(self.postRenderCallbacks, function (obj)
             {
-                var callback = this.postRenderCallbacks[index];
-                if ( callback.callbackID == callbackIDToRemove )
-                {
-                    this.postRenderCallbacks.splice(index, 1);
-                    break;
-                }
-            }
-        }
+                return obj.callbackID == id;
+            });
+        });
     }
 
     /**

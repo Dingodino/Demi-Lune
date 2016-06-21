@@ -115,7 +115,11 @@ class Application
      */
     terminate ()
     {
-
+        if (this._animationFrameId)
+        {
+            window.cancelAnimationFrame(this._animationFrameId);
+            this._animationFrameId = null;
+        }
     }
 
     /**
@@ -141,7 +145,7 @@ class Application
 
             self._animationFrameId = window.requestAnimationFrame(callback);
         };
-        window.requestAnimationFrame(callback);
+        this._animationFrameId = window.requestAnimationFrame(callback);
     }
 }
 

@@ -1,0 +1,63 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "env": {
+    "es6": true
+  },
+  "rules": {
+    "strict": 0,
+    "indent": [
+      2,
+      4,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "semi": [
+      2,
+      "always"
+    ],
+    "no-console": [
+      2,
+      {
+        "allow": [
+          "log",
+          "debug",
+          "info",
+          "warn",
+          "error"
+        ]
+      }
+    ],
+    "no-unused-vars": [
+      2,
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ]
+  },
+  "globals": {
+    "console": true,
+    "window": true,
+    "Box2D": true,
+    "expect": true,
+    "it": true,
+    "describe": true,
+    "clearInterval": true,
+    "setInterval": true,
+    "setTimeout": true,
+    "clearTimeout": true,
+    "b2Vec2": true,
+    "b2World": true,
+    "_": true,
+    "document": true
+  },
+  "plugins": [
+  ],
+  "extends": [
+    "eslint:recommended"
+  ]
+}

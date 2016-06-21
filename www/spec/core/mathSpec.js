@@ -30,6 +30,11 @@ describe("Math", function ()
         expect(v >= 10).toBeTruthy();
         expect(v <= 20).toBeTruthy();
 
+        v = Utils.random(15, 15);
+        expect(v).not.toBeNull();
+        expect(v).not.toBeUndefined();
+        expect(v === 15).toBeTruthy();
+
         done();
     });
 
@@ -40,6 +45,11 @@ describe("Math", function ()
         expect(v).not.toBeUndefined();
         expect(v >= 10).toBeTruthy();
         expect(v <= 20).toBeTruthy();
+
+        v = Utils.randomf(15, 15);
+        expect(v).not.toBeNull();
+        expect(v).not.toBeUndefined();
+        expect(v === 15).toBeTruthy();
 
         done();
     });
@@ -60,6 +70,19 @@ describe("Math", function ()
         expect(v).not.toBeNull();
         expect(v).not.toBeUndefined();
         expect(v).toBe(16);
+
+        done();
+    });
+
+    it("should rotate a vector", function ( done )
+    {
+        var v = Utils.rotateVector(new b2Vec2(1, 0), Math.PI * 0.5);
+        expect(v).not.toBeNull();
+        expect(v).not.toBeUndefined();
+        expect(v.x >= -0.001).toBeTruthy();
+        expect(v.x <= 0.001).toBeTruthy();
+        expect(v.y >= 0.999).toBeTruthy();
+        expect(v.y <= 1.001).toBeTruthy();
 
         done();
     });

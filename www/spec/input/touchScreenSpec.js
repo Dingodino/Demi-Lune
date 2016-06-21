@@ -22,4 +22,19 @@ describe("TouchScreen", function ()
 
         done();
     });
+
+    it("should be updated", function ( done )
+    {
+        expect(TouchScreen).not.toBeNull();
+        expect(TouchScreen).not.toBeUndefined();
+
+        TouchScreen.update();
+
+        var touchState = TouchScreen.getState();
+        expect(touchState).not.toBeNull();
+        expect(touchState).not.toBeUndefined();
+        expect(touchState).toBe(InputState.NONE);
+        
+        done();
+    });
 });

@@ -6,11 +6,6 @@ Install npm modules.
 ```
 npm install
 npm install -g gulp
-npm install -g bower
-```
-Install bower modules.
-```
-bower install
 ```
 Run gulp production task.
 ```
