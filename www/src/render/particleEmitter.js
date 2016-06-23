@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  * The MIT License (MIT)
  *
- * Copyright (c) 2014-2015 Nicolas DAURES
+ * Copyright (c) 2014-2016 Nicolas DAURES
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,21 +24,21 @@
 
 "use strict";
 
-import "src/core/constants";
-import * as Utils from "src/core/math"; // TODO : polyfill Math
-import Color from "src/core/color";
-import SceneNode from "src/scene/sceneNode";
+import {b2Vec2} from "src/core/constants";
+import * as Utils from "src/core/math";
+import {Color} from "src/core/color";
+import {SceneNode} from "src/scene/sceneNode";
 import RenderEngine from "src/render/renderEngine";
 import TimeEngine from "src/core/timeEngine";
 import CameraEngine from "src/scene/cameraEngine";
 
 
 // Particle emitter
-export default class ParticleEmitter
+export class ParticleEmitter
 {
-    //=======================
+    //===================================================================
     // Constructors
-    //=======================
+    //===================================================================
 
     /**
      * Create a particle emitter.
@@ -50,7 +50,7 @@ export default class ParticleEmitter
 
         this.m_ParticleSystem =		    null;
         this.m_SceneNode =			    new SceneNode();
-        this.m_aParticles =			    new Array();
+        this.m_aParticles =			    [];
 
         this.m_fSpeedMin =			    10;
         this.m_fSpeedMax =			    20;
@@ -86,9 +86,9 @@ export default class ParticleEmitter
     }
 
 
-    //=======================
+    //===================================================================
     // Accessors
-    //=======================
+    //===================================================================
 
     /**
      * Get the scene node of the emitter.
@@ -425,19 +425,19 @@ export default class ParticleEmitter
     }
 
 
-    //=======================
+    //===================================================================
     // Operations
-    //=======================
+    //===================================================================
 
     /**
      * Update the particle emitter.
      */
     update ()
     {
-        var fdt = TimeEngine.getDeltaTime();
+        let fdt = TimeEngine.getDeltaTime();
 
         // Remove killed particles
-        var particleToRemove = new Array();
+        let particleToRemove = [];
         for (let i = 0; i < this.m_aParticles.length; i++)
         {
             let particle = this.m_aParticles[i];
@@ -475,12 +475,12 @@ export default class ParticleEmitter
      */
     draw ()
     {
-        var v2CamPos = CameraEngine.m_SceneNode.m_v2Pos;
-        var v2Position = new b2Vec2(0, 0);
-        var v2Scale = new b2Vec2(0, 0);
-        var fOrientation = 0;
-        var fRatio = 0;
-        var f1mRatio = 0;
+        let v2CamPos = CameraEngine.m_SceneNode.m_v2Pos;
+        let v2Position = new b2Vec2(0, 0);
+        let v2Scale = new b2Vec2(0, 0);
+        let fOrientation = 0;
+        let fRatio = 0;
+        let f1mRatio = 0;
 
         // Draw particles
         if (this.m_ParticleSystem.m_Image != null)
@@ -537,10 +537,10 @@ export default class ParticleEmitter
                 context.translate(v2PosInScreen.x, v2PosInScreen.y);
                 context.rotate(fOrientation);
                 context.scale(v2Scale.x, v2Scale.y);
-                var r = Math.floor(this.m_ColorEnd.r * f1mRatio + this.m_ColorStart.r * fRatio);
-                var g = Math.floor(this.m_ColorEnd.g * f1mRatio + this.m_ColorStart.g * fRatio);
-                var b = Math.floor(this.m_ColorEnd.b * f1mRatio + this.m_ColorStart.b * fRatio);
-                var a = (this.m_ColorEnd.a * f1mRatio + this.m_ColorStart.a * fRatio) / 255;
+                let r = Math.floor(this.m_ColorEnd.r * f1mRatio + this.m_ColorStart.r * fRatio);
+                let g = Math.floor(this.m_ColorEnd.g * f1mRatio + this.m_ColorStart.g * fRatio);
+                let b = Math.floor(this.m_ColorEnd.b * f1mRatio + this.m_ColorStart.b * fRatio);
+                let a = (this.m_ColorEnd.a * f1mRatio + this.m_ColorStart.a * fRatio) / 255;
                 switch(this.m_eShape)
                 {
                     case this.EParticleShape.DISK:
@@ -592,7 +592,7 @@ export default class ParticleEmitter
         if (this.m_bIsLaunched)
         {
             this.m_fTimeSinceLastPulse += a_fdt;
-            var iParticleCount = Math.floor(this.m_fTimeSinceLastPulse * this.m_fFrequency);
+            let iParticleCount = Math.floor(this.m_fTimeSinceLastPulse * this.m_fFrequency);
             if (iParticleCount > 0)
             {
                 this.pulse(iParticleCount);
@@ -609,7 +609,7 @@ export default class ParticleEmitter
     {
         for (var i = 0; i < a_iParticleCount; i++)
         {
-            var particle = this.m_ParticleSystem.popParticle();
+            let particle = this.m_ParticleSystem.popParticle();
             if (particle == null)
             {
                 return;
@@ -617,12 +617,13 @@ export default class ParticleEmitter
             this.m_aParticles.push(particle);
 
             // Initialize position
-            var v2EmitterPos = this.m_SceneNode.m_v2Pos;
+            let v2EmitterPos = this.m_SceneNode.m_v2Pos;
             switch(this.m_eEmitShape)
             {
                 case this.EParticleEmitterShape.DISK:
-                    var fLenght = Math.random() * this.m_fEmitRadius;
-                    var v2Dir = new b2Vec2(0, 1);
+                {
+                    let fLenght = Math.random() * this.m_fEmitRadius;
+                    let v2Dir = new b2Vec2(0, 1);
                     v2Dir = Utils.rotateVector(v2Dir, Utils.randomf(0, 2 * Math.PI));
                     if (this.m_bFollowEmitter)
                     {
@@ -634,10 +635,12 @@ export default class ParticleEmitter
                         particle.m_v2Position.x = v2Dir.x * fLenght + v2EmitterPos.x;
                         particle.m_v2Position.y = v2Dir.y * fLenght + v2EmitterPos.y;
                     }
-                    break;
+                }
+                break;
                 case this.EParticleEmitterShape.RECTANGLE:
-                    var fEmitHalfWidth = this.m_v2EmitArea.x * 0.5;
-                    var fEmitHalfHeight = this.m_v2EmitArea.y * 0.5;
+                {
+                    let fEmitHalfWidth = this.m_v2EmitArea.x * 0.5;
+                    let fEmitHalfHeight = this.m_v2EmitArea.y * 0.5;
                     if (this.m_bFollowEmitter)
                     {
                         particle.m_v2Position.x = Utils.randomf(-fEmitHalfWidth, fEmitHalfWidth);
@@ -648,8 +651,10 @@ export default class ParticleEmitter
                         particle.m_v2Position.x = Utils.randomf(-fEmitHalfWidth, fEmitHalfWidth) + v2EmitterPos.x;
                         particle.m_v2Position.y = Utils.randomf(-fEmitHalfHeight, fEmitHalfHeight) + v2EmitterPos.y;
                     }
-                    break;
+                }
+                break;
                 default :
+                {
                     if (this.m_bFollowEmitter)
                     {
                         particle.m_v2Position.x = 0;
@@ -660,39 +665,40 @@ export default class ParticleEmitter
                         particle.m_v2Position.x = v2EmitterPos.x;
                         particle.m_v2Position.y = v2EmitterPos.y;
                     }
-                    break;
+                }
+                break;
             }
 
             // Initialize speed
-            var fSpeedInit = Utils.randomf(this.m_fSpeedMin, this.m_fSpeedMax);
-            var v2SpeedInit = new b2Vec2(0, 1);
+            let fSpeedInit = Utils.randomf(this.m_fSpeedMin, this.m_fSpeedMax);
+            let v2SpeedInit = new b2Vec2(0, 1);
             v2SpeedInit = Utils.rotateVector(v2SpeedInit, this.m_SceneNode.getOrientation());
             if (this.m_fEmitAngle > 0)
             {
-                var fEmitHalfAngle = this.m_fEmitAngle * 0.5;
+                let fEmitHalfAngle = this.m_fEmitAngle * 0.5;
                 v2SpeedInit = Utils.rotateVector(v2SpeedInit, Utils.randomf(-fEmitHalfAngle, fEmitHalfAngle));
             }
             particle.m_v2Speed.x = v2SpeedInit.x * fSpeedInit;
             particle.m_v2Speed.y = v2SpeedInit.y * fSpeedInit;
 
             // Initialize angular speed
-            var fAngularSpeed = Utils.randomf(this.m_fAngularSpeedMin, this.m_fAngularSpeedMax);
+            let fAngularSpeed = Utils.randomf(this.m_fAngularSpeedMin, this.m_fAngularSpeedMax);
             particle.m_fAngularSpeed = fAngularSpeed;
 
             // Initialize scale
-            var fScaleInit = Utils.randomf(this.m_fScaleMin, this.m_fScaleMax);
+            let fScaleInit = Utils.randomf(this.m_fScaleMin, this.m_fScaleMax);
             particle.m_v2ScaleInit.x = fScaleInit;
             particle.m_v2ScaleInit.y = fScaleInit;
             particle.m_v2Scale.x = fScaleInit;
             particle.m_v2Scale.y = fScaleInit;
 
             // Initialize life
-            var fLifeInit = Utils.randomf(this.m_fLifeMin, this.m_fLifeMax);
+            let fLifeInit = Utils.randomf(this.m_fLifeMin, this.m_fLifeMax);
             particle.m_fLifeInit = fLifeInit;
             particle.m_fLife = fLifeInit;
 
             // Initialize angle
-            var fAngleInit = Utils.randomf(this.m_fAngleMin, this.m_fAngleMax);
+            let fAngleInit = Utils.randomf(this.m_fAngleMin, this.m_fAngleMax);
             particle.m_fOrientation = fAngleInit;
 
             particle.m_ParticleEmitter = this;

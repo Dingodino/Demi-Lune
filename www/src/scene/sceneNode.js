@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  * The MIT License (MIT)
  *
- * Copyright (c) 2014-2015 Nicolas DAURES
+ * Copyright (c) 2014-2016 Nicolas DAURES
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,14 +24,14 @@
 
 "use strict";
 
-import "src/core/constants";
+import {b2Vec2} from "src/core/constants";
 
 
-export default class SceneNode
+export class SceneNode
 {
-	//=======================
+	//===================================================================
 	// Constructors
-	//=======================
+	//===================================================================
 
     /**
      * Create a scene node.
@@ -39,7 +39,7 @@ export default class SceneNode
     constructor ()
     {
         this.m_ParentNode =			null;
-        this.m_aChildNodes = 		new Array();
+        this.m_aChildNodes = 		[];
         this.m_v2Pos = 				new b2Vec2(0, 0);
         this.m_v2Scale = 			new b2Vec2(1, 1);
         this.m_fOrientation =		0;
@@ -49,9 +49,9 @@ export default class SceneNode
     }
 
 
-    //=======================
+    //===================================================================
     // Accessors
-    //=======================
+    //===================================================================
 
     /**
      * Get the parent node.
@@ -153,9 +153,9 @@ export default class SceneNode
     }
     
     
-    //=======================
+    //===================================================================
     // Operations
-    //=======================
+    //===================================================================
 
     /**
      * Update the scene node (position, scale, orientation).

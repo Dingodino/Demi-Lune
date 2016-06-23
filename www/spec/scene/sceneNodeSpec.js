@@ -1,7 +1,8 @@
 "use strict";
 
-import SceneNode from "src/scene/sceneNode";
+import {SceneNode} from "src/scene/sceneNode";
 import "src/core/constants";
+import {b2Vec2} from "src/core/constants";
 
 
 describe("SceneNode", function ()
@@ -16,7 +17,7 @@ describe("SceneNode", function ()
 
     it("should take constructor's parameters into account", function ( done )
     {
-        var sceneNode = new SceneNode();
+        let sceneNode = new SceneNode();
 
         expect(sceneNode).not.toBeNull();
         expect(sceneNode).not.toBeUndefined();
@@ -61,7 +62,7 @@ describe("SceneNode", function ()
 
     it("should take accessors into account", function ( done )
     {
-        var sceneNode = new SceneNode();
+        let sceneNode = new SceneNode();
 
         expect(sceneNode).not.toBeNull();
         expect(sceneNode).not.toBeUndefined();
@@ -88,8 +89,8 @@ describe("SceneNode", function ()
 
     it("should be attached to parent node", function ( done )
     {
-        var parentNode = new SceneNode();
-        var childNode = new SceneNode();
+        let parentNode = new SceneNode();
+        let childNode = new SceneNode();
 
         expect(parentNode).not.toBeNull();
         expect(parentNode).not.toBeUndefined();

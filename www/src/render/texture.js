@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  * The MIT License (MIT)
  *
- * Copyright (c) 2014-2015 Nicolas DAURES
+ * Copyright (c) 2014-2016 Nicolas DAURES
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,15 +25,15 @@
 "use strict";
 
 import RenderEngine from "src/render/renderEngine";
-import Renderable from "src/render/renderable";
+import {Renderable} from "src/render/renderable";
 import CameraEngine from "src/scene/cameraEngine";
 
 
-export default class Texture extends Renderable
+export class Texture extends Renderable
 {
-    //=======================
+    //===================================================================
 	// Constructors
-	//=======================
+	//===================================================================
 
     /**
      * Create a texture.
@@ -46,9 +46,9 @@ export default class Texture extends Renderable
     }
 
 
-    //=======================
+    //===================================================================
     // Accessors
-    //=======================
+    //===================================================================
 
     /**
      * Get the image of the texture.
@@ -69,19 +69,19 @@ export default class Texture extends Renderable
     }
     
     
-    //=======================
+    //===================================================================
     // Operations
-    //=======================
+    //===================================================================
 
     /**
      * Draw the texture.
      */
     draw ()
     {
-        var v2CamPos = CameraEngine.m_SceneNode.m_v2Pos;
-        var v2PosInScreen = RenderEngine.convertScenePosToScreenPos(this.m_SceneNode.m_v2WorldPos, v2CamPos);
+        let v2CamPos = CameraEngine.m_SceneNode.m_v2Pos;
+        let v2PosInScreen = RenderEngine.convertScenePosToScreenPos(this.m_SceneNode.m_v2WorldPos, v2CamPos);
 
-        var context = RenderEngine.context;
+        let context = RenderEngine.context;
         context.save();
         context.translate(v2PosInScreen.x, v2PosInScreen.y);
         context.rotate(this.m_SceneNode.m_fWorldOrientation);

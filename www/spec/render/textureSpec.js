@@ -1,6 +1,6 @@
 "use strict";
 
-import Texture from "src/render/texture";
+import {Texture} from "src/render/texture";
 
 
 describe("Texture", function ()
@@ -15,7 +15,7 @@ describe("Texture", function ()
 
     it("should take constructor's parameters into account", function ( done )
     {
-        var texture = new Texture();
+        let texture = new Texture();
 
         expect(texture).not.toBeNull();
         expect(texture).not.toBeUndefined();

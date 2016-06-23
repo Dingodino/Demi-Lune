@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  * The MIT License (MIT)
  *
- * Copyright (c) 2014 Nicolas DAURES
+ * Copyright (c) 2014-2016 Nicolas DAURES
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -44,9 +44,9 @@ var textParticleCount = null;
 function initializeTest()
 {
 	// Debug infos
-    demilune.RenderEngine.displayFPS(new b2Vec2(240, -230));
+    demilune.RenderEngine.displayFPS(new demilune.b2Vec2(240, -230));
 
-    var textPos = new b2Vec2(-30, -230);
+    let textPos = new demilune.b2Vec2(-30, -230);
     textParticleCount = new demilune.Text2D();
     textParticleCount.setColor("#aaaaaa");
     textParticleCount.setFont("18px arial");
@@ -69,7 +69,7 @@ function initializeTest()
 	// Create a particle emitter
 	particleEmitter1 = particleSystem.addParticleEmitter();
     demilune.SceneEngine.getRootSceneNode().attachSceneNode(particleEmitter1.getSceneNode());
-	particleEmitter1.getSceneNode().setPosition(new b2Vec2(0, 0));
+	particleEmitter1.getSceneNode().setPosition(new demilune.b2Vec2(0, 0));
 	particleEmitter1.setSpeedMin(30);
 	particleEmitter1.setSpeedMax(40);
 	particleEmitter1.setLifeMin(3);
@@ -82,7 +82,7 @@ function initializeTest()
 	// Create a second particle emitter
 	particleEmitter2 = particleSystem.addParticleEmitter();
     demilune.SceneEngine.getRootSceneNode().attachSceneNode(particleEmitter2.getSceneNode());
-	particleEmitter2.getSceneNode().setPosition(new b2Vec2(224, -168));
+	particleEmitter2.getSceneNode().setPosition(new demilune.b2Vec2(224, -168));
 	particleEmitter2.setSpeedMin(30);
 	particleEmitter2.setSpeedMax(40);
 	particleEmitter2.setLifeMin(3);
@@ -94,7 +94,7 @@ function initializeTest()
     // Create a third particle emitter
     particleEmitter3 = particleSystem.addParticleEmitter();
     demilune.SceneEngine.getRootSceneNode().attachSceneNode(particleEmitter3.getSceneNode());
-    particleEmitter3.getSceneNode().setPosition(new b2Vec2(224, 168));
+    particleEmitter3.getSceneNode().setPosition(new demilune.b2Vec2(224, 168));
     particleEmitter3.setSpeedMin(30);
     particleEmitter3.setSpeedMax(40);
     particleEmitter3.setAngularSpeedMin(0.5);
@@ -113,12 +113,12 @@ function initializeTest()
     // Create a second particle system
 	particleSystem2 = new demilune.ParticleSystem();
 	particleSystem2.setImage(image2);
-	particleSystem2.setParticleCount(1000);
+	particleSystem2.setParticleCount(100);
 	
 	// Create a fourth particle emitter
 	particleEmitter4 = particleSystem2.addParticleEmitter();
     demilune.SceneEngine.getRootSceneNode().attachSceneNode(particleEmitter4.getSceneNode());
-    particleEmitter4.getSceneNode().setPosition(new b2Vec2(-224, -168));
+    particleEmitter4.getSceneNode().setPosition(new demilune.b2Vec2(-224, -168));
     particleEmitter4.getSceneNode().setOrientation(0);
     particleEmitter4.setSpeedMin(20);
     particleEmitter4.setSpeedMax(30);
@@ -138,14 +138,16 @@ function initializeTest()
     // Create a trail system
     trailSystem = new demilune.TrailSystem();
     trailSystem.setImage(image);
-    trailSystem.setParticleCount(1000);
+    trailSystem.setParticleCount(100);
 
     // Create a trail emitter
     trailEmitter = trailSystem.addTrailEmitter();
     demilune.SceneEngine.getRootSceneNode().attachSceneNode(trailEmitter.getSceneNodeStart());
     demilune.SceneEngine.getRootSceneNode().attachSceneNode(trailEmitter.getSceneNodeEnd());
-    trailEmitter.getSceneNodeStart().setPosition(new b2Vec2(-190, 120));
-    trailEmitter.getSceneNodeEnd().setPosition(new b2Vec2(60, 170));
+    trailEmitter.getSceneNodeStart().setPosition(new demilune.b2Vec2(-198, 120));
+    trailEmitter.getSceneNodeEnd().setPosition(new demilune.b2Vec2(60, 170));
+    trailEmitter.getSceneNodeStart().update();
+    trailEmitter.getSceneNodeEnd().update();
     trailEmitter.setColorStart(new demilune.Color(255, 0, 0, 255));
     trailEmitter.setColorEnd(new demilune.Color(0, 0, 255, 0));
     trailEmitter.setThickness(10);
@@ -178,10 +180,10 @@ function updateTest()
 
     // Rotate trail emitter
     fOrientation += demilune.TimeEngine.getDeltaTime() * 1.0;
-    var v2PositionStart = new b2Vec2(trailEmitter.getSceneNodeStart().getWorldPosition().x,
+    let v2PositionStart = new demilune.b2Vec2(trailEmitter.getSceneNodeStart().getWorldPosition().x,
                                      trailEmitter.getSceneNodeStart().getWorldPosition().y);
     v2PositionStart.y = 50 + Math.cos(fOrientation) * 100.0;
-    var v2PositionEnd = new b2Vec2(0, 1);
+    let v2PositionEnd = new demilune.b2Vec2(0, 1);
     v2PositionEnd = demilune.Utils.rotateVector(v2PositionEnd, fOrientation);
     v2PositionEnd.x *= 80;
     v2PositionEnd.y *= 80;
@@ -191,7 +193,7 @@ function updateTest()
     trailEmitter.getSceneNodeEnd().setPosition(v2PositionEnd);
 
     // Update particle count
-    var iParticleCount = particleEmitter1.m_aParticles.length;
+    let iParticleCount = particleEmitter1.m_aParticles.length;
     iParticleCount += particleEmitter2.m_aParticles.length;
     iParticleCount += particleEmitter3.m_aParticles.length;
     iParticleCount += particleEmitter4.m_aParticles.length;

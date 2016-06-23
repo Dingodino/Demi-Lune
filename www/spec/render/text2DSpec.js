@@ -1,6 +1,6 @@
 "use strict";
 
-import Text2D from "src/render/text2D";
+import {Text2D} from "src/render/text2D";
 
 
 describe("Text2D", function ()
@@ -15,7 +15,7 @@ describe("Text2D", function ()
 
     it("should take constructor's parameters into account", function ( done )
     {
-        var text2D = new Text2D();
+        let text2D = new Text2D();
 
         expect(text2D).not.toBeNull();
         expect(text2D).not.toBeUndefined();

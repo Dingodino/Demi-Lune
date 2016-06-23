@@ -167,7 +167,8 @@ gulp.task('copyLibs', function() {
         libFolder + '/traceur/dist/commonjs/traceur.js',
         libFolder + '/systemjs/dist/system.js',
         libFolder + '/systemjs/dist/system-polyfills.js',
-        libFolder + '/lodash/lodash.min.js']);
+        libFolder + '/lodash/lodash.min.js',
+        libFolder + '/box2dweb/box2d.js']);
 
     return src.pipe(changed(buildFolder + '/libs'))
         .pipe(debug({title: 'Copy libs:'}))
@@ -189,7 +190,7 @@ gulp.task('minify', function(cb) {
         {
             sfx: true,
             sourceMaps: false,
-            minify: true
+            minify: false
         })
         .then(function() {
             console.log('Minifiy complete');

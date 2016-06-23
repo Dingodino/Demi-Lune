@@ -1,6 +1,6 @@
 "use strict";
 
-import TrailParticle from "src/render/trailParticle";
+import {TrailParticle} from "src/render/trailParticle";
 
 
 describe("TrailParticle", function ()
@@ -15,7 +15,7 @@ describe("TrailParticle", function ()
 
     it("should take constructor's parameters into account", function ( done )
     {
-        var particle = new TrailParticle();
+        let particle = new TrailParticle();
 
         expect(particle).not.toBeNull();
         expect(particle).not.toBeUndefined();

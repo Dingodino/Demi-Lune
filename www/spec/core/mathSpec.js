@@ -1,6 +1,7 @@
 "use strict";
 
 import * as Utils from "src/core/math";
+import {b2Vec2} from "src/core/constants";
 
 
 describe("Math", function ()
@@ -24,7 +25,7 @@ describe("Math", function ()
 
     it("should random a value", function ( done )
     {
-        var v = Utils.random(10, 20);
+        let v = Utils.random(10, 20);
         expect(v).not.toBeNull();
         expect(v).not.toBeUndefined();
         expect(v >= 10).toBeTruthy();
@@ -40,7 +41,7 @@ describe("Math", function ()
 
     it("should randomf a value", function ( done )
     {
-        var v = Utils.randomf(10, 20);
+        let v = Utils.randomf(10, 20);
         expect(v).not.toBeNull();
         expect(v).not.toBeUndefined();
         expect(v >= 10).toBeTruthy();
@@ -56,7 +57,7 @@ describe("Math", function ()
 
     it("should clamp a value", function ( done )
     {
-        var v = Utils.clamp(7, 10, 20);
+        let v = Utils.clamp(7, 10, 20);
         expect(v).not.toBeNull();
         expect(v).not.toBeUndefined();
         expect(v).toBe(10);
@@ -76,7 +77,7 @@ describe("Math", function ()
 
     it("should rotate a vector", function ( done )
     {
-        var v = Utils.rotateVector(new b2Vec2(1, 0), Math.PI * 0.5);
+        let v = Utils.rotateVector(new b2Vec2(1, 0), Math.PI * 0.5);
         expect(v).not.toBeNull();
         expect(v).not.toBeUndefined();
         expect(v.x >= -0.001).toBeTruthy();

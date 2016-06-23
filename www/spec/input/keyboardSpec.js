@@ -25,7 +25,7 @@ describe("Keyboard", function ()
 
         Keyboard.update();
 
-        var keyState = Keyboard.getKeyState(0);
+        let keyState = Keyboard.getKeyState(0);
         expect(keyState).not.toBeNull();
         expect(keyState).not.toBeUndefined();
         expect(keyState).toBe(InputState.NONE);

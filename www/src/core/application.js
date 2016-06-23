@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  * The MIT License (MIT)
  *
- * Copyright (c) 2014-2015 Nicolas DAURES
+ * Copyright (c) 2014-2016 Nicolas DAURES
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,7 @@
 
 "use strict";
 
-import "src/core/constants";
+import * as Box2D from "src/core/constants";
 
 // Import engines
 import TimeEngine from "src/core/timeEngine";
@@ -37,38 +37,38 @@ import InputEngine from "src/input/inputEngine";
 import PhysicEngine from "src/physic/physicEngine";
 
 // Import other classes
-import Sound from "src/audio/sound";
-import Color from "src/core/color";
+import {Sound} from "src/audio/sound";
+import {Color} from "src/core/color";
 import InputState from "src/input/inputState";
 import Keyboard from "src/input/keyboard";
 import Mouse from "src/input/mouse";
 import TouchScreen from "src/input/touchScreen";
-import Animation from "src/render/animation";
-import AnimationPlayer from "src/render/animationPlayer";
-import Parallax from "src/render/parallax";
-import ParallaxLayer from "src/render/parallaxLayer";
-import Particle from "src/render/particle";
-import ParticleEmitter from "src/render/particleEmitter";
-import ParticleSystem from "src/render/particleSystem";
-import Renderable from "src/render/renderable";
-import SpriteSheet from "src/render/spriteSheet";
-import Text2D from "src/render/text2D";
-import Texture from "src/render/texture";
-import TrailEmitter from "src/render/trailEmitter";
-import TrailParticle from "src/render/trailParticle";
-import TrailSystem from "src/render/trailSystem";
-import AutoMoveCamera from "src/scene/autoMoveCamera";
-import SceneNode from "src/scene/sceneNode";
+import {Animation} from "src/render/animation";
+import {AnimationPlayer} from "src/render/animationPlayer";
+import {Parallax} from "src/render/parallax";
+import {ParallaxLayer} from "src/render/parallaxLayer";
+import {Particle} from "src/render/particle";
+import {ParticleEmitter} from "src/render/particleEmitter";
+import {ParticleSystem} from "src/render/particleSystem";
+import {Renderable} from "src/render/renderable";
+import {SpriteSheet} from "src/render/spriteSheet";
+import {Text2D} from "src/render/text2D";
+import {Texture} from "src/render/texture";
+import {TrailEmitter} from "src/render/trailEmitter";
+import {TrailParticle} from "src/render/trailParticle";
+import {TrailSystem} from "src/render/trailSystem";
+import {AutoMoveCamera} from "src/scene/autoMoveCamera";
+import {SceneNode} from "src/scene/sceneNode";
 
 // Import utils
-import * as Utils from "src/core/math"; // TODO : polyfill Math
+import * as Utils from "src/core/math";
 
 
 class Application
 {
-    //=======================
+    //===================================================================
     // Constructors
-    //=======================
+    //===================================================================
 
     /**
      * Create the application.
@@ -83,9 +83,9 @@ class Application
     }
 
 
-    //=======================
+    //===================================================================
     // Operations
-    //=======================
+    //===================================================================
 
     /**
      * Initialize the application.
@@ -135,10 +135,10 @@ class Application
             window.cancelAnimationFrame(this._animationFrameId);
         }
 
-        var self = this;
-        var callback = function ()
+        let self = this;
+        let callback = function ()
         {
-            var dt = new Date() - self._lastUpdateDate;
+            let dt = new Date() - self._lastUpdateDate;
 
             self.update(dt);
             self._lastUpdateDate = new Date();
@@ -170,11 +170,11 @@ window.demilune =
     Mouse:          Mouse,
     TouchScreen:    TouchScreen,
     Animation:      Animation,
-    AnimationPlayer:   AnimationPlayer,
+    AnimationPlayer:AnimationPlayer,
     Parallax:       Parallax,
     ParallaxLayer:  ParallaxLayer,
     Particle:       Particle,
-    ParticleEmitter:    ParticleEmitter,
+    ParticleEmitter:ParticleEmitter,
     ParticleSystem: ParticleSystem,
     Renderable:     Renderable,
     SpriteSheet:    SpriteSheet,
@@ -185,6 +185,19 @@ window.demilune =
     TrailSystem:    TrailSystem,
     AutoMoveCamera: AutoMoveCamera,
     SceneNode:      SceneNode,
+
+    b2Vec2:         Box2D.b2Vec2,
+    b2World:        Box2D.b2World,
+    b2AABB:         Box2D.b2AABB,
+    b2BodyDef:      Box2D.b2BodyDef,
+    b2Body:         Box2D.b2Body,
+    b2FixtureDef:   Box2D.b2FixtureDef,
+    b2Fixture:      Box2D.b2Fixture,
+    b2MassData:     Box2D.b2MassData,
+    b2PolygonShape: Box2D.b2PolygonShape,
+    b2CircleShape:  Box2D.b2CircleShape,
+    b2DebugDraw:    Box2D.b2DebugDraw,
+    b2MouseJointDef:Box2D.b2MouseJointDef,
 
     Utils:          Utils
 };

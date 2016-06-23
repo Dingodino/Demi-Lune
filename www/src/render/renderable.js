@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  * The MIT License (MIT)
  *
- * Copyright (c) 2014-2015 Nicolas DAURES
+ * Copyright (c) 2014-2016 Nicolas DAURES
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,14 +24,14 @@
 
 "use strict";
 
-import SceneNode from "src/scene/sceneNode";
+import {SceneNode} from "src/scene/sceneNode";
 
 
-export default class Renderable
+export class Renderable
 {
-    //=======================
+    //===================================================================
     // Constructors
-    //=======================
+    //===================================================================
 
     /**
      * Create a renderable.
@@ -43,9 +43,9 @@ export default class Renderable
     }
 
 
-    //=======================
+    //===================================================================
     // Accessors
-    //=======================
+    //===================================================================
 
     /**
      * Get the scene node of the renderable.

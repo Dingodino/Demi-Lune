@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  * The MIT License (MIT)
  *
- * Copyright (c) 2014-2015 Nicolas DAURES
+ * Copyright (c) 2014-2016 Nicolas DAURES
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,14 +24,14 @@
 
 "use strict";
 
-import Text2D from "src/render/text2D";
+import {Text2D} from "src/render/text2D";
 
 
 class TimeEngine
 {
-	//=======================
-	// Colnstructors
-	//=======================
+    //===================================================================
+	// Constructors
+	//===================================================================
 
     /**
      * Create the time engine.
@@ -47,9 +47,9 @@ class TimeEngine
     }
 
 
-    //=======================
+    //===================================================================
     // Accessors
-    //=======================
+    //===================================================================
 
     /**
      * Get the current time (current date).
@@ -88,9 +88,9 @@ class TimeEngine
     }
 
 
-    //=======================
+    //===================================================================
     // Operations
-    //=======================
+    //===================================================================
 
     /**
      * Update the time engine.
@@ -98,13 +98,13 @@ class TimeEngine
     update ()
     {
         // Compute the delta time and total time
-        var fNewTime = (new Date()).getTime();
+        let fNewTime = (new Date()).getTime();
         this.m_fDeltaTime = (fNewTime - this.m_fTime) * 0.001;
         this.m_fTime = fNewTime;
         this.m_fTotalTime += this.m_fDeltaTime;
 
         // TODO : save last 10 fps
-        var iFPS = Math.floor(1 / this.m_fDeltaTime);
+        let iFPS = Math.floor(1 / this.m_fDeltaTime);
         this.m_iFps = Math.floor((this.m_iFps * 9 + iFPS) * 0.1);
         this.m_FpsText.m_Text = "FPS : " + this.m_iFps;
         if (this.m_iFps > 50)

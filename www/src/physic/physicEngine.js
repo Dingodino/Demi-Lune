@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  * The MIT License (MIT)
  *
- * Copyright (c) 2014-2015 Nicolas DAURES
+ * Copyright (c) 2014-2016 Nicolas DAURES
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,14 +24,14 @@
 
 "use strict";
 
-import "src/core/constants";
+import {b2Vec2, b2World} from "src/core/constants";
 
 
 class PhysicEngine
 {
-	//=======================
+	//===================================================================
 	// Constructors
-	//=======================
+	//===================================================================
 
     /**
      * Create the physic engine.
@@ -46,9 +46,9 @@ class PhysicEngine
     }
 
 
-    //=======================
+    //===================================================================
     // Accessors
-    //=======================
+    //===================================================================
 
     /**
      * Get the physic world.
@@ -114,9 +114,9 @@ class PhysicEngine
     }
 
 
-    //=======================
+    //===================================================================
     // Operations
-    //=======================
+    //===================================================================
 
     /**
      * Update the physic engine.

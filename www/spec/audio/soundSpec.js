@@ -1,6 +1,6 @@
 "use strict";
 
-import Sound from "src/audio/sound";
+import {Sound} from "src/audio/sound";
 
 
 describe("Sound", function ()
@@ -15,7 +15,7 @@ describe("Sound", function ()
 
     it("should take constructor's parameters into account", function ( done )
     {
-        var sound = new Sound();
+        let sound = new Sound();
         expect(sound.m_Audio).toBeNull();
         expect(sound.m_Audio).not.toBeUndefined();
 

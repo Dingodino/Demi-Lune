@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  * The MIT License (MIT)
  *
- * Copyright (c) 2014-2015 Nicolas DAURES
+ * Copyright (c) 2014-2016 Nicolas DAURES
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,33 +24,33 @@
 
 "use strict";
 
-import Particle from "src/render/particle";
-import ParticleEmitter from "src/render/particleEmitter";
+import {Particle} from "src/render/particle";
+import {ParticleEmitter} from "src/render/particleEmitter";
 import TimeEngine from "src/core/timeEngine";
 
 
-export default class ParticleSystem
+export class ParticleSystem
 {
-    //=======================
+    //===================================================================
     // Constructors
-    //=======================
+    //===================================================================
 
     /**
      * Create a particle system.
      */
     constructor ()
     {
-        this.m_aParticleEmitters =	new Array();
-        this.m_aParticles =			new Array();
+        this.m_aParticleEmitters =	[];
+        this.m_aParticles =			[];
         this.m_Image =				null;
         this.m_ImageData =			null;
         this.m_iParticleCount =		0;
     }
 
 
-    //=======================
+    //===================================================================
     // Accessors
-    //=======================
+    //===================================================================
 
     /**
      * Set the particle image.
@@ -67,7 +67,7 @@ export default class ParticleSystem
      */
     setParticleCount (a_ParticleCount)
     {
-        var iDiff = a_ParticleCount - this.m_iParticleCount;
+        let iDiff = a_ParticleCount - this.m_iParticleCount;
         if (iDiff > 0)
         {
             for (let i = 0; i < iDiff; i++)
@@ -90,9 +90,9 @@ export default class ParticleSystem
     }
 
 
-    //=======================
+    //===================================================================
     // Operations
-    //=======================
+    //===================================================================
 
     /**
      * Update the particle system.
@@ -100,7 +100,7 @@ export default class ParticleSystem
     update ()
     {
         // Update particle emission
-        var fdt = TimeEngine.getDeltaTime();
+        let fdt = TimeEngine.getDeltaTime();
         for (let i = 0; i < this.m_aParticleEmitters.length; i++)
         {
             let particleEmitter = this.m_aParticleEmitters[i];
@@ -120,7 +120,7 @@ export default class ParticleSystem
      */
     addParticleEmitter ()
     {
-        var particleEmitter = new ParticleEmitter();
+        let particleEmitter = new ParticleEmitter();
         particleEmitter.m_ParticleSystem = this;
         this.m_aParticleEmitters.push(particleEmitter);
         return particleEmitter;
@@ -150,7 +150,7 @@ export default class ParticleSystem
     {
         if (this.m_aParticles.length > 0)
         {
-            var particle = this.m_aParticles[0];
+            let particle = this.m_aParticles[0];
             this.m_aParticles.splice(0, 1);
             return particle;
         }

@@ -1,6 +1,6 @@
 "use strict";
 
-import ParticleSystem from "src/render/particleSystem";
+import {ParticleSystem} from "src/render/particleSystem";
 
 
 describe("ParticleSystem", function ()
@@ -15,7 +15,7 @@ describe("ParticleSystem", function ()
 
     it("should take constructor's parameters into account", function ( done )
     {
-        var particleSystem = new ParticleSystem();
+        let particleSystem = new ParticleSystem();
 
         expect(particleSystem).not.toBeNull();
         expect(particleSystem).not.toBeUndefined();
@@ -35,6 +35,29 @@ describe("ParticleSystem", function ()
         expect(particleSystem.m_iParticleCount).not.toBeNull();
         expect(particleSystem.m_iParticleCount).not.toBeUndefined();
         expect(particleSystem.m_iParticleCount).toBe(0);
+
+        done();
+    });
+
+    it("should take accessors into account", function ( done )
+    {
+        // Create a particle system
+        let particleSystem = new ParticleSystem();
+        expect(particleSystem).not.toBeNull();
+        expect(particleSystem).not.toBeUndefined();
+
+        // Create a particle emitter
+        expect(particleSystem.m_aParticleEmitters.length).toBe(0);
+        let particleEmitter = particleSystem.addParticleEmitter();
+        expect(particleSystem.m_aParticleEmitters.length).toBe(1);
+
+        // Update the particle emitter
+        particleSystem.update();
+
+        // Remove the particle emitter
+        expect(particleSystem.m_aParticleEmitters.length).toBe(1);
+        particleSystem.removeParticleEmitter(particleEmitter);
+        expect(particleSystem.m_aParticleEmitters.length).toBe(0);
 
         done();
     });

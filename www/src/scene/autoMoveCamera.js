@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  * The MIT License (MIT)
  *
- * Copyright (c) 2014-2015 Nicolas DAURES
+ * Copyright (c) 2014-2016 Nicolas DAURES
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,14 +26,14 @@
 
 import TimeEngine from "src/core/timeEngine";
 import CameraEngine from "src/scene/cameraEngine";
-import "src/core/constants";
+import {b2Vec2} from "src/core/constants";
 
 
-export default class AutoMoveCamera
+export class AutoMoveCamera
 {
-	//=======================
+	//===================================================================
 	// Constructors
-	//=======================
+	//===================================================================
 
     /**
      * Create an auto-move behavior for camera.
@@ -44,17 +44,17 @@ export default class AutoMoveCamera
     }
 
 
-    //=======================
+    //===================================================================
     // Operations
-    //=======================
+    //===================================================================
 
     /**
      * Update the camera behavior.
      */
     update ()
     {
-        var fdt = TimeEngine.m_fDeltaTime;
-        var v2CamPos = CameraEngine.m_SceneNode.m_v2Pos;
+        let fdt = TimeEngine.m_fDeltaTime;
+        let v2CamPos = CameraEngine.m_SceneNode.m_v2Pos;
         v2CamPos.x += this.m_v2Speed.x * fdt;
         v2CamPos.y += this.m_v2Speed.y * fdt;
     }

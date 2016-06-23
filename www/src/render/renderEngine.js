@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  * The MIT License (MIT)
  *
- * Copyright (c) 2014-2015 Nicolas DAURES
+ * Copyright (c) 2014-2016 Nicolas DAURES
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,23 +24,23 @@
 
 "use strict";
 
-import "src/core/constants";
+import {b2Vec2} from "src/core/constants";
 import TimeEngine from "src/core/timeEngine";
 import CameraEngine from "src/scene/cameraEngine";
 
 
 class RenderEngine
 {
-	//=======================
+	//===================================================================
 	// Constructors
-	//=======================
+	//===================================================================
 
     /**
      * Create the render engine.
      */
     constructor ()
     {
-        this.m_aRenderables =		new Array();
+        this.m_aRenderables =		[];
         this.m_ClearColor = 		"#ffffff";
         this.m_v2CanvasSize =		new b2Vec2(640, 480);
         this.m_v2CanvasHalfSize =	new b2Vec2(320, 240);
@@ -48,9 +48,9 @@ class RenderEngine
     }
 
 
-    //=======================
+    //===================================================================
     // Accessors
-    //=======================
+    //===================================================================
 
     /**
      * Set the canvas.
@@ -111,9 +111,9 @@ class RenderEngine
     }
     
     
-    //=======================
+    //===================================================================
     // Operations
-    //=======================
+    //===================================================================
 
     /**
      * Update the render engine.
@@ -185,7 +185,7 @@ class RenderEngine
      */
     convertScenePosToScreenPos (a_v2ScenePos, a_v2CamPos)
     {
-        var v2CanvasHalfSize = this.getCanvasHalfSize();
+        let v2CanvasHalfSize = this.getCanvasHalfSize();
         return new b2Vec2(a_v2ScenePos.x - a_v2CamPos.x + v2CanvasHalfSize.x, -(a_v2ScenePos.y - a_v2CamPos.y) + v2CanvasHalfSize.y);
     }
 
@@ -195,7 +195,7 @@ class RenderEngine
      */
     displayFPS (a_v2Position)
     {
-        var text = TimeEngine.m_FpsText;
+        let text = TimeEngine.m_FpsText;
         text.m_Font = "italic small-caps bold 16px arial";
         text.getSceneNode().m_v2Pos.x = a_v2Position.x;
         text.getSceneNode().m_v2Pos.y = a_v2Position.y;

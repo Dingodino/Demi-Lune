@@ -1,6 +1,6 @@
 "use strict";
 
-import SpriteSheet from "src/render/spriteSheet";
+import {SpriteSheet} from "src/render/spriteSheet";
 
 
 describe("SpriteSheet", function ()
@@ -15,7 +15,7 @@ describe("SpriteSheet", function ()
 
     it("should take constructor's parameters into account", function ( done )
     {
-        var spriteSheet = new SpriteSheet();
+        let spriteSheet = new SpriteSheet();
 
         expect(spriteSheet).not.toBeNull();
         expect(spriteSheet).not.toBeUndefined();

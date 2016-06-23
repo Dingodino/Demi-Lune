@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  * The MIT License (MIT)
  *
- * Copyright (c) 2014-2015 Nicolas DAURES
+ * Copyright (c) 2014-2016 Nicolas DAURES
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,19 +24,19 @@
 
 "use strict";
 
-import "src/core/constants";
-import Color from "src/core/color";
-import SceneNode from "src/scene/sceneNode";
+import {b2Vec2} from "src/core/constants";
+import {Color} from "src/core/color";
+import {SceneNode} from "src/scene/sceneNode";
 import RenderEngine from "src/render/renderEngine";
 import TimeEngine from "src/core/timeEngine";
 import CameraEngine from "src/scene/cameraEngine";
 
 
-export default class TrailEmitter
+export class TrailEmitter
 {
-    //=======================
+    //===================================================================
     // Constructors
-    //=======================
+    //===================================================================
 
     /**
      * Create a trailer emitter.
@@ -46,7 +46,7 @@ export default class TrailEmitter
         this.m_TrailSystem =		    null;
         this.m_SceneNodeStart =		    new SceneNode();
         this.m_SceneNodeEnd =		    new SceneNode();
-        this.m_aTrailParticles =		new Array();
+        this.m_aTrailParticles =		[];
 
         this.m_ColorStart =             new Color(255, 255, 255, 255);
         this.m_ColorEnd =               new Color(0, 0, 0, 0);
@@ -66,9 +66,9 @@ export default class TrailEmitter
     }
 
 
-    //=======================
+    //===================================================================
     // Accessors
-    //=======================
+    //===================================================================
 
     /**
      * Get the start node.
@@ -215,19 +215,19 @@ export default class TrailEmitter
     }
 
 
-    //=======================
+    //===================================================================
     // Operations
-    //=======================
+    //===================================================================
 
     /**
      * Update the trail emitter.
      */
     update ()
     {
-        var fdt = TimeEngine.getDeltaTime();
+        let fdt = TimeEngine.getDeltaTime();
 
         // Remove killed particles
-        var particleToRemove = new Array();
+        let particleToRemove = [];
         for (let i = 0; i < this.m_aTrailParticles.length; i++)
         {
             let particle = this.m_aTrailParticles[i];
@@ -265,28 +265,28 @@ export default class TrailEmitter
      */
     draw ()
     {
-        var v2CamPos = CameraEngine.m_SceneNode.m_v2Pos;
-        var v2PositionStart = new b2Vec2(0, 0);
-        var v2PositionEnd = new b2Vec2(0, 0);
-        var v2Dir = new b2Vec2(0, 0);
-        var fLenght = 0;
-        var fHalfLenght = 0;
-        var fThickness = 0;
-        var fOrientation = 0;
-        var fRatio = 0;
-        var f1mRatio = 0;
+        let v2CamPos = CameraEngine.m_SceneNode.m_v2Pos;
+        let v2PositionStart = new b2Vec2(0, 0);
+        let v2PositionEnd = new b2Vec2(0, 0);
+        let v2Dir = new b2Vec2(0, 0);
+        let fLenght = 0;
+        let fHalfLenght = 0;
+        let fThickness = 0;
+        let fOrientation = 0;
+        let fRatio = 0;
+        let f1mRatio = 0;
 
         // Draw particles
         for (var i = 0; i < this.m_aTrailParticles.length; i++)
         {
-            var particle = this.m_aTrailParticles[i];
+            let particle = this.m_aTrailParticles[i];
 
             v2PositionStart.x = particle.m_v2PositionStart.x;
             v2PositionStart.y = particle.m_v2PositionStart.y;
             v2PositionEnd.x = particle.m_v2PositionEnd.x;
             v2PositionEnd.y = particle.m_v2PositionEnd.y;
 
-            var v2PosStartInScreen = RenderEngine.convertScenePosToScreenPos(v2PositionStart, v2CamPos);
+            let v2PosStartInScreen = RenderEngine.convertScenePosToScreenPos(v2PositionStart, v2CamPos);
 
             v2Dir.x = v2PositionEnd.x - v2PositionStart.x;
             v2Dir.y = v2PositionEnd.y - v2PositionStart.y;
@@ -305,15 +305,15 @@ export default class TrailEmitter
             }
             fHalfLenght = fLenght * 0.5;
 
-            var context = RenderEngine.context;
+            let context = RenderEngine.context;
             context.save();
             context.globalCompositeOperation = this.m_Blending;
             context.translate(v2PosStartInScreen.x - fHalfLenght, v2PosStartInScreen.y - fHalfLenght);
             context.rotate(fOrientation);
-            var r = Math.floor(this.m_ColorEnd.r * f1mRatio + this.m_ColorStart.r * fRatio);
-            var g = Math.floor(this.m_ColorEnd.g * f1mRatio + this.m_ColorStart.g * fRatio);
-            var b = Math.floor(this.m_ColorEnd.b * f1mRatio + this.m_ColorStart.b * fRatio);
-            var a = Math.floor(this.m_ColorEnd.a * f1mRatio + this.m_ColorStart.a * fRatio);
+            let r = Math.floor(this.m_ColorEnd.r * f1mRatio + this.m_ColorStart.r * fRatio);
+            let g = Math.floor(this.m_ColorEnd.g * f1mRatio + this.m_ColorStart.g * fRatio);
+            let b = Math.floor(this.m_ColorEnd.b * f1mRatio + this.m_ColorStart.b * fRatio);
+            let a = Math.floor(this.m_ColorEnd.a * f1mRatio + this.m_ColorStart.a * fRatio);
             context.fillStyle = "rgba(" + r + "," + g + "," + b + "," + a + ")";
             context.fillRect(-0.5, -0.5, fThickness, fLenght);
             context.restore();
@@ -345,7 +345,7 @@ export default class TrailEmitter
         if (this.m_bIsLaunched)
         {
             this.m_fTimeSinceLastPulse += a_fdt;
-            var iParticleCount = Math.floor(this.m_fTimeSinceLastPulse * this.m_fFrequency);
+            let iParticleCount = Math.floor(this.m_fTimeSinceLastPulse * this.m_fFrequency);
             if (iParticleCount > 0)
             {
                 this.pulse(iParticleCount);
@@ -362,7 +362,7 @@ export default class TrailEmitter
     {
         for (var i = 0; i < a_iParticleCount; i++)
         {
-            var particle = this.m_TrailSystem.popParticle();
+            let particle = this.m_TrailSystem.popParticle();
             if (particle == null)
             {
                 return;
@@ -376,12 +376,12 @@ export default class TrailEmitter
             particle.m_v2PositionEnd.y = this.m_SceneNodeEnd.getWorldPosition().y;
 
             // Initialize orientation
-            var v2Dir = new b2Vec2(particle.m_v2PositionEnd.x - particle.m_v2PositionStart.x,
+            let v2Dir = new b2Vec2(particle.m_v2PositionEnd.x - particle.m_v2PositionStart.x,
                 particle.m_v2PositionEnd.y - particle.m_v2PositionStart.y);
-            var fLenght = Math.sqrt(v2Dir.x * v2Dir.x + v2Dir.y * v2Dir.y);
+            let fLenght = Math.sqrt(v2Dir.x * v2Dir.x + v2Dir.y * v2Dir.y);
             v2Dir.x = v2Dir.x / fLenght;
             v2Dir.y = v2Dir.y / fLenght;
-            var fOrientation = Math.acos(v2Dir.x);
+            let fOrientation = Math.acos(v2Dir.x);
             if (v2Dir.y < 0.0)
             {
                 fOrientation = 2 * Math.PI - fOrientation;

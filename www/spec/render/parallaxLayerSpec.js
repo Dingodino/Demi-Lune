@@ -1,6 +1,6 @@
 "use strict";
 
-import ParallaxLayer from "src/render/parallaxLayer";
+import {ParallaxLayer} from "src/render/parallaxLayer";
 
 
 describe("ParallaxLayer", function ()
@@ -15,7 +15,7 @@ describe("ParallaxLayer", function ()
 
     it("should take constructor's parameters into account", function ( done )
     {
-        var parallaxLayer = new ParallaxLayer();
+        let parallaxLayer = new ParallaxLayer();
 
         expect(parallaxLayer).not.toBeNull();
         expect(parallaxLayer).not.toBeUndefined();

@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  * The MIT License (MIT)
  *
- * Copyright (c) 2014-2015 Nicolas DAURES
+ * Copyright (c) 2014-2016 Nicolas DAURES
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,14 +24,8 @@
 
 "use strict";
 
-import "src/core/constants";
+import {b2Vec2} from "src/core/constants";
 
-
-/****************************************************************
- * Math constants
- ****************************************************************/
-
- 
 
 /****************************************************************
  * Math functions
@@ -65,9 +59,9 @@ export function clamp(value, min, max)
 // Rotate vector
 export function rotateVector(a_v2Vector, a_fAngle)
 {
-    var v2Result = new b2Vec2();
-    var cs = Math.cos(a_fAngle);
-    var sn = Math.sin(a_fAngle);
+    let v2Result = new b2Vec2();
+    let cs = Math.cos(a_fAngle);
+    let sn = Math.sin(a_fAngle);
     
     v2Result.x = a_v2Vector.x * cs - a_v2Vector.y * sn;
     v2Result.y = a_v2Vector.x * sn + a_v2Vector.y * cs;

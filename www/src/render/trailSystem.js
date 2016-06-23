@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  * The MIT License (MIT)
  *
- * Copyright (c) 2014-2015 Nicolas DAURES
+ * Copyright (c) 2014-2016 Nicolas DAURES
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,32 +25,32 @@
 "use strict";
 
 import TimeEngine from "src/core/timeEngine";
-import TrailEmitter from "src/render/trailEmitter";
-import TrailParticle from "src/render/trailParticle";
+import {TrailEmitter} from "src/render/trailEmitter";
+import {TrailParticle} from "src/render/trailParticle";
 
 
-export default class TrailSystem
+export class TrailSystem
 {
-    //=======================
+    //===================================================================
     // Constructors
-    //=======================
+    //===================================================================
 
     /**
      * Create a trail system.
      */
     constructor ()
     {
-        this.m_aTrailEmitters =	    new Array();
-        this.m_aTrailParticles =    new Array();
+        this.m_aTrailEmitters =	    [];
+        this.m_aTrailParticles =    [];
         this.m_Image =				null;
         this.m_ImageData =			null;
         this.m_iParticleCount =		0;
     }
 
     
-    //=======================
+    //===================================================================
     // Accessors
-    //=======================
+    //===================================================================
 
     /**
      * Set the image of the particles.
@@ -67,7 +67,7 @@ export default class TrailSystem
      */
     setParticleCount (a_ParticleCount)
     {
-        var iDiff = a_ParticleCount - this.m_iParticleCount;
+        let iDiff = a_ParticleCount - this.m_iParticleCount;
         if (iDiff > 0)
         {
             for (let i = 0; i < iDiff; i++)
@@ -90,9 +90,9 @@ export default class TrailSystem
     }
 
 
-    //=======================
+    //===================================================================
     // Operations
-    //=======================
+    //===================================================================
 
     /**
      * Update the trail system.
@@ -100,7 +100,7 @@ export default class TrailSystem
     update ()
     {
         // Update particle emission
-        var fdt = TimeEngine.getDeltaTime();
+        let fdt = TimeEngine.getDeltaTime();
         for (let i = 0; i < this.m_aTrailEmitters.length; i++)
         {
             let trailEmitter = this.m_aTrailEmitters[i];
@@ -120,7 +120,7 @@ export default class TrailSystem
      */
     addTrailEmitter ()
     {
-        var trailEmitter = new TrailEmitter();
+        let trailEmitter = new TrailEmitter();
         trailEmitter.m_TrailSystem = this;
         this.m_aTrailEmitters.push(trailEmitter);
         return trailEmitter;
@@ -150,7 +150,7 @@ export default class TrailSystem
     {
         if (this.m_aTrailParticles.length > 0)
         {
-            var particle = this.m_aTrailParticles[0];
+            let particle = this.m_aTrailParticles[0];
             this.m_aTrailParticles.splice(0, 1);
             return particle;
         }

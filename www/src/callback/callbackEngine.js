@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  * The MIT License (MIT)
  *
- * Copyright (c) 2014-2015 Nicolas DAURES
+ * Copyright (c) 2014-2016 Nicolas DAURES
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,9 +29,9 @@ import "libs/lodash.min.js";
 
 class CallbackEngine
 {
-    //=======================
+    //===================================================================
     // Constructors
-    //=======================
+    //===================================================================
 
     /**
      * Create the engine.
@@ -49,9 +49,9 @@ class CallbackEngine
     }
 
 
-    //=======================
+    //===================================================================
     // Operations
-    //=======================
+    //===================================================================
 
     /**
      * Initialize the callback engine.
@@ -66,13 +66,13 @@ class CallbackEngine
      */
     update ( dt )
     {
-        var deltaTime = dt * 1000;
-        var self = this;
+        let deltaTime = dt * 1000;
+        let self = this;
 
         // Update timeout callbacks
-        var callbackIDsToRemove = [];
-        var callbackIDsToReset = [];
-        var postRenderCallbackIDsToRemove = [];
+        let callbackIDsToRemove = [];
+        let callbackIDsToReset = [];
+        let postRenderCallbackIDsToRemove = [];
         _.forEach(this.timeoutCallbacks, function(obj)
         {
             if ( obj ) // TODO : why ?
@@ -139,7 +139,7 @@ class CallbackEngine
             this.callbackID = 0;
         }
         this.callbackID++;
-        var id = this.callbackID;
+        let id = this.callbackID;
 
         this.timeoutCallbacks.push({callback: callback, callbackID: id, delay: delay, time: 0});
 
@@ -169,8 +169,8 @@ class CallbackEngine
         }
         this.callbackID++;
 
-        var id = this.callbackID;
-        var obj = {callback: callback, callbackID: id, delay: delay, time: 0};
+        let id = this.callbackID;
+        let obj = {callback: callback, callbackID: id, delay: delay, time: 0};
 
         this.intervalCallbacks.push(obj);
 
@@ -199,7 +199,7 @@ class CallbackEngine
             this.callbackID = 0;
         }
         this.callbackID++;
-        var id = this.callbackID;
+        let id = this.callbackID;
 
         this.postRenderCallbacks.push({callback: callback, callbackID: id, count: 0});
 
@@ -228,9 +228,9 @@ class CallbackEngine
     }
 
 
-    //=======================
+    //===================================================================
     // Private Operations
-    //=======================
+    //===================================================================
 
     /**
      * Clear callbacks to remove.
@@ -238,7 +238,7 @@ class CallbackEngine
      */
     _clear ( callbackIDsToRemove, callbackIDsToReset, postRenderCallbackIDsToRemove )
     {
-        var self = this;
+        let self = this;
 
         // TODO : use a map ?
         // Remove old timeout callbacks
@@ -288,6 +288,7 @@ class CallbackEngine
         }
     }
 }
+
 export default new CallbackEngine();
 
 console.debug("CallbackEngine.js loaded");

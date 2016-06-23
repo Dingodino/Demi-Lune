@@ -1,6 +1,6 @@
 "use strict";
 
-import Renderable from "src/render/renderable";
+import {Renderable} from "src/render/renderable";
 
 
 describe("Renderable", function ()
@@ -15,7 +15,7 @@ describe("Renderable", function ()
 
     it("should take constructor's parameters into account", function ( done )
     {
-        var renderable = new Renderable();
+        let renderable = new Renderable();
 
         expect(renderable).not.toBeNull();
         expect(renderable).not.toBeUndefined();

@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  * The MIT License (MIT)
  *
- * Copyright (c) 2014-2015 Nicolas DAURES
+ * Copyright (c) 2014-2016 Nicolas DAURES
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,16 +25,16 @@
 "use strict";
 
 import RenderEngine from "src/render/renderEngine";
-import Renderable from "src/render/renderable";
+import {Renderable} from "src/render/renderable";
 import TimeEngine from "src/core/timeEngine";
 import CameraEngine from "src/scene/cameraEngine";
 
 
-export default class AnimationPlayer extends Renderable
+export class AnimationPlayer extends Renderable
 {
-    //=======================
+    //===================================================================
 	// Constructors
-	//=======================
+	//===================================================================
 
     /**
      * Create an animation player.
@@ -44,7 +44,7 @@ export default class AnimationPlayer extends Renderable
         super();
 
         this.m_SpriteSheet = 			null;
-        this.m_aAnimations = 			new Array();
+        this.m_aAnimations = 			[];
         this.m_iCurrentAnimation =	    0;
         this.m_fCurrentTime = 		    0;
         this.m_iCurrentFrameLine = 	    0;
@@ -54,9 +54,9 @@ export default class AnimationPlayer extends Renderable
     }
 
 
-    //=======================
+    //===================================================================
     // Accessors
-    //=======================
+    //===================================================================
 
     /**
      * Get the sprite sheet.
@@ -167,9 +167,9 @@ export default class AnimationPlayer extends Renderable
     }
     
     
-    //=======================
+    //===================================================================
     // Operations
-    //=======================
+    //===================================================================
 
     /**
      * Draw the current animation.
@@ -178,10 +178,10 @@ export default class AnimationPlayer extends Renderable
     {
         this.update();
     
-        var v2CamPos = CameraEngine.m_SceneNode.m_v2Pos;
-        var v2PosInScreen = RenderEngine.convertScenePosToScreenPos(this.m_SceneNode.m_v2WorldPos, v2CamPos);
+        let v2CamPos = CameraEngine.m_SceneNode.m_v2Pos;
+        let v2PosInScreen = RenderEngine.convertScenePosToScreenPos(this.m_SceneNode.m_v2WorldPos, v2CamPos);
 
-        var context = RenderEngine.context;
+        let context = RenderEngine.context;
         context.save();
         context.translate(v2PosInScreen.x, v2PosInScreen.y);
         context.rotate(this.m_SceneNode.m_fWorldOrientation);
@@ -200,7 +200,7 @@ export default class AnimationPlayer extends Renderable
      */
     update ()
     {
-        var animation = this.m_aAnimations[this.m_iCurrentAnimation];
+        let animation = this.m_aAnimations[this.m_iCurrentAnimation];
     
         this.m_fCurrentTime += TimeEngine.m_fDeltaTime;
         if (this.m_fCurrentTime >= animation.m_fDuration)
@@ -208,8 +208,8 @@ export default class AnimationPlayer extends Renderable
             this.m_fCurrentTime -= animation.m_fDuration;
         }
     
-        var iFrameCount = animation.m_iFrameCount;
-        var iFrameIndex = animation.m_aFrameIndexes[Math.floor(this.m_fCurrentTime * iFrameCount/ animation.m_fDuration)];
+        let iFrameCount = animation.m_iFrameCount;
+        let iFrameIndex = animation.m_aFrameIndexes[Math.floor(this.m_fCurrentTime * iFrameCount/ animation.m_fDuration)];
         this.m_iCurrentFrameLine = Math.floor(iFrameIndex / this.m_SpriteSheet.m_iColumnCount);
         this.m_iCurrentFrameColumn = iFrameIndex % this.m_SpriteSheet.m_iColumnCount;
     }

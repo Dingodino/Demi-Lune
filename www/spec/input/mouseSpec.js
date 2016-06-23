@@ -30,7 +30,7 @@ describe("Mouse", function ()
 
         Mouse.update();
 
-        var mouseButtonState = Mouse.getMouseButtonState(0);
+        let mouseButtonState = Mouse.getMouseButtonState(0);
         expect(mouseButtonState).not.toBeNull();
         expect(mouseButtonState).not.toBeUndefined();
         expect(mouseButtonState).toBe(InputState.NONE);

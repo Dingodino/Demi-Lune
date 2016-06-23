@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  * The MIT License (MIT)
  *
- * Copyright (c) 2014 Nicolas DAURES
+ * Copyright (c) 2014-2016 Nicolas DAURES
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,9 +38,9 @@ var textTouchPosition = null;
 function initializeTest()
 {
 	demilune.RenderEngine.setClearColor('#ffffff');
-	demilune.RenderEngine.displayFPS(new b2Vec2(240, -230));
+	demilune.RenderEngine.displayFPS(new demilune.b2Vec2(240, -230));
 
-	var textKeyPos = new b2Vec2(-300, 200);
+	var textKeyPos = new demilune.b2Vec2(-300, 200);
 	textKey = new demilune.Text2D();
 	textKey.setColor("#000000");
 	textKey.setFont("22px arial");
@@ -49,7 +49,7 @@ function initializeTest()
 	demilune.SceneEngine.getRootSceneNode().attachSceneNode(textKey.getSceneNode());
 	demilune.RenderEngine.addRenderable(textKey);
 
-	var textMouseButtonPos = new b2Vec2(-300, 100);
+	var textMouseButtonPos = new demilune.b2Vec2(-300, 100);
 	textMouseButton = new demilune.Text2D();
 	textMouseButton.setColor("#000000");
 	textMouseButton.setFont("22px arial");
@@ -58,7 +58,7 @@ function initializeTest()
 	demilune.SceneEngine.getRootSceneNode().attachSceneNode(textMouseButton.getSceneNode());
 	demilune.RenderEngine.addRenderable(textMouseButton);
 
-	var textMousePositionPos = new b2Vec2(-300, 0);
+	var textMousePositionPos = new demilune.b2Vec2(-300, 0);
 	textMousePosition = new demilune.Text2D();
 	textMousePosition.setColor("#000000");
 	textMousePosition.setFont("22px arial");
@@ -67,7 +67,7 @@ function initializeTest()
 	demilune.SceneEngine.getRootSceneNode().attachSceneNode(textMousePosition.getSceneNode());
 	demilune.RenderEngine.addRenderable(textMousePosition);
 
-	var textTouchButtonPos = new b2Vec2(-300, -100);
+	var textTouchButtonPos = new demilune.b2Vec2(-300, -100);
 	textTouchButton = new demilune.Text2D();
 	textTouchButton.setColor("#000000");
 	textTouchButton.setFont("22px arial");
@@ -76,7 +76,7 @@ function initializeTest()
 	demilune.SceneEngine.getRootSceneNode().attachSceneNode(textTouchButton.getSceneNode());
 	demilune.RenderEngine.addRenderable(textTouchButton);
 
-	var textTouchPositionPos = new b2Vec2(-300, -200);
+	var textTouchPositionPos = new demilune.b2Vec2(-300, -200);
 	textTouchPosition = new demilune.Text2D();
 	textTouchPosition.setColor("#000000");
 	textTouchPosition.setFont("22px arial");

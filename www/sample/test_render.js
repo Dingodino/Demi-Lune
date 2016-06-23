@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  * The MIT License (MIT)
  *
- * Copyright (c) 2014 Nicolas DAURES
+ * Copyright (c) 2014-2016 Nicolas DAURES
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,10 +36,10 @@ var sceneNodeToTranslate = null;
 function initializeTest()
 {
 	demilune.RenderEngine.setClearColor('#ffffff');
-	demilune.RenderEngine.displayFPS(new b2Vec2(240, -230));
+	demilune.RenderEngine.displayFPS(new demilune.b2Vec2(240, -230));
 
 	// Create 3 texts
-	var text1Pos = new b2Vec2(-300, 200);
+	var text1Pos = new demilune.b2Vec2(-300, 200);
 	var text1 = new demilune.Text2D();
 	text1.setColor("#000000");
 	text1.setFont("22px arial");
@@ -48,7 +48,7 @@ function initializeTest()
 	demilune.SceneEngine.getRootSceneNode().attachSceneNode(text1.getSceneNode());
 	demilune.RenderEngine.addRenderable(text1);
 
-	var text2Pos = new b2Vec2(-300, 170);
+	var text2Pos = new demilune.b2Vec2(-300, 170);
 	var text2 = new demilune.Text2D();
 	text2.setColor("#ff0000");
 	text2.setFont("italic bold 20px arial");
@@ -57,7 +57,7 @@ function initializeTest()
 	demilune.SceneEngine.getRootSceneNode().attachSceneNode(text2.getSceneNode());
 	demilune.RenderEngine.addRenderable(text2);
 
-	var text3Pos = new b2Vec2(-300, 140);
+	var text3Pos = new demilune.b2Vec2(-300, 140);
 	var text3 = new demilune.Text2D();
 	text3.setColor("#0000ff");
 	text3.setFont("18px times");
@@ -67,8 +67,8 @@ function initializeTest()
 	demilune.RenderEngine.addRenderable(text3);
 
 	// Create a texture (translation)
-	var v2TexturePos = new b2Vec2(-20, -100);
-	var v2TextureScale = new b2Vec2(200, 200);
+	var v2TexturePos = new demilune.b2Vec2(-20, -100);
+	var v2TextureScale = new demilune.b2Vec2(200, 200);
 	var texture = new demilune.Texture();
 	texture.m_Image = new Image();
 	texture.m_Image.src = "sample/test_texture.png";
@@ -79,8 +79,8 @@ function initializeTest()
 	demilune.RenderEngine.addRenderable(texture);
 
 	// Create a texture (rotation)
-	var v2Texture2Pos = new b2Vec2(200, -100);
-	var v2Texture2Scale = new b2Vec2(200, 200);
+	var v2Texture2Pos = new demilune.b2Vec2(200, -100);
+	var v2Texture2Scale = new demilune.b2Vec2(200, 200);
 	var texture2 = new demilune.Texture();
 	texture2.m_Image = texture.m_Image;
 	texture2.m_SceneNode.m_v2Pos = v2Texture2Pos;
@@ -90,8 +90,8 @@ function initializeTest()
 	demilune.RenderEngine.addRenderable(texture2);
 
 	// Create a texture (scale)
-	var v2Texture3Pos = new b2Vec2(200, 100);
-	var v2Texture3Scale = new b2Vec2(200, 200);
+	var v2Texture3Pos = new demilune.b2Vec2(200, 100);
+	var v2Texture3Scale = new demilune.b2Vec2(200, 200);
 	var texture3 = new demilune.Texture();
 	texture3.m_Image = texture.m_Image;
 	texture3.m_SceneNode.m_v2Pos = v2Texture3Pos;
@@ -101,8 +101,8 @@ function initializeTest()
 	demilune.RenderEngine.addRenderable(texture3);
 
 	// Create an animation
-	var v2AnimationPos = new b2Vec2(-200, -100);
-	var v2AnimationScale = new b2Vec2(64, 64);
+	var v2AnimationPos = new demilune.b2Vec2(-200, -100);
+	var v2AnimationScale = new demilune.b2Vec2(64, 64);
 	var animationPlayer = new demilune.AnimationPlayer();
 
 	var spriteSheet = new demilune.SpriteSheet();

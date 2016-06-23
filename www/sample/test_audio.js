@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  * The MIT License (MIT)
  *
- * Copyright (c) 2014 Nicolas DAURES
+ * Copyright (c) 2014-2016 Nicolas DAURES
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@ var sound = null;
 function initializeTest()
 {
 	demilune.RenderEngine.setClearColor('#ffffff');
-	demilune.RenderEngine.displayFPS(new b2Vec2(240, -230));
+	demilune.RenderEngine.displayFPS(new demilune.b2Vec2(240, -230));
 
 	sound = new demilune.Sound();
 	var audio = new Audio();

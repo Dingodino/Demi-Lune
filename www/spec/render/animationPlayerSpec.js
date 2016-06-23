@@ -1,6 +1,6 @@
 "use strict";
 
-import AnimationPlayer from "src/render/animationPlayer";
+import {AnimationPlayer} from "src/render/animationPlayer";
 
 
 describe("AnimationPlayer", function ()
@@ -15,7 +15,7 @@ describe("AnimationPlayer", function ()
 
     it("should take constructor's parameters into account", function ( done )
     {
-        var animationPlayer = new AnimationPlayer();
+        let animationPlayer = new AnimationPlayer();
 
         expect(animationPlayer).not.toBeNull();
         expect(animationPlayer).not.toBeUndefined();

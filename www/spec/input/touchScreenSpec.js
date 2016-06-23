@@ -30,7 +30,7 @@ describe("TouchScreen", function ()
 
         TouchScreen.update();
 
-        var touchState = TouchScreen.getState();
+        let touchState = TouchScreen.getState();
         expect(touchState).not.toBeNull();
         expect(touchState).not.toBeUndefined();
         expect(touchState).toBe(InputState.NONE);

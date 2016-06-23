@@ -1,6 +1,6 @@
 "use strict";
 
-import Particle from "src/render/particle";
+import {Particle} from "src/render/particle";
 
 
 describe("Particle", function ()
@@ -15,7 +15,7 @@ describe("Particle", function ()
 
     it("should take constructor's parameters into account", function ( done )
     {
-        var particle = new Particle();
+        let particle = new Particle();
 
         expect(particle).not.toBeNull();
         expect(particle).not.toBeUndefined();

@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  * The MIT License (MIT)
  *
- * Copyright (c) 2014-2015 Nicolas DAURES
+ * Copyright (c) 2014-2016 Nicolas DAURES
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,14 +24,14 @@
 
 "use strict";
 
-import SceneNode from "src/scene/sceneNode";
+import {SceneNode} from "src/scene/sceneNode";
 
 
 class SceneEngine
 {
-	//=======================
+	//===================================================================
 	// Constructors
-	//=======================
+	//===================================================================
 
     /**
      * Create the scene engine.
@@ -42,9 +42,9 @@ class SceneEngine
     }
 
 
-    //=======================
+    //===================================================================
     // Accessors
-    //=======================
+    //===================================================================
 
     /**
      * Get the root node.
@@ -56,9 +56,9 @@ class SceneEngine
     }
     
     
-    //=======================
+    //===================================================================
     // Operations
-    //=======================
+    //===================================================================
 
     /**
      * Update the scene engine.

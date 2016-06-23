@@ -1,6 +1,7 @@
 "use strict";
 
 import PhysicEngine from "src/physic/physicEngine";
+import {b2Vec2} from "src/core/constants";
 
 
 describe("PhysicEngine", function ()
@@ -30,6 +31,23 @@ describe("PhysicEngine", function ()
         expect(PhysicEngine.m_iPositionIterationCount).not.toBeNull();
         expect(PhysicEngine.m_iPositionIterationCount).not.toBeUndefined();
         expect(PhysicEngine.m_iPositionIterationCount).toBe(2);
+
+        done();
+    });
+
+    it("should take accessors into account", function ( done )
+    {
+        expect(PhysicEngine).not.toBeNull();
+        expect(PhysicEngine).not.toBeUndefined();
+
+        PhysicEngine.setGravity(new b2Vec2(0, -10));
+        PhysicEngine.setVelocityIterationCount(3);
+        PhysicEngine.setPositionIterationCount(8);
+
+        expect(PhysicEngine.getGravity().x).toBe(0);
+        expect(PhysicEngine.getGravity().y).toBe(-10);
+        expect(PhysicEngine.getVelocityIterationCount()).toBe(3);
+        expect(PhysicEngine.getPositionIterationCount()).toBe(8);
 
         done();
     });

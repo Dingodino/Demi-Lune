@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  * The MIT License (MIT)
  *
- * Copyright (c) 2014-2015 Nicolas DAURES
+ * Copyright (c) 2014-2016 Nicolas DAURES
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,21 +24,19 @@
 
 "use strict";
 
-import "src/physic/Box2dWeb";
+import * as Box2D from "libs/box2d";
 
-
-// "Import" des classes box2dweb
-window.b2World = Box2D.Dynamics.b2World;
-window.b2Vec2 = Box2D.Common.Math.b2Vec2;
-window.b2AABB = Box2D.Collision.b2AABB;
-window.b2BodyDef = Box2D.Dynamics.b2BodyDef;
-window.b2Body = Box2D.Dynamics.b2Body;
-window.b2FixtureDef = Box2D.Dynamics.b2FixtureDef;
-window.b2Fixture = Box2D.Dynamics.b2Fixture;
-window.b2MassData = Box2D.Collision.Shapes.b2MassData;
-window.b2PolygonShape = Box2D.Collision.Shapes.b2PolygonShape;
-window.b2CircleShape = Box2D.Collision.Shapes.b2CircleShape;
-window.b2DebugDraw = Box2D.Dynamics.b2DebugDraw;
-window.b2MouseJointDef =  Box2D.Dynamics.Joints.b2MouseJointDef;
+export let b2World = Box2D.Dynamics.b2World;
+export let b2Vec2 = Box2D.Common.Math.b2Vec2;
+export let b2AABB = Box2D.Collision.b2AABB;
+export let b2BodyDef = Box2D.Dynamics.b2BodyDef;
+export let b2Body = Box2D.Dynamics.b2Body;
+export let b2FixtureDef = Box2D.Dynamics.b2FixtureDef;
+export let b2Fixture = Box2D.Dynamics.b2Fixture;
+export let b2MassData = Box2D.Collision.Shapes.b2MassData;
+export let b2PolygonShape = Box2D.Collision.Shapes.b2PolygonShape;
+export let b2CircleShape = Box2D.Collision.Shapes.b2CircleShape;
+export let b2DebugDraw = Box2D.Dynamics.b2DebugDraw;
+export let b2MouseJointDef =  Box2D.Dynamics.Joints.b2MouseJointDef;
 
 console.debug('constants.js loaded');

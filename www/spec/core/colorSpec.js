@@ -1,6 +1,6 @@
 "use strict";
 
-import Color from "src/core/color";
+import {Color} from "src/core/color";
 
 
 describe("Color", function ()
@@ -15,7 +15,7 @@ describe("Color", function ()
 
     it("should take constructor's parameters into account", function ( done )
     {
-        var color = new Color(50, 100, 150, 200);
+        let color = new Color(50, 100, 150, 200);
 
         expect(color.r).not.toBeNull();
         expect(color.r).not.toBeUndefined();

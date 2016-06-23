@@ -1,6 +1,6 @@
 "use strict";
 
-import Parallax from "src/render/parallax";
+import {Parallax} from "src/render/parallax";
 
 
 describe("Parallax", function ()
@@ -15,7 +15,7 @@ describe("Parallax", function ()
 
     it("should take constructor's parameters into account", function ( done )
     {
-        var parallax = new Parallax();
+        let parallax = new Parallax();
 
         expect(parallax).not.toBeNull();
         expect(parallax).not.toBeUndefined();

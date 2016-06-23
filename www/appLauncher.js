@@ -2,7 +2,7 @@
 
 function appendLocalScript(scriptSrc, onloadCallback)
 {
-    var s = document.createElement("script");
+    let s = document.createElement("script");
     s.type = "text/javascript";
     s.src = scriptSrc;
     if(onloadCallback)

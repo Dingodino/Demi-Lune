@@ -1,6 +1,6 @@
 "use strict";
 
-import Application from "src/core/application";
+import {Application} from "src/core/application";
 
 
 describe("Application", function ()

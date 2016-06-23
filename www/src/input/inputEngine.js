@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  * The MIT License (MIT)
  *
- * Copyright (c) 2014-2015 Nicolas DAURES
+ * Copyright (c) 2014-2016 Nicolas DAURES
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,14 +28,14 @@ import Keyboard from "src/input/keyboard";
 import Mouse from "src/input/mouse";
 import TouchScreen from "src/input/touchScreen";
 import InputState from "src/input/inputState";
-import "src/core/constants";
+import {b2Vec2} from "src/core/constants";
 
 
 class InputEngine
 {
-	//=======================
+	//===================================================================
 	// Constructors
-	//=======================
+	//===================================================================
 
     /**
      * Create the input engine.
@@ -50,9 +50,9 @@ class InputEngine
     }
 
 
-    //=======================
+    //===================================================================
     // Operations
-    //=======================
+    //===================================================================
 
     /**
      * Initialize the input engine.
@@ -118,7 +118,7 @@ if (canvas)
     // Mouse event listener
     canvas.onmousemove = function onMouseMove(a_Event)
     {
-        var v2MousePos = Mouse.m_v2Pos;
+        let v2MousePos = Mouse.m_v2Pos;
 
         if (a_Event.pageX || a_Event.pageY)
         {
@@ -131,11 +131,11 @@ if (canvas)
             v2MousePos.y = a_Event.clientY + document.body.scrollTop + document.documentElement.scrollTop;
         }
 
-        var v2Offset = new b2Vec2();
+        let v2Offset = new b2Vec2();
         v2Offset.x = 0;
         v2Offset.y = 0;
-        var canvas = document.getElementById('canvas');
-        var currentElement = canvas;
+        let canvas = document.getElementById('canvas');
+        let currentElement = canvas;
         while(currentElement)
         {
             v2Offset.x += currentElement.offsetLeft;
@@ -162,7 +162,7 @@ if (canvas)
     // Touch event listener
     canvas.ontouchmove = function onTouchMove(a_Event)
     {
-        var v2TouchPos = TouchScreen.m_v2Pos;
+        let v2TouchPos = TouchScreen.m_v2Pos;
         TouchScreen.m_State = InputState.GOTO_PRESSED;
         if (a_Event.originalEvent && a_Event.originalEvent.touches && a_Event.originalEvent.touches[0])
         {

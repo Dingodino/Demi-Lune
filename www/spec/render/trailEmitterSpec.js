@@ -1,7 +1,7 @@
 "use strict";
 
-import TrailEmitter from "src/render/trailEmitter";
-import Color from "src/core/color";
+import {TrailEmitter} from "src/render/trailEmitter";
+import {Color} from "src/core/color";
 
 
 describe("TrailEmitter", function ()
@@ -16,9 +16,13 @@ describe("TrailEmitter", function ()
 
     it("should take accessors into account", function ( done )
     {
-        var trailEmitter = new TrailEmitter();
+        let trailEmitter = new TrailEmitter();
         expect(trailEmitter).not.toBeNull();
         expect(trailEmitter).not.toBeUndefined();
+        expect(trailEmitter.getSceneNodeStart()).not.toBeNull();
+        expect(trailEmitter.getSceneNodeStart()).not.toBeUndefined();
+        expect(trailEmitter.getSceneNodeEnd()).not.toBeNull();
+        expect(trailEmitter.getSceneNodeEnd()).not.toBeUndefined();
 
         trailEmitter.setColorStart(new Color(255, 200, 150, 255));
         trailEmitter.setColorEnd(new Color(255, 150, 200, 255));

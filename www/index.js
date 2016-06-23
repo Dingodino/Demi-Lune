@@ -13,7 +13,7 @@ import RenderEngine from "src/render/renderEngine";
 setTimeout(function ()
 {
     // Get the canvas
-    var canvas = document.getElementById('canvas');
+    let canvas = document.getElementById('canvas');
     RenderEngine.setCanvas(canvas);
 
     // Initialize the application

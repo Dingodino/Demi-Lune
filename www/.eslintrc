@@ -42,7 +42,6 @@
   "globals": {
     "console": true,
     "window": true,
-    "Box2D": true,
     "expect": true,
     "it": true,
     "describe": true,
@@ -50,8 +49,6 @@
     "setInterval": true,
     "setTimeout": true,
     "clearTimeout": true,
-    "b2Vec2": true,
-    "b2World": true,
     "_": true,
     "document": true
   },

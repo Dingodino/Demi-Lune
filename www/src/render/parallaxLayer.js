@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  * The MIT License (MIT)
  *
- * Copyright (c) 2014-2015 Nicolas DAURES
+ * Copyright (c) 2014-2016 Nicolas DAURES
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,17 +24,17 @@
 
 "use strict";
 
-import "src/core/constants";
+import {b2Vec2} from "src/core/constants";
 import RenderEngine from "src/render/renderEngine";
-import Renderable from "src/render/renderable";
+import {Renderable} from "src/render/renderable";
 import CameraEngine from "src/scene/cameraEngine";
 
 
-export default class ParallaxLayer extends Renderable
+export class ParallaxLayer extends Renderable
 {
-    //=======================
+    //===================================================================
 	// Constructors
-	//=======================
+	//===================================================================
 
     /**
      * Create a parallax layer.
@@ -49,9 +49,9 @@ export default class ParallaxLayer extends Renderable
     }
 
 
-    //=======================
+    //===================================================================
     // Accessors
-    //=======================
+    //===================================================================
 
     /**
      * Get the image of this layer.
@@ -108,9 +108,9 @@ export default class ParallaxLayer extends Renderable
     }
 
 
-    //=======================
+    //===================================================================
     // Operations
-    //=======================
+    //===================================================================
 
     /**
      * Move the parallax layer.
@@ -127,16 +127,16 @@ export default class ParallaxLayer extends Renderable
      */
     draw ()
     {
-        var v2LayerPos = new b2Vec2(this.m_SceneNode.m_v2WorldPos.x, this.m_SceneNode.m_v2WorldPos.y);
-        var v2LayerScale = this.m_SceneNode.m_v2WorldScale;
-        var v2CamPos = CameraEngine.m_SceneNode.m_v2Pos;
-        var v2PosInScreen, context;
+        let v2LayerPos = new b2Vec2(this.m_SceneNode.m_v2WorldPos.x, this.m_SceneNode.m_v2WorldPos.y);
+        let v2LayerScale = this.m_SceneNode.m_v2WorldScale;
+        let v2CamPos = CameraEngine.m_SceneNode.m_v2Pos;
+        let v2PosInScreen, context;
         if (this.m_bRepeatOnX)
         {
-            var fLayerPosXMin = v2CamPos.x - RenderEngine.getCanvasHalfSize().x;
-            var fLayerPosXMax = v2CamPos.x + RenderEngine.getCanvasHalfSize().x;
-            var fDistanceX = v2CamPos.x - v2LayerPos.x;
-            var fDelta = (fDistanceX / v2LayerScale.x) % 1;
+            let fLayerPosXMin = v2CamPos.x - RenderEngine.getCanvasHalfSize().x;
+            let fLayerPosXMax = v2CamPos.x + RenderEngine.getCanvasHalfSize().x;
+            let fDistanceX = v2CamPos.x - v2LayerPos.x;
+            let fDelta = (fDistanceX / v2LayerScale.x) % 1;
             v2LayerPos.x = fLayerPosXMin - (1.0 - fDelta) * v2LayerScale.x;
 
             while (v2LayerPos.x - v2LayerScale.x * 0.5 < fLayerPosXMax)

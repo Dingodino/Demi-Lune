@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  * The MIT License (MIT)
  *
- * Copyright (c) 2014-2015 Nicolas DAURES
+ * Copyright (c) 2014-2016 Nicolas DAURES
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,14 +24,14 @@
 
 "use strict";
 
-import "src/core/constants";
+import {b2Vec2} from "src/core/constants";
 
 
-export default class Particle
+export class Particle
 {
-    //=======================
+    //===================================================================
     // Constructors
-    //=======================
+    //===================================================================
 
     /**
      * Create a particle.
@@ -51,9 +51,9 @@ export default class Particle
     }
 
 
-    //=======================
+    //===================================================================
     // Operations
-    //=======================
+    //===================================================================
 
     /**
      * Update the particle.
@@ -75,7 +75,7 @@ export default class Particle
 
         if (this.m_ParticleEmitter.m_bScaleInTime)
         {
-            var fRatio = this.m_fLife / this.m_fLifeInit;
+            let fRatio = this.m_fLife / this.m_fLifeInit;
             this.m_v2Scale.x = this.m_v2ScaleInit.x * fRatio + this.m_ParticleEmitter.m_fScaleEnd * (1 - fRatio);
             this.m_v2Scale.y = this.m_v2ScaleInit.y * fRatio + this.m_ParticleEmitter.m_fScaleEnd * (1 - fRatio);
         }
