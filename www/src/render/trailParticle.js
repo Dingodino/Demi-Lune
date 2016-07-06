@@ -62,4 +62,4 @@ export class TrailParticle
     }
 }
 
-console.debug('TrailParticle.js loaded');
+console.debug('TrailParticle loaded');

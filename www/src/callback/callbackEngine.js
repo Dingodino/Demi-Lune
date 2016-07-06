@@ -25,9 +25,10 @@
 "use strict";
 
 import "libs/lodash.min.js";
+import {Engine} from "src/core/engine";
 
 
-class CallbackEngine
+export class CallbackEngine extends Engine
 {
     //===================================================================
     // Constructors
@@ -38,6 +39,8 @@ class CallbackEngine
      */
     constructor ()
     {
+        super();
+
         // Timeout callback list
         this.timeoutCallbacks = [];
 
@@ -49,6 +52,24 @@ class CallbackEngine
     }
 
 
+    //===================================================================
+    // Accessors
+    //===================================================================
+
+    /**
+     * Get the unique instance of this class.
+     * @returns {*}
+     */
+    static getInstance()
+    {
+        if(!this.instance)
+        {
+            this.instance = new CallbackEngine();
+        }
+        return this.instance;
+    }
+
+    
     //===================================================================
     // Operations
     //===================================================================
@@ -289,6 +310,4 @@ class CallbackEngine
     }
 }
 
-export default new CallbackEngine();
-
-console.debug("CallbackEngine.js loaded");
+console.debug("CallbackEngine loaded");

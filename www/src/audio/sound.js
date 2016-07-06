@@ -138,4 +138,4 @@ export class Sound
     }
 }
 
-console.debug('Sound.js loaded');
+console.debug('Sound loaded');

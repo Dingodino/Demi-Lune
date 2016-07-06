@@ -27,9 +27,8 @@
 import {b2Vec2} from "src/core/constants";
 import {Color} from "src/core/color";
 import {SceneNode} from "src/scene/sceneNode";
-import RenderEngine from "src/render/renderEngine";
-import TimeEngine from "src/core/timeEngine";
-import CameraEngine from "src/scene/cameraEngine";
+import {TimeEngine} from "src/core/timeEngine";
+import {RenderEngine} from "src/render/renderEngine";
 
 
 export class TrailEmitter
@@ -224,7 +223,7 @@ export class TrailEmitter
      */
     update ()
     {
-        let fdt = TimeEngine.getDeltaTime();
+        let fdt = TimeEngine.getInstance().getDeltaTime();
 
         // Remove killed particles
         let particleToRemove = [];
@@ -265,7 +264,9 @@ export class TrailEmitter
      */
     draw ()
     {
-        let v2CamPos = CameraEngine.m_SceneNode.m_v2Pos;
+        let renderEngine = RenderEngine.getInstance();
+        let context = renderEngine.context;
+        let v2CamPos = renderEngine.m_CurrentCamera.m_SceneNode.m_v2Pos;
         let v2PositionStart = new b2Vec2(0, 0);
         let v2PositionEnd = new b2Vec2(0, 0);
         let v2Dir = new b2Vec2(0, 0);
@@ -277,7 +278,7 @@ export class TrailEmitter
         let f1mRatio = 0;
 
         // Draw particles
-        for (var i = 0; i < this.m_aTrailParticles.length; i++)
+        for (let i = 0; i < this.m_aTrailParticles.length; i++)
         {
             let particle = this.m_aTrailParticles[i];
 
@@ -286,7 +287,7 @@ export class TrailEmitter
             v2PositionEnd.x = particle.m_v2PositionEnd.x;
             v2PositionEnd.y = particle.m_v2PositionEnd.y;
 
-            let v2PosStartInScreen = RenderEngine.convertScenePosToScreenPos(v2PositionStart, v2CamPos);
+            let v2PosStartInScreen = renderEngine.convertScenePosToScreenPos(v2PositionStart, v2CamPos);
 
             v2Dir.x = v2PositionEnd.x - v2PositionStart.x;
             v2Dir.y = v2PositionEnd.y - v2PositionStart.y;
@@ -305,7 +306,6 @@ export class TrailEmitter
             }
             fHalfLenght = fLenght * 0.5;
 
-            let context = RenderEngine.context;
             context.save();
             context.globalCompositeOperation = this.m_Blending;
             context.translate(v2PosStartInScreen.x - fHalfLenght, v2PosStartInScreen.y - fHalfLenght);
@@ -360,7 +360,7 @@ export class TrailEmitter
      */
     pulse (a_iParticleCount)
     {
-        for (var i = 0; i < a_iParticleCount; i++)
+        for (let i = 0; i < a_iParticleCount; i++)
         {
             let particle = this.m_TrailSystem.popParticle();
             if (particle == null)
@@ -395,4 +395,4 @@ export class TrailEmitter
     }
 }
 
-console.debug('TrailEmitter.js loaded');
+console.debug('TrailEmitter loaded');

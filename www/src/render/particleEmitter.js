@@ -28,9 +28,8 @@ import {b2Vec2} from "src/core/constants";
 import * as Utils from "src/core/math";
 import {Color} from "src/core/color";
 import {SceneNode} from "src/scene/sceneNode";
-import RenderEngine from "src/render/renderEngine";
-import TimeEngine from "src/core/timeEngine";
-import CameraEngine from "src/scene/cameraEngine";
+import {TimeEngine} from "src/core/timeEngine";
+import {RenderEngine} from "src/render/renderEngine";
 
 
 // Particle emitter
@@ -434,7 +433,7 @@ export class ParticleEmitter
      */
     update ()
     {
-        let fdt = TimeEngine.getDeltaTime();
+        let fdt = TimeEngine.getInstance().getDeltaTime();
 
         // Remove killed particles
         let particleToRemove = [];
@@ -475,7 +474,9 @@ export class ParticleEmitter
      */
     draw ()
     {
-        let v2CamPos = CameraEngine.m_SceneNode.m_v2Pos;
+        let renderEngine = RenderEngine.getInstance();
+        let context = renderEngine.context;
+        let v2CamPos = renderEngine.m_CurrentCamera.m_SceneNode.m_v2Pos;
         let v2Position = new b2Vec2(0, 0);
         let v2Scale = new b2Vec2(0, 0);
         let fOrientation = 0;
@@ -496,12 +497,11 @@ export class ParticleEmitter
                     v2Position.y += this.m_SceneNode.m_v2WorldPos.y;
                 }
 
-                let v2PosInScreen = RenderEngine.convertScenePosToScreenPos(v2Position, v2CamPos);
+                let v2PosInScreen = renderEngine.convertScenePosToScreenPos(v2Position, v2CamPos);
                 v2Scale.x = particle.m_v2Scale.x;
                 v2Scale.y = particle.m_v2Scale.y;
                 fOrientation = particle.m_fOrientation;
 
-                let context = RenderEngine.context;
                 context.save();
                 context.globalCompositeOperation = this.m_Blending;
                 context.translate(v2PosInScreen.x, v2PosInScreen.y);
@@ -524,14 +524,13 @@ export class ParticleEmitter
                     v2Position.y += this.m_SceneNode.m_v2WorldPos.y;
                 }
 
-                let v2PosInScreen = RenderEngine.convertScenePosToScreenPos(v2Position, v2CamPos);
+                let v2PosInScreen = renderEngine.convertScenePosToScreenPos(v2Position, v2CamPos);
                 v2Scale.x = particle.m_v2Scale.x;
                 v2Scale.y = particle.m_v2Scale.y;
                 fOrientation = particle.m_fOrientation;
                 fRatio = particle.m_fLife / particle.m_fLifeInit;
                 f1mRatio = 1 - fRatio;
 
-                let context = RenderEngine.context;
                 context.save();
                 context.globalCompositeOperation = this.m_Blending;
                 context.translate(v2PosInScreen.x, v2PosInScreen.y);
@@ -607,7 +606,7 @@ export class ParticleEmitter
      */
     pulse (a_iParticleCount)
     {
-        for (var i = 0; i < a_iParticleCount; i++)
+        for (let i = 0; i < a_iParticleCount; i++)
         {
             let particle = this.m_ParticleSystem.popParticle();
             if (particle == null)
@@ -706,4 +705,4 @@ export class ParticleEmitter
     }
 }
 
-console.debug('ParticleEmitter.js loaded');
+console.debug('ParticleEmitter loaded');

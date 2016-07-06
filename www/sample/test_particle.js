@@ -29,17 +29,17 @@ import "demilune.js";
  * Sample
  ****************************************************************/
 
-var fTimeBeforePulse = 3.0;
-var fOrientation = 0;
-var particleSystem = null;
-var particleEmitter1 = null;
-var particleEmitter2 = null;
-var particleEmitter3 = null;
-var particleSystem2 = null;
-var particleEmitter4 = null;
-var trailSystem = null;
-var trailEmitter = null;
-var textParticleCount = null;
+let fTimeBeforePulse = 3.0;
+let fOrientation = 0;
+let particleSystem = null;
+let particleEmitter1 = null;
+let particleEmitter2 = null;
+let particleEmitter3 = null;
+let particleSystem2 = null;
+let particleEmitter4 = null;
+let trailSystem = null;
+let trailEmitter = null;
+let textParticleCount = null;
 
 function initializeTest()
 {
@@ -56,9 +56,9 @@ function initializeTest()
     demilune.RenderEngine.addRenderable(textParticleCount);
 
 	// Create two images
-	var image = new Image();
+	let image = new Image();
 	image.src = "sample/test_particle.png";
-	var image2 = new Image();
+	let image2 = new Image();
 	image2.src = "sample/test_particle2.png";
 
 	// Create a particle system

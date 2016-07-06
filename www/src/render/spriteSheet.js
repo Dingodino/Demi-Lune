@@ -142,4 +142,4 @@ export class SpriteSheet
     }
 }
 
-console.debug('SpriteSheet.js loaded');
+console.debug('SpriteSheet loaded');

@@ -92,4 +92,4 @@ export class Particle
     }
 }
 
-console.debug('Particle.js loaded');
+console.debug('Particle loaded');

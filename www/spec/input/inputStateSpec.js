@@ -1,6 +1,6 @@
 "use strict";
 
-import InputState from "src/input/inputState";
+import {InputState} from "src/input/inputState";
 
 
 describe("InputState", function ()
@@ -10,9 +10,9 @@ describe("InputState", function ()
         expect(InputState).not.toBeNull();
         expect(InputState).not.toBeUndefined();
 
-        expect(InputState.NONE).not.toBeNull();
-        expect(InputState.NONE).not.toBeUndefined();
-        expect(InputState.NONE).toBe(0);
+        expect(InputState.RELEASED).not.toBeNull();
+        expect(InputState.RELEASED).not.toBeUndefined();
+        expect(InputState.RELEASED).toBe(0);
 
         expect(InputState.GOTO_PRESSED).not.toBeNull();
         expect(InputState.GOTO_PRESSED).not.toBeUndefined();
@@ -29,10 +29,6 @@ describe("InputState", function ()
         expect(InputState.GOTO_RELEASED).not.toBeNull();
         expect(InputState.GOTO_RELEASED).not.toBeUndefined();
         expect(InputState.GOTO_RELEASED).toBe(4);
-
-        expect(InputState.RELEASED).not.toBeNull();
-        expect(InputState.RELEASED).not.toBeUndefined();
-        expect(InputState.RELEASED).toBe(5);
 
         done();
     });

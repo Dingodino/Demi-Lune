@@ -25,11 +25,13 @@
 "use strict";
 
 import {b2Vec2} from "src/core/constants";
-import TimeEngine from "src/core/timeEngine";
-import CameraEngine from "src/scene/cameraEngine";
+import {TimeEngine} from "src/core/timeEngine";
+import {SceneEngine} from "src/scene/sceneEngine";
+import {Camera} from "src/scene/camera";
+import {Engine} from "src/core/engine";
 
 
-class RenderEngine
+export class RenderEngine extends Engine
 {
 	//===================================================================
 	// Constructors
@@ -40,17 +42,35 @@ class RenderEngine
      */
     constructor ()
     {
+        super();
+
         this.m_aRenderables =		[];
         this.m_ClearColor = 		"#ffffff";
-        this.m_v2CanvasSize =		new b2Vec2(640, 480);
+        this.m_v2CanvasSize     =	new b2Vec2(640, 480);
         this.m_v2CanvasHalfSize =	new b2Vec2(320, 240);
         this.m_bSortRenderables =   false;
+        this.m_CurrentCamera = new Camera();
+
+        SceneEngine.getInstance().getRootSceneNode().attachSceneNode(this.m_CurrentCamera.m_SceneNode);
     }
 
 
     //===================================================================
     // Accessors
     //===================================================================
+
+    /**
+     * Get the unique instance of this class.
+     * @returns {*}
+     */
+    static getInstance()
+    {
+        if(!this.instance)
+        {
+            this.instance = new RenderEngine();
+        }
+        return this.instance;
+    }
 
     /**
      * Set the canvas.
@@ -126,13 +146,11 @@ class RenderEngine
             this.m_bSortRenderables = false;
         }
 
-        this.context.clearRect(0, 0, this.m_v2CanvasSize.x, this.m_v2CanvasSize.y);
-
         this.context.fillStyle = this.m_ClearColor;
         this.context.fillRect(0, 0, this.m_v2CanvasSize.x, this.m_v2CanvasSize.y);
     
         // Display renderables
-        for (var i = 0; i < this.m_aRenderables.length; i++)
+        for (let i = 0; i < this.m_aRenderables.length; i++)
         {
             this.m_aRenderables[i].draw();
         }
@@ -154,7 +172,7 @@ class RenderEngine
      */
     removeRenderable (a_Renderable)
     {
-        for (var i = 0; i < this.m_aRenderables.length; i++)
+        for (let i = 0; i < this.m_aRenderables.length; i++)
         {
             if (this.m_aRenderables[i] == a_Renderable)
             {
@@ -195,16 +213,13 @@ class RenderEngine
      */
     displayFPS (a_v2Position)
     {
-        let text = TimeEngine.m_FpsText;
+        let text = TimeEngine.getInstance().m_FpsText;
         text.m_Font = "italic small-caps bold 16px arial";
-        text.getSceneNode().m_v2Pos.x = a_v2Position.x;
-        text.getSceneNode().m_v2Pos.y = a_v2Position.y;
+        text.getSceneNode().setPosition(a_v2Position);
         text.setPriority(10);
-        CameraEngine.m_SceneNode.attachSceneNode(text.m_SceneNode);
+        this.m_CurrentCamera.m_SceneNode.attachSceneNode(text.getSceneNode());
         this.addRenderable(text);
     }
 }
 
-export default new RenderEngine();
-
-console.debug('RenderEngine.js loaded');
+console.debug('RenderEngine loaded');

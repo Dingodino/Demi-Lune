@@ -25,7 +25,7 @@ describe("Animation", function ()
 
         expect(animation.m_aFrameIndexes).not.toBeNull();
         expect(animation.m_aFrameIndexes).not.toBeUndefined();
-        // TODO : expect(animationPlayer.m_aFrameIndexes).instanceof(Array);
+        // TODO : expect(animationPlayer.m_aFrameIndexes).getInstance()of(Array);
 
         expect(animation.m_iFrameCount).not.toBeNull();
         expect(animation.m_iFrameCount).not.toBeUndefined();

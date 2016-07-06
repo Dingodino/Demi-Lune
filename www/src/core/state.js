@@ -22,33 +22,29 @@
  * THE SOFTWARE.
  *******************************************************************************************************************/
 
-import "demilune.js";
+"use strict";
 
 
-/****************************************************************
- * Sample
- ****************************************************************/
-
-let sound = null;
-
-function initializeTest()
+export class State
 {
-	demilune.RenderEngine.setClearColor('#ffffff');
-	demilune.RenderEngine.displayFPS(new demilune.b2Vec2(240, -230));
+    //===================================================================
+    // Constructors
+    //===================================================================
 
-	sound = new demilune.Sound();
-	let audio = new Audio();
-	audio.src = "sample/test_audio.ogg";
-	sound.setAudio(audio);
-	sound.play();
-	//AudioEngine.getInstance().addSound(sound);
-	//AudioEngine.getInstance().playSound(0);
+    /**
+     * Create a state for a state machine.
+     * @param name : name of the created state
+     * @param updateCallback : callback called when update state
+     * @param enterCallback : callback called when enter state
+     * @param leaveCallback : callback called when leave state
+     */
+    constructor (name, updateCallback, enterCallback, leaveCallback)
+    {
+        this.name = name;
+        this.update = updateCallback;
+        this.enter = enterCallback;
+        this.leave = leaveCallback;
+    }
 }
 
-function updateTest()
-{
-	demilune.CallbackEngine.subscribePostRenderCallback(updateTest);
-}
-
-demilune.CallbackEngine.subscribePostRenderCallback(initializeTest);
-demilune.CallbackEngine.subscribePostRenderCallback(updateTest);
+console.debug('State loaded');

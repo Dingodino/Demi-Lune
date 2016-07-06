@@ -36,7 +36,7 @@ module.exports = function (config)
         },
 
         preprocessors: {
-            'src/**/!(Box2dWeb).js': ['coverage']
+            'src/**/*.js': ['coverage']
         },
 
         coverageReporter: {

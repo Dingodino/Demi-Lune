@@ -24,7 +24,7 @@
 
 "use strict";
 
-import TimeEngine from "src/core/timeEngine";
+import {TimeEngine} from "src/core/timeEngine";
 import {TrailEmitter} from "src/render/trailEmitter";
 import {TrailParticle} from "src/render/trailParticle";
 
@@ -100,7 +100,7 @@ export class TrailSystem
     update ()
     {
         // Update particle emission
-        let fdt = TimeEngine.getDeltaTime();
+        let fdt = TimeEngine.getInstance().getDeltaTime();
         for (let i = 0; i < this.m_aTrailEmitters.length; i++)
         {
             let trailEmitter = this.m_aTrailEmitters[i];
@@ -132,7 +132,7 @@ export class TrailSystem
      */
     removeTrailEmitter (a_TrailEmitter)
     {
-        for (var i = 0; i < this.m_aTrailEmitters.length; i++)
+        for (let i = 0; i < this.m_aTrailEmitters.length; i++)
         {
             if (this.m_aTrailEmitters[i] == a_TrailEmitter)
             {
@@ -167,4 +167,4 @@ export class TrailSystem
     }
 }
 
-console.debug('TrailSystem.js loaded');
+console.debug('TrailSystem loaded');

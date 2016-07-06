@@ -1,6 +1,6 @@
 "use strict";
 
-import {Application} from "src/core/application";
+import Application from "src/core/application";
 
 
 describe("Application", function ()
@@ -10,11 +10,11 @@ describe("Application", function ()
         expect(Application).not.toBeNull();
         expect(Application).not.toBeUndefined();
 
-        expect(Application._animationFrameId).toBeNull();
-        expect(Application._animationFrameId).not.toBeUndefined();
+        expect(Application.animationFrameId).toBeNull();
+        expect(Application.animationFrameId).not.toBeUndefined();
 
-        expect(Application._lastUpdateDate).toBeNull();
-        expect(Application._lastUpdateDate).not.toBeUndefined();
+        expect(Application.lastUpdateDate).toBeNull();
+        expect(Application.lastUpdateDate).not.toBeUndefined();
 
         done();
     });
@@ -26,16 +26,16 @@ describe("Application", function ()
 
         Application.run();
 
-        expect(Application._animationFrameId).not.toBeNull();
-        expect(Application._animationFrameId).not.toBeUndefined();
+        expect(Application.animationFrameId).not.toBeNull();
+        expect(Application.animationFrameId).not.toBeUndefined();
 
-        expect(Application._lastUpdateDate).not.toBeNull();
-        expect(Application._lastUpdateDate).not.toBeUndefined();
+        expect(Application.lastUpdateDate).not.toBeNull();
+        expect(Application.lastUpdateDate).not.toBeUndefined();
 
         Application.terminate();
 
-        expect(Application._animationFrameId).toBeNull();
-        expect(Application._animationFrameId).not.toBeUndefined();
+        expect(Application.animationFrameId).toBeNull();
+        expect(Application.animationFrameId).not.toBeUndefined();
 
         done();
     });

@@ -27,7 +27,7 @@ describe("SceneNode", function ()
 
         expect(sceneNode.m_aChildNodes).not.toBeNull();
         expect(sceneNode.m_aChildNodes).not.toBeUndefined();
-        // TODO : expect(sceneNode.m_aChildNodes).instanceof(Array);
+        // TODO : expect(sceneNode.m_aChildNodes).getInstance()of(Array);
 
         expect(sceneNode.m_v2Pos).not.toBeNull();
         expect(sceneNode.m_v2Pos).not.toBeUndefined();

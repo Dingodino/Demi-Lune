@@ -24,11 +24,11 @@
 
 "use strict";
 
-import InputState from "src/input/inputState";
+import {InputState} from "src/input/inputState";
 
 
 // Keyboard state
-class Keyboard
+export class Keyboard
 {
 	//===================================================================
 	// Constructors
@@ -42,10 +42,23 @@ class Keyboard
         this.m_aKeys =	new Array(222);
     }
 
-    
+
     //===================================================================
     // Accessors
     //===================================================================
+
+    /**
+     * Get the unique instance of this class.
+     * @returns {*}
+     */
+    static getInstance()
+    {
+        if(!this.instance)
+        {
+            this.instance = new Keyboard();
+        }
+        return this.instance;
+    }
 
     /**
      * Get the key's state of the given index.
@@ -67,28 +80,23 @@ class Keyboard
      */
     update ()
     {
-        for (var i = 0; i < this.m_aKeys.length; i++)
+        for (let i = 0; i < this.m_aKeys.length; i++)
         {
-            if (this.m_aKeys[i] == InputState.GOTO_PRESSED)
+            let keyState = this.m_aKeys[i];
+            if (keyState == InputState.GOTO_PRESSED)
             {
                 this.m_aKeys[i] = InputState.PRESSED;
             }
-            else if (this.m_aKeys[i] == InputState.PRESSED)
+            else if (keyState == InputState.PRESSED)
             {
                 this.m_aKeys[i] = InputState.HOLD;
             }
-            else if (this.m_aKeys[i] == InputState.GOTO_RELEASED)
+            else if (keyState == InputState.GOTO_RELEASED)
             {
                 this.m_aKeys[i] = InputState.RELEASED;
-            }
-            else if (this.m_aKeys[i] == InputState.RELEASED)
-            {
-                this.m_aKeys[i] = InputState.NONE;
             }
         }
     }
 }
 
-export default new Keyboard();
-
-console.debug('Keyboard.js loaded');
+console.debug('Keyboard loaded');

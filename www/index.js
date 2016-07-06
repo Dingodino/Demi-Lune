@@ -2,7 +2,6 @@
 
 // import Demi-Lune application
 import Application from "src/core/application";
-import RenderEngine from "src/render/renderEngine";
 
 
 /****************************************************************
@@ -14,7 +13,7 @@ setTimeout(function ()
 {
     // Get the canvas
     let canvas = document.getElementById('canvas');
-    RenderEngine.setCanvas(canvas);
+    Application.setCanvas(canvas);
 
     // Initialize the application
     Application.initialize();

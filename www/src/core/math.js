@@ -28,7 +28,7 @@ import {b2Vec2} from "src/core/constants";
 
 
 /****************************************************************
- * Math functions
+ * Random functions
  ****************************************************************/
 
 // Get a random number between given min and max
@@ -45,6 +45,11 @@ export function randomf(min, max)
     return min + (max - min) * Math.random();
 }
 
+
+/****************************************************************
+ * Clamp functions
+ ****************************************************************/
+
 // Clamp the given value between given min and max
 export function clamp(value, min, max)
 {
@@ -55,6 +60,11 @@ export function clamp(value, min, max)
     
     return value;
 }
+
+
+/****************************************************************
+ * Vector functions
+ ****************************************************************/
 
 // Rotate vector
 export function rotateVector(a_v2Vector, a_fAngle)
@@ -69,4 +79,4 @@ export function rotateVector(a_v2Vector, a_fAngle)
     return v2Result;
 }
 
-console.debug('math.js loaded');
+console.debug('math loaded');

@@ -75,4 +75,4 @@ export class Renderable
     }
 }
 
-console.debug('Renderable.js loaded');
+console.debug('Renderable loaded');

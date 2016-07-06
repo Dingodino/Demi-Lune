@@ -24,8 +24,7 @@
 
 "use strict";
 
-import TimeEngine from "src/core/timeEngine";
-import CameraEngine from "src/scene/cameraEngine";
+import {TimeEngine} from "src/core/timeEngine";
 import {b2Vec2} from "src/core/constants";
 
 
@@ -38,9 +37,10 @@ export class AutoMoveCamera
     /**
      * Create an auto-move behavior for camera.
      */
-    constructor ()
+    constructor (camera)
     {
         this.m_v2Speed = new b2Vec2(20, 0);
+        this.camera = camera;
     }
 
 
@@ -53,11 +53,11 @@ export class AutoMoveCamera
      */
     update ()
     {
-        let fdt = TimeEngine.m_fDeltaTime;
-        let v2CamPos = CameraEngine.m_SceneNode.m_v2Pos;
+        let fdt = TimeEngine.getInstance().m_fDeltaTime;
+        let v2CamPos = this.camera.m_SceneNode.m_v2Pos;
         v2CamPos.x += this.m_v2Speed.x * fdt;
         v2CamPos.y += this.m_v2Speed.y * fdt;
     }
 }
 
-console.debug('AutoMoveCamera.js loaded');
+console.debug('AutoMoveCamera loaded');

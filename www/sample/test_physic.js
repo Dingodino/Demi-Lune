@@ -102,12 +102,12 @@ Ground.prototype.update = function(a_fdt)
  * Sample
  ****************************************************************/
 
-var image = null;
-var balls = [];
-var grounds = [];
-var timer = 0;
-var textMousePos = null;
-var textBallPos = null;
+let image = null;
+let balls = [];
+let grounds = [];
+let timer = 0;
+let textMousePos = null;
+let textBallPos = null;
 
 function initializeTest()
 {
@@ -148,7 +148,7 @@ function initializeTest()
 
 function updateTest()
 {
-    let v2CamPos = demilune.CameraEngine.m_SceneNode.m_v2Pos;
+    let v2CamPos = demilune.RenderEngine.m_CurrentCamera.m_SceneNode.m_v2Pos;
 
     // Create random balls
     if (balls.length < 50)
@@ -167,13 +167,14 @@ function updateTest()
     }
 
     // Add mouse force
-    if (demilune.Mouse.m_aButtons[0] == demilune.InputState.GOTO_PRESSED)
+    let mouse = demilune.InputEngine.m_Mouse;
+    if (mouse.m_aButtons[0] == demilune.InputState.GOTO_PRESSED)
     {
-        for (var i = 0; i < balls.length; i++)
+        for (let i = 0; i < balls.length; i++)
         {
             let v2BallPosInScreen = demilune.RenderEngine.convertScenePosToScreenPos(balls[i].m_Body.GetPosition(), v2CamPos);
-            let v2Dir = new demilune.b2Vec2(v2BallPosInScreen.x - Mouse.m_v2Pos.x,
-                v2BallPosInScreen.y - Mouse.m_v2Pos.y);
+            let v2Dir = new demilune.b2Vec2(v2BallPosInScreen.x - mouse.m_v2Pos.x,
+                v2BallPosInScreen.y - mouse.m_v2Pos.y);
             let fDistance = Math.sqrt(v2Dir.x * v2Dir.x + v2Dir.y * v2Dir.y);
             let v2Normal = new demilune.b2Vec2(v2Dir.x / fDistance, v2Dir.y / fDistance);
             if (fDistance < 50)
@@ -186,16 +187,16 @@ function updateTest()
     }
 
     // Update gameplay
-    for (var i = 0; i < balls.length; i++)
+    for (let i = 0; i < balls.length; i++)
     {
         balls[i].update(demilune.TimeEngine.m_fDeltaTime);
     }
-    for (var i = 0; i < grounds.length; i++)
+    for (let i = 0; i < grounds.length; i++)
     {
         grounds[i].update(demilune.TimeEngine.m_fDeltaTime);
     }
 
-    for (var i = 0; i < grounds.length; i++)
+    for (let i = 0; i < grounds.length; i++)
     {
         let v2GroundPos = demilune.RenderEngine.convertScenePosToScreenPos(grounds[i].m_SceneNode.m_v2Pos, new demilune.b2Vec2(0, 0));
         let v2HalfSize = grounds[i].m_v2HalfSize;
@@ -210,7 +211,7 @@ function updateTest()
     if (balls.length > 0)
     {
         let v2BallPos = demilune.RenderEngine.convertScenePosToScreenPos(balls[0].m_Body.GetPosition(), v2CamPos);
-        textMousePos.setText("Mouse Pos : " + Math.floor(demilune.Mouse.m_v2Pos.x) + ", " + Math.floor(demilune.Mouse.m_v2Pos.y));
+        textMousePos.setText("Mouse Pos : " + Math.floor(mouse.m_v2Pos.x) + ", " + Math.floor(mouse.m_v2Pos.y));
         textBallPos.setText("Ball Pos : " + Math.floor(v2BallPos.x) + ", " + Math.floor(v2BallPos.y));
     }
 

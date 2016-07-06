@@ -25,9 +25,10 @@
 "use strict";
 
 import {b2Vec2, b2World} from "src/core/constants";
+import {Engine} from "src/core/engine";
 
 
-class PhysicEngine
+export class PhysicEngine extends Engine
 {
 	//===================================================================
 	// Constructors
@@ -38,6 +39,8 @@ class PhysicEngine
      */
     constructor ()
     {
+        super();
+
         this.m_v2Gravity =                  new b2Vec2(0, -50);
         this.m_World =                      new b2World(this.m_v2Gravity, true);
         this.m_fTimeStep =                  1.0 / 30.0;// TODO : FPS;
@@ -49,6 +52,19 @@ class PhysicEngine
     //===================================================================
     // Accessors
     //===================================================================
+
+    /**
+     * Get the unique instance of this class.
+     * @returns {*}
+     */
+    static getInstance()
+    {
+        if(!this.instance)
+        {
+            this.instance = new PhysicEngine();
+        }
+        return this.instance;
+    }
 
     /**
      * Get the physic world.
@@ -127,6 +143,4 @@ class PhysicEngine
     }
 }
 
-export default new PhysicEngine();
-
-console.debug('PhysicEngine.js loaded');
+console.debug('PhysicEngine loaded');

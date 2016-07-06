@@ -22,33 +22,54 @@
  * THE SOFTWARE.
  *******************************************************************************************************************/
 
-import "demilune.js";
+"use strict";
 
 
-/****************************************************************
- * Sample
- ****************************************************************/
-
-let sound = null;
-
-function initializeTest()
+export class Engine
 {
-	demilune.RenderEngine.setClearColor('#ffffff');
-	demilune.RenderEngine.displayFPS(new demilune.b2Vec2(240, -230));
+    //===================================================================
+    // Constructors
+    //===================================================================
 
-	sound = new demilune.Sound();
-	let audio = new Audio();
-	audio.src = "sample/test_audio.ogg";
-	sound.setAudio(audio);
-	sound.play();
-	//AudioEngine.getInstance().addSound(sound);
-	//AudioEngine.getInstance().playSound(0);
+    /**
+     * Create an abstract engine.
+     */
+    constructor ()
+    {
+        /*this.stateMachine = new StateMachine();
+        this.stateMachine.createStates([
+            { 'running',  }
+        ]);*/
+    }
+
+
+    //===================================================================
+    // Operations
+    //===================================================================
+
+    /**
+     * Initialize the engine.
+     */
+    initialize ()
+    {
+
+    }
+
+    /**
+     * Update the engine.
+     */
+    update ()
+    {
+
+    }
+
+    /**
+     * Terminate the engine.
+     */
+    terminate ()
+    {
+
+    }
 }
 
-function updateTest()
-{
-	demilune.CallbackEngine.subscribePostRenderCallback(updateTest);
-}
-
-demilune.CallbackEngine.subscribePostRenderCallback(initializeTest);
-demilune.CallbackEngine.subscribePostRenderCallback(updateTest);
+console.debug('Engine loaded');

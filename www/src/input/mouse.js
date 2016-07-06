@@ -25,10 +25,10 @@
 "use strict";
 
 import {b2Vec2} from "src/core/constants";
-import InputState from "src/input/inputState";
+import {InputState} from "src/input/inputState";
 
 
-class Mouse
+export class Mouse
 {
 	//===================================================================
 	// Constructors
@@ -47,6 +47,19 @@ class Mouse
     //===================================================================
     // Accessors
     //===================================================================
+
+    /**
+     * Get the unique instance of this class.
+     * @returns {*}
+     */
+    static getInstance()
+    {
+        if(!this.instance)
+        {
+            this.instance = new Mouse();
+        }
+        return this.instance;
+    }
 
     /**
      * Get the state of the mouse's button with given index.
@@ -68,28 +81,23 @@ class Mouse
      */
     update ()
     {
-        for (var i = 0; i < this.m_aButtons.length; i++)
+        for (let i = 0; i < this.m_aButtons.length; i++)
         {
-            if (this.m_aButtons[i] == InputState.GOTO_PRESSED)
+            let buttonState = this.m_aButtons[i];
+            if (buttonState == InputState.GOTO_PRESSED)
             {
                 this.m_aButtons[i] = InputState.PRESSED;
             }
-            else if (this.m_aButtons[i] == InputState.PRESSED)
+            else if (buttonState == InputState.PRESSED)
             {
                 this.m_aButtons[i] = InputState.HOLD;
             }
-            else if (this.m_aButtons[i] == InputState.GOTO_RELEASED)
+            else if (buttonState == InputState.GOTO_RELEASED)
             {
                 this.m_aButtons[i] = InputState.RELEASED;
-            }
-            else if (this.m_aButtons[i] == InputState.RELEASED)
-            {
-                this.m_aButtons[i] = InputState.NONE;
             }
         }
     }
 }
 
-export default new Mouse();
-
-console.debug('Mouse.js loaded');
+console.debug('Mouse loaded');

@@ -1,6 +1,6 @@
 // set our baseURL reference path
 System.config({
-    defaultJSExtensions: '.js',
+    defaultJSExtensions: true,
     map: {
         'systemjs'          : 'libs/system.js',
         'system-polyfills'  : 'libs/system-polyfills.js',

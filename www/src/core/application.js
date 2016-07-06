@@ -27,22 +27,21 @@
 import * as Box2D from "src/core/constants";
 
 // Import engines
-import TimeEngine from "src/core/timeEngine";
-import SceneEngine from "src/scene/sceneEngine";
-import CameraEngine from "src/scene/cameraEngine";
-import RenderEngine from "src/render/renderEngine";
-import CallbackEngine from "src/callback/callbackEngine";
-import AudioEngine from "src/audio/audioEngine";
-import InputEngine from "src/input/inputEngine";
-import PhysicEngine from "src/physic/physicEngine";
+import {TimeEngine} from "src/core/timeEngine";
+import {SceneEngine} from "src/scene/sceneEngine";
+import {RenderEngine} from "src/render/renderEngine";
+import {CallbackEngine} from "src/callback/callbackEngine";
+import {AudioEngine} from "src/audio/audioEngine";
+import {InputEngine} from "src/input/inputEngine";
+import {PhysicEngine} from "src/physic/physicEngine";
 
 // Import other classes
 import {Sound} from "src/audio/sound";
 import {Color} from "src/core/color";
-import InputState from "src/input/inputState";
-import Keyboard from "src/input/keyboard";
-import Mouse from "src/input/mouse";
-import TouchScreen from "src/input/touchScreen";
+import {InputState} from "src/input/inputState";
+import {Keyboard} from "src/input/keyboard";
+import {Mouse} from "src/input/mouse";
+import {TouchScreen} from "src/input/touchScreen";
 import {Animation} from "src/render/animation";
 import {AnimationPlayer} from "src/render/animationPlayer";
 import {Parallax} from "src/render/parallax";
@@ -58,6 +57,7 @@ import {TrailEmitter} from "src/render/trailEmitter";
 import {TrailParticle} from "src/render/trailParticle";
 import {TrailSystem} from "src/render/trailSystem";
 import {AutoMoveCamera} from "src/scene/autoMoveCamera";
+import {Camera} from "src/scene/camera";
 import {SceneNode} from "src/scene/sceneNode";
 
 // Import utils
@@ -76,10 +76,35 @@ class Application
     constructor ()
     {
         // Application loop identifier
-        this._animationFrameId = null;
+        this.animationFrameId = null;
 
         // Date of the last update
-        this._lastUpdateDate = null;
+        this.lastUpdateDate = null;
+
+        // Engines
+        this.engines = [
+            TimeEngine.getInstance(),
+            InputEngine.getInstance(),
+            SceneEngine.getInstance(),
+            PhysicEngine.getInstance(),
+            RenderEngine.getInstance(),
+            CallbackEngine.getInstance(),
+            AudioEngine.getInstance()
+        ];
+    }
+
+
+    //===================================================================
+    // Accessors
+    //===================================================================
+
+    /**
+     * Set the canvas.
+     * @param canvas : new canvas.
+     */
+    setCanvas (canvas)
+    {
+        RenderEngine.getInstance().setCanvas(canvas);
     }
 
 
@@ -92,7 +117,14 @@ class Application
      */
     initialize ()
     {
-        RenderEngine.setClearColor("#000000");
+        // Initialize all engines
+        _.forEach(this.engines, function (engine)
+        {
+            engine.initialize();
+        });
+
+        // Set the initial clear color
+        RenderEngine.getInstance().setClearColor("#000000");
     }
 
     /**
@@ -101,13 +133,11 @@ class Application
      */
     update (dt)
     {
-        TimeEngine.update(dt);
-        InputEngine.update(dt);
-        SceneEngine.update(dt);
-        CameraEngine.update(dt);
-        PhysicEngine.update(dt);
-        RenderEngine.update(dt);
-        CallbackEngine.update(dt);
+        // Update all engines
+        _.forEach(this.engines, function (engine)
+        {
+            engine.update(dt);
+        });
     }
 
     /**
@@ -115,10 +145,17 @@ class Application
      */
     terminate ()
     {
-        if (this._animationFrameId)
+        // Terminate all engines
+        _.forEach(this.engines, function (engine)
         {
-            window.cancelAnimationFrame(this._animationFrameId);
-            this._animationFrameId = null;
+            engine.terminate();
+        });
+
+        // Stop the main loop
+        if (this.animationFrameId)
+        {
+            window.cancelAnimationFrame(this.animationFrameId);
+            this.animationFrameId = null;
         }
     }
 
@@ -127,48 +164,49 @@ class Application
      */
     run ()
     {
-        this._lastUpdateDate = new Date();
+        this.lastUpdateDate = new Date();
 
         // Cancel the old animation frame
-        if (this._animationFrameId)
+        if (this.animationFrameId)
         {
-            window.cancelAnimationFrame(this._animationFrameId);
+            window.cancelAnimationFrame(this.animationFrameId);
         }
 
         let self = this;
         let callback = function ()
         {
-            let dt = new Date() - self._lastUpdateDate;
+            let dt = new Date() - self.lastUpdateDate;
 
+            self.animationFrameId = null;
             self.update(dt);
-            self._lastUpdateDate = new Date();
+            self.lastUpdateDate = new Date();
 
-            self._animationFrameId = window.requestAnimationFrame(callback);
+            self.animationFrameId = window.requestAnimationFrame(callback);
         };
-        this._animationFrameId = window.requestAnimationFrame(callback);
+        this.animationFrameId = window.requestAnimationFrame(callback);
     }
 }
 
-export default new Application();
+var app = new Application();
+export default app;
 
 window.demilune =
 {
-    Application:    Application,
-    RenderEngine:   RenderEngine,
-    SceneEngine:    SceneEngine,
-    CallbackEngine: CallbackEngine,
-    TimeEngine:     TimeEngine,
-    CameraEngine:   CameraEngine,
-    AudioEngine:    AudioEngine,
-    InputEngine:    InputEngine,
-    PhysicEngine:   PhysicEngine,
+    Application:    app,
+    RenderEngine:   RenderEngine.getInstance(),
+    SceneEngine:    SceneEngine.getInstance(),
+    CallbackEngine: CallbackEngine.getInstance(),
+    TimeEngine:     TimeEngine.getInstance(),
+    AudioEngine:    AudioEngine.getInstance(),
+    InputEngine:    InputEngine.getInstance(),
+    PhysicEngine:   PhysicEngine.getInstance(),
 
     Sound:          Sound,
     Color:          Color,
     InputState:     InputState,
-    Keyboard:       Keyboard,
-    Mouse:          Mouse,
-    TouchScreen:    TouchScreen,
+    Keyboard:       Keyboard.getInstance(),
+    Mouse:          Mouse.getInstance(),
+    TouchScreen:    TouchScreen.getInstance(),
     Animation:      Animation,
     AnimationPlayer:AnimationPlayer,
     Parallax:       Parallax,
@@ -184,6 +222,7 @@ window.demilune =
     TrailParticle:  TrailParticle,
     TrailSystem:    TrailSystem,
     AutoMoveCamera: AutoMoveCamera,
+    Camera:         Camera,
     SceneNode:      SceneNode,
 
     b2Vec2:         Box2D.b2Vec2,
@@ -202,4 +241,4 @@ window.demilune =
     Utils:          Utils
 };
 
-console.debug('Application.js loaded');
+console.debug('Application loaded');

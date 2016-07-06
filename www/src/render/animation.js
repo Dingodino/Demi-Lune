@@ -120,4 +120,4 @@ export class Animation
     }
 }
 
-console.debug('Animation.js loaded');
+console.debug('Animation loaded');

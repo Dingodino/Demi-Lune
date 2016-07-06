@@ -24,7 +24,10 @@
 
 "use strict";
 
-class AudioEngine
+import {Engine} from "src/core/engine";
+
+
+export class AudioEngine extends Engine
 {
 	//===================================================================
 	// Constructors
@@ -35,7 +38,27 @@ class AudioEngine
      */
     constructor ()
     {
+        super();
+
         this.m_aSound =	 [];
+    }
+
+
+    //===================================================================
+    // Accessors
+    //===================================================================
+
+    /**
+     * Get the unique instance of this class.
+     * @returns {*}
+     */
+    static getInstance()
+    {
+        if(!this.instance)
+        {
+            this.instance = new AudioEngine();
+        }
+        return this.instance;
     }
 
 
@@ -70,6 +93,4 @@ class AudioEngine
     }
 }
 
-export default new AudioEngine();
-
-console.debug('AudioEngine.js loaded');
+console.debug('AudioEngine loaded');

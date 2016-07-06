@@ -29,7 +29,7 @@ import "demilune.js";
  * Sample
  ****************************************************************/
 
-var parallax = null;
+let parallax = null;
 
 function initializeTest()
 {

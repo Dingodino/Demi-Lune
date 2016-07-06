@@ -24,27 +24,13 @@
 
 "use strict";
 
-
-class InputState
+export const InputState =
 {
-	//===================================================================
-	// Constructors
-	//===================================================================
-
-    /**
-     * Create an input state.
-     */
-    constructor ()
-    {
-        this.NONE =             0;
-        this.GOTO_PRESSED =     1;
-        this.PRESSED =          2;
-        this.HOLD =             3;
-        this.GOTO_RELEASED =    4;
-        this.RELEASED =         5;
-    }
+    RELEASED:         0,
+    GOTO_PRESSED:     1,
+    PRESSED:          2,
+    HOLD:             3,
+    GOTO_RELEASED:    4
 }
 
-export default new InputState();
-
-console.debug('InputState.js loaded');
+console.debug('InputState loaded');

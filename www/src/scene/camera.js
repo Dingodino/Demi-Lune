@@ -24,45 +24,23 @@
 
 "use strict";
 
-import SceneEngine from "src/scene/sceneEngine";
 import {SceneNode} from "src/scene/sceneNode";
 
 
-class CameraEngine
+export class Camera
 {
 	//===================================================================
 	// Constructors
 	//===================================================================
 
     /**
-     * Create the camera engine.
+     * Create the camera.
      */
     constructor ()
     {
         this.m_SceneNode =		new SceneNode();
-        this.m_CameraBehavior =	null;
-
-        SceneEngine.getRootSceneNode().attachSceneNode(this.m_SceneNode);
-    }
-
-
-    //===================================================================
-    // Operations
-    //===================================================================
-
-    /**
-     * Update the camera engine.
-     */
-    update ()
-    {
-        if (this.m_CameraBehavior != null)
-        {
-            this.m_CameraBehavior.update();
-        }
     }
 }
 
-export default new CameraEngine();
-
-console.log("CameraEngine.js loaded");
+console.log("Camera.js loaded");
 

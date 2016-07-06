@@ -22,7 +22,7 @@ describe("Parallax", function ()
 
         expect(parallax.m_aParallaxLayers).not.toBeNull();
         expect(parallax.m_aParallaxLayers).not.toBeUndefined();
-        // TODO : expect(parallax.m_aParallaxLayers).instanceof(Array);
+        // TODO : expect(parallax.m_aParallaxLayers).getInstance()of(Array);
 
         done();
     });

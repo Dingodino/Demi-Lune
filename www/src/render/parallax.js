@@ -50,11 +50,11 @@ export class Parallax
      */
     move (a_v2Move)
     {
-        for (var i = 0; i < this.m_aParallaxLayers.length; i++)
+        for (let i = 0; i < this.m_aParallaxLayers.length; i++)
         {
             this.m_aParallaxLayers[i].move(a_v2Move);
         }
     }
 }
 
-console.debug('Parallax.js loaded');
+console.debug('Parallax loaded');

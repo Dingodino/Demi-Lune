@@ -25,9 +25,10 @@
 "use strict";
 
 import {SceneNode} from "src/scene/sceneNode";
+import {Engine} from "src/core/engine";
 
 
-class SceneEngine
+export class SceneEngine extends Engine
 {
 	//===================================================================
 	// Constructors
@@ -38,6 +39,8 @@ class SceneEngine
      */
     constructor ()
     {
+        super();
+        
         this.m_RootSceneNode =	new SceneNode();
     }
 
@@ -45,6 +48,19 @@ class SceneEngine
     //===================================================================
     // Accessors
     //===================================================================
+
+    /**
+     * Get the unique instance of this class.
+     * @returns {*}
+     */
+    static getInstance()
+    {
+        if(!this.instance)
+        {
+            this.instance = new SceneEngine();
+        }
+        return this.instance;
+    }
 
     /**
      * Get the root node.
@@ -69,6 +85,4 @@ class SceneEngine
     }
 }
 
-export default new SceneEngine();
-
-console.debug('SceneEngine.js loaded');
+console.debug('SceneEngine loaded');

@@ -1,26 +1,28 @@
 "use strict";
 
-import InputEngine from "src/input/inputEngine";
+import {InputEngine} from "src/input/inputEngine";
 
 
 describe("InputEngine", function ()
 {
     it("should be created", function ( done )
     {
-        expect(InputEngine).not.toBeNull();
-        expect(InputEngine).not.toBeUndefined();
+        let inputEngine = InputEngine.getInstance();
 
-        expect(InputEngine.m_Keyboard).not.toBeNull();
-        expect(InputEngine.m_Keyboard).not.toBeUndefined();
-        // TODO : expect(InputEngine.m_Keyboard).instanceof(Keyboard);
+        expect(inputEngine).not.toBeNull();
+        expect(inputEngine).not.toBeUndefined();
 
-        expect(InputEngine.m_Mouse).not.toBeNull();
-        expect(InputEngine.m_Mouse).not.toBeUndefined();
-        // TODO : expect(InputEngine.m_Mouse).instanceof(Mouse);
+        expect(inputEngine.m_Keyboard).not.toBeNull();
+        expect(inputEngine.m_Keyboard).not.toBeUndefined();
+        // TODO : expect(inputEngine.m_Keyboard).getInstance()of(Keyboard);
 
-        expect(InputEngine.m_TouchScreen).not.toBeNull();
-        expect(InputEngine.m_TouchScreen).not.toBeUndefined();
-        // TODO : expect(InputEngine.m_TouchScreen).instanceof(TouchScreen);
+        expect(inputEngine.m_Mouse).not.toBeNull();
+        expect(inputEngine.m_Mouse).not.toBeUndefined();
+        // TODO : expect(inputEngine.m_Mouse).getInstance()of(Mouse);
+
+        expect(inputEngine.m_TouchScreen).not.toBeNull();
+        expect(inputEngine.m_TouchScreen).not.toBeUndefined();
+        // TODO : expect(inputEngine.m_TouchScreen).getInstance()of(TouchScreen);
 
         done();
     });

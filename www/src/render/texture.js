@@ -24,9 +24,8 @@
 
 "use strict";
 
-import RenderEngine from "src/render/renderEngine";
 import {Renderable} from "src/render/renderable";
-import CameraEngine from "src/scene/cameraEngine";
+import {RenderEngine} from "src/render/renderEngine";
 
 
 export class Texture extends Renderable
@@ -78,10 +77,11 @@ export class Texture extends Renderable
      */
     draw ()
     {
-        let v2CamPos = CameraEngine.m_SceneNode.m_v2Pos;
-        let v2PosInScreen = RenderEngine.convertScenePosToScreenPos(this.m_SceneNode.m_v2WorldPos, v2CamPos);
+        let renderEngine = RenderEngine.getInstance();
+        let context = renderEngine.context;
+        let v2CamPos = renderEngine.m_CurrentCamera.m_SceneNode.m_v2Pos;
+        let v2PosInScreen = renderEngine.convertScenePosToScreenPos(this.m_SceneNode.getWorldPosition(), v2CamPos);
 
-        let context = RenderEngine.context;
         context.save();
         context.translate(v2PosInScreen.x, v2PosInScreen.y);
         context.rotate(this.m_SceneNode.m_fWorldOrientation);
@@ -107,4 +107,4 @@ export class Texture extends Renderable
     }
 }
 
-console.debug('Texture.js loaded');
+console.debug('Texture loaded');

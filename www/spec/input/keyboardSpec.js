@@ -1,34 +1,38 @@
 "use strict";
 
-import Keyboard from "src/input/keyboard";
-import InputState from "src/input/inputState";
+import {Keyboard} from "src/input/keyboard";
+import {InputState} from "src/input/inputState";
 
 
 describe("Keyboard", function ()
 {
     it("should be created", function ( done )
     {
-        expect(Keyboard).not.toBeNull();
-        expect(Keyboard).not.toBeUndefined();
+        let keyboard = Keyboard.getInstance();
 
-        expect(Keyboard.m_aKeys).not.toBeNull();
-        expect(Keyboard.m_aKeys).not.toBeUndefined();
-        // TODO : expect(Keyboard.m_aKeys).instanceof(Array);
+        expect(keyboard).not.toBeNull();
+        expect(keyboard).not.toBeUndefined();
+
+        expect(keyboard.m_aKeys).not.toBeNull();
+        expect(keyboard.m_aKeys).not.toBeUndefined();
+        // TODO : expect(keyboard.m_aKeys).getInstance()of(Array);
 
         done();
     });
 
     it("should be updated", function ( done )
     {
-        expect(Keyboard).not.toBeNull();
-        expect(Keyboard).not.toBeUndefined();
+        let keyboard = Keyboard.getInstance();
+        
+        expect(keyboard).not.toBeNull();
+        expect(keyboard).not.toBeUndefined();
 
-        Keyboard.update();
+        keyboard.update();
 
-        let keyState = Keyboard.getKeyState(0);
+        let keyState = keyboard.getKeyState(0);
         expect(keyState).not.toBeNull();
         expect(keyState).not.toBeUndefined();
-        expect(keyState).toBe(InputState.NONE);
+        expect(keyState).toBe(InputState.RELEASED);
 
         done();
     });

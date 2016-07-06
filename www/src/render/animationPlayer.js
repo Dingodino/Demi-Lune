@@ -24,10 +24,9 @@
 
 "use strict";
 
-import RenderEngine from "src/render/renderEngine";
 import {Renderable} from "src/render/renderable";
-import TimeEngine from "src/core/timeEngine";
-import CameraEngine from "src/scene/cameraEngine";
+import {TimeEngine} from "src/core/timeEngine";
+import {RenderEngine} from "src/render/renderEngine";
 
 
 export class AnimationPlayer extends Renderable
@@ -177,11 +176,11 @@ export class AnimationPlayer extends Renderable
     draw ()
     {
         this.update();
-    
-        let v2CamPos = CameraEngine.m_SceneNode.m_v2Pos;
-        let v2PosInScreen = RenderEngine.convertScenePosToScreenPos(this.m_SceneNode.m_v2WorldPos, v2CamPos);
 
-        let context = RenderEngine.context;
+        let renderEngine = RenderEngine.getInstance();
+        let context = renderEngine.context;
+        let v2CamPos = renderEngine.m_CurrentCamera.m_SceneNode.m_v2Pos;
+        let v2PosInScreen = renderEngine.convertScenePosToScreenPos(this.m_SceneNode.getWorldPosition(), v2CamPos);
         context.save();
         context.translate(v2PosInScreen.x, v2PosInScreen.y);
         context.rotate(this.m_SceneNode.m_fWorldOrientation);
@@ -202,7 +201,7 @@ export class AnimationPlayer extends Renderable
     {
         let animation = this.m_aAnimations[this.m_iCurrentAnimation];
     
-        this.m_fCurrentTime += TimeEngine.m_fDeltaTime;
+        this.m_fCurrentTime += TimeEngine.getInstance().m_fDeltaTime;
         if (this.m_fCurrentTime >= animation.m_fDuration)
         {
             this.m_fCurrentTime -= animation.m_fDuration;
@@ -233,4 +232,4 @@ export class AnimationPlayer extends Renderable
     }
 }
 
-console.debug('AnimationPlayer.js loaded');
+console.debug('AnimationPlayer loaded');

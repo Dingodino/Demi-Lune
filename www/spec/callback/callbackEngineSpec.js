@@ -1,29 +1,32 @@
 "use strict";
 
-import CallbackEngine from "src/callback/callbackEngine";
+import {CallbackEngine} from "src/callback/callbackEngine";
 
 
 describe("CallbackEngine", function ()
 {
     it("should be created", function ( done )
     {
-        expect(CallbackEngine).not.toBeNull();
-        expect(CallbackEngine).not.toBeUndefined();
+        let callbackEngine = CallbackEngine.getInstance();
+        expect(callbackEngine).not.toBeNull();
+        expect(callbackEngine).not.toBeUndefined();
 
-        expect(CallbackEngine.timeoutCallbacks).not.toBeNull();
-        expect(CallbackEngine.timeoutCallbacks).not.toBeUndefined();
+        expect(callbackEngine.timeoutCallbacks).not.toBeNull();
+        expect(callbackEngine.timeoutCallbacks).not.toBeUndefined();
 
-        expect(CallbackEngine.intervalCallbacks).not.toBeNull();
-        expect(CallbackEngine.intervalCallbacks).not.toBeUndefined();
+        expect(callbackEngine.intervalCallbacks).not.toBeNull();
+        expect(callbackEngine.intervalCallbacks).not.toBeUndefined();
 
-        expect(CallbackEngine.postRenderCallbacks).not.toBeNull();
-        expect(CallbackEngine.postRenderCallbacks).not.toBeUndefined();
+        expect(callbackEngine.postRenderCallbacks).not.toBeNull();
+        expect(callbackEngine.postRenderCallbacks).not.toBeUndefined();
 
         done();
     });
 
     it("should subscribe and run a timeout callback", function ( done )
     {
+        let callbackEngine = CallbackEngine.getInstance();
+
         // Run callback engine
         let previousTime = new Date();
         let newTime = new Date();
@@ -33,25 +36,25 @@ describe("CallbackEngine", function ()
             newTime = new Date();
             deltaTime = newTime - previousTime;
             previousTime = newTime;
-            CallbackEngine.update(deltaTime * 0.001);
+            callbackEngine.update(deltaTime * 0.001);
         }, 16);
 
         // Check initial state
-        expect(CallbackEngine.timeoutCallbacks.length).toBe(0);
+        expect(callbackEngine.timeoutCallbacks.length).toBe(0);
 
         // Subscribe a callback
         let result = false;
         let callback = function () { result = true; };
-        CallbackEngine.subscribeTimeoutCallback(callback, 150);
+        callbackEngine.subscribeTimeoutCallback(callback, 150);
 
         // Check subscribe
-        expect(CallbackEngine.timeoutCallbacks.length).toBe(1);
+        expect(callbackEngine.timeoutCallbacks.length).toBe(1);
 
         // Wait 200 ms
         setTimeout(function ()
         {
             // Check unsubscribe
-            expect(CallbackEngine.timeoutCallbacks.length).toBe(0);
+            expect(callbackEngine.timeoutCallbacks.length).toBe(0);
 
             // Check result
             expect(result).toBe(true);
@@ -65,6 +68,8 @@ describe("CallbackEngine", function ()
 
     it("should unsubscribe a timeout callback", function ( done )
     {
+        let callbackEngine = CallbackEngine.getInstance();
+
         // Run callback engine
         let previousTime = new Date();
         let newTime = new Date();
@@ -74,31 +79,31 @@ describe("CallbackEngine", function ()
             newTime = new Date();
             deltaTime = newTime - previousTime;
             previousTime = newTime;
-            CallbackEngine.update(deltaTime * 0.001);
+            callbackEngine.update(deltaTime * 0.001);
         }, 16);
 
         // Check initial state
-        expect(CallbackEngine.timeoutCallbacks.length).toBe(0);
+        expect(callbackEngine.timeoutCallbacks.length).toBe(0);
 
         // Subscribe a callback
         let result = false;
         let callback = function () { result = true; };
-        let callbackID = CallbackEngine.subscribeTimeoutCallback(callback, 150);
+        let callbackID = callbackEngine.subscribeTimeoutCallback(callback, 150);
 
         // Check subscribe
-        expect(CallbackEngine.timeoutCallbacks.length).toBe(1);
+        expect(callbackEngine.timeoutCallbacks.length).toBe(1);
 
         // Unsubscribe the callback
-        CallbackEngine.unsubscribeTimeoutCallback(callbackID);
+        callbackEngine.unsubscribeTimeoutCallback(callbackID);
 
         // Check unsubscribe
-        expect(CallbackEngine.timeoutCallbacks.length).toBe(0);
+        expect(callbackEngine.timeoutCallbacks.length).toBe(0);
 
         // Wait 200 ms
         setTimeout(function ()
         {
             // Check unsubscribe
-            expect(CallbackEngine.timeoutCallbacks.length).toBe(0);
+            expect(callbackEngine.timeoutCallbacks.length).toBe(0);
 
             // Check result
             expect(result).toBe(false);
@@ -112,6 +117,8 @@ describe("CallbackEngine", function ()
 
     it("should subscribe and run an interval callback", function ( done )
     {
+        let callbackEngine = CallbackEngine.getInstance();
+
         // Run callback engine
         let previousTime = new Date();
         let newTime = new Date();
@@ -121,39 +128,39 @@ describe("CallbackEngine", function ()
             newTime = new Date();
             deltaTime = newTime - previousTime;
             previousTime = newTime;
-            CallbackEngine.update(deltaTime * 0.001);
+            callbackEngine.update(deltaTime * 0.001);
         }, 16);
 
         // Check initial state
-        expect(CallbackEngine.intervalCallbacks.length).toBe(0);
+        expect(callbackEngine.intervalCallbacks.length).toBe(0);
 
         // Subscribe a callback
         let result = 0;
         let callback = function () { result++; };
-        let callbackID = CallbackEngine.subscribeIntervalCallback(callback, 150);
+        let callbackID = callbackEngine.subscribeIntervalCallback(callback, 150);
 
         // Check subscribe
-        expect(CallbackEngine.intervalCallbacks.length).toBe(1);
+        expect(callbackEngine.intervalCallbacks.length).toBe(1);
 
         // Wait 200 ms
         setTimeout(function ()
         {
             // Check result
-            expect(CallbackEngine.intervalCallbacks.length).toBe(1);
+            expect(callbackEngine.intervalCallbacks.length).toBe(1);
             expect(result).toBe(1);
 
             // Wait 200 ms
             setTimeout(function ()
             {
                 // Check result
-                expect(CallbackEngine.intervalCallbacks.length).toBe(1);
+                expect(callbackEngine.intervalCallbacks.length).toBe(1);
                 expect(result).toBe(2);
 
                 // Unsubcribe callback
-                CallbackEngine.unsubscribeIntervalCallback(callbackID);
+                callbackEngine.unsubscribeIntervalCallback(callbackID);
 
                 // Check unsubscribe
-                expect(CallbackEngine.intervalCallbacks.length).toBe(0);
+                expect(callbackEngine.intervalCallbacks.length).toBe(0);
 
                 // Stop callback engine
                 clearInterval(intervalID);
@@ -165,6 +172,8 @@ describe("CallbackEngine", function ()
 
     it("should subscribe and run a post-render callback", function ( done )
     {
+        let callbackEngine = CallbackEngine.getInstance();
+
         // Run callback engine
         let previousTime = new Date();
         let newTime = new Date();
@@ -174,25 +183,25 @@ describe("CallbackEngine", function ()
             newTime = new Date();
             deltaTime = newTime - previousTime;
             previousTime = newTime;
-            CallbackEngine.update(deltaTime * 0.001);
+            callbackEngine.update(deltaTime * 0.001);
         }, 16);
 
         // Check initial state
-        expect(CallbackEngine.postRenderCallbacks.length).toBe(0);
+        expect(callbackEngine.postRenderCallbacks.length).toBe(0);
 
         // Subscribe a callback
         let result = false;
         let callback = function () { result = true; };
-        CallbackEngine.subscribePostRenderCallback(callback);
+        callbackEngine.subscribePostRenderCallback(callback);
 
         // Check subscribe
-        expect(CallbackEngine.postRenderCallbacks.length).toBe(1);
+        expect(callbackEngine.postRenderCallbacks.length).toBe(1);
 
         // Wait 100 ms
         setTimeout(function ()
         {
             // Check unsubscribe
-            expect(CallbackEngine.postRenderCallbacks.length).toBe(0);
+            expect(callbackEngine.postRenderCallbacks.length).toBe(0);
 
             // Check result
             expect(result).toBe(true);
@@ -206,6 +215,8 @@ describe("CallbackEngine", function ()
 
     it("should unsubscribe a post-render callback", function ( done )
     {
+        let callbackEngine = CallbackEngine.getInstance();
+
         // Run callback engine
         let previousTime = new Date();
         let newTime = new Date();
@@ -215,25 +226,25 @@ describe("CallbackEngine", function ()
             newTime = new Date();
             deltaTime = newTime - previousTime;
             previousTime = newTime;
-            CallbackEngine.update(deltaTime * 0.001);
+            callbackEngine.update(deltaTime * 0.001);
         }, 16);
 
         // Check initial state
-        expect(CallbackEngine.postRenderCallbacks.length).toBe(0);
+        expect(callbackEngine.postRenderCallbacks.length).toBe(0);
 
         // Subscribe a callback
         let result = false;
         let callback = function () { result = true; };
-        let callbackID = CallbackEngine.subscribePostRenderCallback(callback);
+        let callbackID = callbackEngine.subscribePostRenderCallback(callback);
 
         // Check subscribe
-        expect(CallbackEngine.postRenderCallbacks.length).toBe(1);
+        expect(callbackEngine.postRenderCallbacks.length).toBe(1);
 
         // Unsubscribe the callback
-        CallbackEngine.unsubscribePostRenderCallback(callbackID);
+        callbackEngine.unsubscribePostRenderCallback(callbackID);
 
         // Check unsubscribe
-        expect(CallbackEngine.postRenderCallbacks.length).toBe(0);
+        expect(callbackEngine.postRenderCallbacks.length).toBe(0);
 
         // Wait 100 ms
         setTimeout(function ()
@@ -250,31 +261,33 @@ describe("CallbackEngine", function ()
 
     it("should reset all callbacks", function ( done )
     {
+        let callbackEngine = CallbackEngine.getInstance();
+
         // Check initial state
-        expect(CallbackEngine.timeoutCallbacks.length).toBe(0);
-        expect(CallbackEngine.intervalCallbacks.length).toBe(0);
-        expect(CallbackEngine.postRenderCallbacks.length).toBe(0);
+        expect(callbackEngine.timeoutCallbacks.length).toBe(0);
+        expect(callbackEngine.intervalCallbacks.length).toBe(0);
+        expect(callbackEngine.postRenderCallbacks.length).toBe(0);
 
         // Subscribe several callbacks
         let callback = function () { };
-        let timeoutID = CallbackEngine.subscribeTimeoutCallback(callback, 150);
-        let intervalID = CallbackEngine.subscribeIntervalCallback(callback, 150);
-        let postRenderID = CallbackEngine.subscribePostRenderCallback(callback);
+        let timeoutID = callbackEngine.subscribeTimeoutCallback(callback, 150);
+        let intervalID = callbackEngine.subscribeIntervalCallback(callback, 150);
+        let postRenderID = callbackEngine.subscribePostRenderCallback(callback);
 
         // Check subscribe
-        expect(CallbackEngine.timeoutCallbacks.length).toBe(1);
-        expect(CallbackEngine.intervalCallbacks.length).toBe(1);
-        expect(CallbackEngine.postRenderCallbacks.length).toBe(1);
+        expect(callbackEngine.timeoutCallbacks.length).toBe(1);
+        expect(callbackEngine.intervalCallbacks.length).toBe(1);
+        expect(callbackEngine.postRenderCallbacks.length).toBe(1);
 
         // Reset all callbacks
-        CallbackEngine.unsubscribeTimeoutCallback(timeoutID);
-        CallbackEngine.unsubscribeIntervalCallback(intervalID);
-        CallbackEngine.unsubscribePostRenderCallback(postRenderID);
+        callbackEngine.unsubscribeTimeoutCallback(timeoutID);
+        callbackEngine.unsubscribeIntervalCallback(intervalID);
+        callbackEngine.unsubscribePostRenderCallback(postRenderID);
 
         // Check unsubscribe
-        expect(CallbackEngine.timeoutCallbacks.length).toBe(0);
-        expect(CallbackEngine.intervalCallbacks.length).toBe(0);
-        expect(CallbackEngine.postRenderCallbacks.length).toBe(0);
+        expect(callbackEngine.timeoutCallbacks.length).toBe(0);
+        expect(callbackEngine.intervalCallbacks.length).toBe(0);
+        expect(callbackEngine.postRenderCallbacks.length).toBe(0);
 
         done();
     });

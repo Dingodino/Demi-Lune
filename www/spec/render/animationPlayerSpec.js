@@ -25,7 +25,7 @@ describe("AnimationPlayer", function ()
 
         expect(animationPlayer.m_aAnimations).not.toBeNull();
         expect(animationPlayer.m_aAnimations).not.toBeUndefined();
-        // TODO expect(animationPlayer.m_aAnimations).instanceof(Array);
+        // TODO expect(animationPlayer.m_aAnimations).getInstance()of(Array);
 
         expect(animationPlayer.m_iCurrentAnimation).not.toBeNull();
         expect(animationPlayer.m_iCurrentAnimation).not.toBeUndefined();

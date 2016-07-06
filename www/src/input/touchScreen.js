@@ -25,10 +25,10 @@
 "use strict";
 
 import {b2Vec2} from "src/core/constants";
-import InputState from "src/input/inputState";
+import {InputState} from "src/input/inputState";
 
 
-class TouchScreen
+export class TouchScreen
 {
 	//===================================================================
 	// Constructors
@@ -47,6 +47,19 @@ class TouchScreen
     //===================================================================
     // Accessors
     //===================================================================
+
+    /**
+     * Get the unique instance of this class.
+     * @returns {*}
+     */
+    static getInstance()
+    {
+        if(!this.instance)
+        {
+            this.instance = new TouchScreen();
+        }
+        return this.instance;
+    }
 
     /**
      * Get the state of the touch screen.
@@ -79,13 +92,7 @@ class TouchScreen
         {
             this.m_State = InputState.RELEASED;
         }
-        else if (this.m_State == InputState.RELEASED)
-        {
-            this.m_State = InputState.NONE;
-        }
     }
 }
 
-export default new TouchScreen();
-
-console.debug('TouchScreen.js loaded');
+console.debug('TouchScreen loaded');

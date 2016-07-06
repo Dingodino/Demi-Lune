@@ -26,6 +26,7 @@
 
 import * as Box2D from "libs/box2d";
 
+// TODO : mode all physic concepts to PhysicEngine
 export let b2World = Box2D.Dynamics.b2World;
 export let b2Vec2 = Box2D.Common.Math.b2Vec2;
 export let b2AABB = Box2D.Collision.b2AABB;
@@ -39,4 +40,4 @@ export let b2CircleShape = Box2D.Collision.Shapes.b2CircleShape;
 export let b2DebugDraw = Box2D.Dynamics.b2DebugDraw;
 export let b2MouseJointDef =  Box2D.Dynamics.Joints.b2MouseJointDef;
 
-console.debug('constants.js loaded');
+console.debug('constants loaded');

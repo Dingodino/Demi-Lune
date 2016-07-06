@@ -179,7 +179,7 @@ export class SceneNode
             this.m_fWorldOrientation = this.m_fOrientation;
         }
     
-        for (var i = 0; i < this.m_aChildNodes.length; i++)
+        for (let i = 0; i < this.m_aChildNodes.length; i++)
         {
             this.m_aChildNodes[i].update();
         }
@@ -201,7 +201,7 @@ export class SceneNode
      */
     detachSceneNode (a_SceneNode)
     {
-        for (var i = 0; i < this.m_aChildNodes.length; i++)
+        for (let i = 0; i < this.m_aChildNodes.length; i++)
         {
             if (this.m_aChildNodes[i] == a_SceneNode)
             {
@@ -212,4 +212,4 @@ export class SceneNode
     }
 }
 
-console.debug('SceneNode.js loaded');
+console.debug('SceneNode loaded');

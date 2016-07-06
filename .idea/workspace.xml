@@ -2,47 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bb757a1-f4ff-47ec-b2bd-e23342d37ccd" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/src/physic/Box2dWeb.js" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/src/core/engine.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/src/core/state.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/src/core/stateMachine.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/www/spec/scene/cameraEngineSpec.js" afterPath="$PROJECT_DIR$/www/spec/scene/cameraSpec.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/www/src/scene/cameraEngine.js" afterPath="$PROJECT_DIR$/www/src/scene/camera.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulpfile.js" afterPath="$PROJECT_DIR$/gulpfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/.eslintrc" afterPath="$PROJECT_DIR$/www/.eslintrc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/appLauncher.js" afterPath="$PROJECT_DIR$/www/appLauncher.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.js" afterPath="$PROJECT_DIR$/www/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/karma.config.js" afterPath="$PROJECT_DIR$/www/karma.config.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/sample/test_audio.js" afterPath="$PROJECT_DIR$/www/sample/test_audio.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/sample/test_input.js" afterPath="$PROJECT_DIR$/www/sample/test_input.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/sample/test_parallax.js" afterPath="$PROJECT_DIR$/www/sample/test_parallax.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/sample/test_particle.js" afterPath="$PROJECT_DIR$/www/sample/test_particle.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/sample/test_physic.js" afterPath="$PROJECT_DIR$/www/sample/test_physic.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/sample/test_render.js" afterPath="$PROJECT_DIR$/www/sample/test_render.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/audio/soundSpec.js" afterPath="$PROJECT_DIR$/www/spec/audio/soundSpec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec.system.config.js" afterPath="$PROJECT_DIR$/www/spec.system.config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/audio/audioEngineSpec.js" afterPath="$PROJECT_DIR$/www/spec/audio/audioEngineSpec.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/callback/callbackEngineSpec.js" afterPath="$PROJECT_DIR$/www/spec/callback/callbackEngineSpec.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/core/applicationSpec.js" afterPath="$PROJECT_DIR$/www/spec/core/applicationSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/core/colorSpec.js" afterPath="$PROJECT_DIR$/www/spec/core/colorSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/core/mathSpec.js" afterPath="$PROJECT_DIR$/www/spec/core/mathSpec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/core/constantsSpec.js" afterPath="$PROJECT_DIR$/www/spec/core/constantsSpec.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/core/timeEngineSpec.js" afterPath="$PROJECT_DIR$/www/spec/core/timeEngineSpec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/input/inputEngineSpec.js" afterPath="$PROJECT_DIR$/www/spec/input/inputEngineSpec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/input/inputStateSpec.js" afterPath="$PROJECT_DIR$/www/spec/input/inputStateSpec.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/input/keyboardSpec.js" afterPath="$PROJECT_DIR$/www/spec/input/keyboardSpec.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/input/mouseSpec.js" afterPath="$PROJECT_DIR$/www/spec/input/mouseSpec.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/input/touchScreenSpec.js" afterPath="$PROJECT_DIR$/www/spec/input/touchScreenSpec.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/physic/physicEngineSpec.js" afterPath="$PROJECT_DIR$/www/spec/physic/physicEngineSpec.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/render/animationPlayerSpec.js" afterPath="$PROJECT_DIR$/www/spec/render/animationPlayerSpec.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/render/animationSpec.js" afterPath="$PROJECT_DIR$/www/spec/render/animationSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/render/parallaxLayerSpec.js" afterPath="$PROJECT_DIR$/www/spec/render/parallaxLayerSpec.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/render/parallaxSpec.js" afterPath="$PROJECT_DIR$/www/spec/render/parallaxSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/render/particleEmitterSpec.js" afterPath="$PROJECT_DIR$/www/spec/render/particleEmitterSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/render/particleSpec.js" afterPath="$PROJECT_DIR$/www/spec/render/particleSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/render/particleSystemSpec.js" afterPath="$PROJECT_DIR$/www/spec/render/particleSystemSpec.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/render/renderEngineSpec.js" afterPath="$PROJECT_DIR$/www/spec/render/renderEngineSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/render/renderableSpec.js" afterPath="$PROJECT_DIR$/www/spec/render/renderableSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/render/spriteSheetSpec.js" afterPath="$PROJECT_DIR$/www/spec/render/spriteSheetSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/render/text2DSpec.js" afterPath="$PROJECT_DIR$/www/spec/render/text2DSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/render/textureSpec.js" afterPath="$PROJECT_DIR$/www/spec/render/textureSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/render/trailEmitterSpec.js" afterPath="$PROJECT_DIR$/www/spec/render/trailEmitterSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/render/trailParticleSpec.js" afterPath="$PROJECT_DIR$/www/spec/render/trailParticleSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/render/trailSystemSpec.js" afterPath="$PROJECT_DIR$/www/spec/render/trailSystemSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/scene/autoMoveCameraSpec.js" afterPath="$PROJECT_DIR$/www/spec/scene/autoMoveCameraSpec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/scene/sceneEngineSpec.js" afterPath="$PROJECT_DIR$/www/spec/scene/sceneEngineSpec.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/scene/sceneNodeSpec.js" afterPath="$PROJECT_DIR$/www/spec/scene/sceneNodeSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/specLauncher.js" afterPath="$PROJECT_DIR$/www/specLauncher.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/src/audio/audioEngine.js" afterPath="$PROJECT_DIR$/www/src/audio/audioEngine.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/src/audio/sound.js" afterPath="$PROJECT_DIR$/www/src/audio/sound.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/src/callback/callbackEngine.js" afterPath="$PROJECT_DIR$/www/src/callback/callbackEngine.js" />
@@ -73,9 +64,9 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/src/render/trailParticle.js" afterPath="$PROJECT_DIR$/www/src/render/trailParticle.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/src/render/trailSystem.js" afterPath="$PROJECT_DIR$/www/src/render/trailSystem.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/src/scene/autoMoveCamera.js" afterPath="$PROJECT_DIR$/www/src/scene/autoMoveCamera.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/src/scene/cameraEngine.js" afterPath="$PROJECT_DIR$/www/src/scene/cameraEngine.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/src/scene/sceneEngine.js" afterPath="$PROJECT_DIR$/www/src/scene/sceneEngine.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/src/scene/sceneNode.js" afterPath="$PROJECT_DIR$/www/src/scene/sceneNode.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/system.config.js" afterPath="$PROJECT_DIR$/www/system.config.js" />
     </list>
     <ignored path="demi-lune.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -96,11 +87,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="test_particle.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/www/sample/test_particle.js">
+      <file leaf-file-name="test_input.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/sample/test_input.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="144" column="45" selection-start-line="144" selection-start-column="45" selection-end-line="144" selection-end-column="45" />
+            <state relative-caret-position="190">
+              <caret line="120" column="24" selection-start-line="120" selection-start-column="24" selection-end-line="120" selection-end-column="24" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -108,58 +99,56 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sceneNode.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/src/scene/sceneNode.js">
+      <file leaf-file-name="inputEngine.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/src/input/inputEngine.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="162" column="10" selection-start-line="162" selection-start-column="4" selection-end-line="162" selection-end-column="10" />
+            <state relative-caret-position="168">
+              <caret line="115" column="10" selection-start-line="115" selection-start-column="10" selection-end-line="115" selection-end-column="10" />
+              <folding>
+                <element signature="e#1396#1440#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mouse.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/src/input/mouse.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="432">
+              <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+              <folding>
+                <element signature="e#1396#1438#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="keyboard.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/src/input/keyboard.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="372">
+              <caret line="95" column="31" selection-start-line="95" selection-start-column="31" selection-end-line="95" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="trailEmitter.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/src/render/trailEmitter.js">
+      <file leaf-file-name="touchScreen.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/www/src/input/touchScreen.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="76" column="4" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="4" />
-              <folding>
-                <element signature="e#1396#1438#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="particleEmitter.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/src/render/particleEmitter.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="491" column="16" selection-start-line="491" selection-start-column="16" selection-end-line="496" selection-end-column="17" />
-              <folding>
-                <element signature="e#1396#1438#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gulpfile.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gulpfile.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="192" column="25" selection-start-line="192" selection-start-column="25" selection-end-line="192" selection-end-column="25" />
+            <state relative-caret-position="352">
+              <caret line="89" column="9" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="renderEngine.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/src/render/renderEngine.js">
+      <file leaf-file-name="inputState.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/src/input/inputState.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="185" column="30" selection-start-line="185" selection-start-column="4" selection-end-line="185" selection-end-column="30" />
-              <folding>
-                <element signature="e#1396#1438#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="344">
+              <caret line="32" column="17" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -179,57 +168,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/www/spec/scene/autoMoveCameraSpec.js" />
-        <option value="$PROJECT_DIR$/www/spec/render/animationPlayerSpec.js" />
-        <option value="$PROJECT_DIR$/www/spec/render/animationSpec.js" />
-        <option value="$PROJECT_DIR$/www/spec/render/parallaxLayerSpec.js" />
-        <option value="$PROJECT_DIR$/www/spec/render/parallaxSpec.js" />
-        <option value="$PROJECT_DIR$/www/spec/render/particleSpec.js" />
-        <option value="$PROJECT_DIR$/www/spec/render/particleSystemSpec.js" />
-        <option value="$PROJECT_DIR$/www/spec/render/renderableSpec.js" />
-        <option value="$PROJECT_DIR$/www/spec/render/spriteSheetSpec.js" />
-        <option value="$PROJECT_DIR$/www/spec/render/text2DSpec.js" />
-        <option value="$PROJECT_DIR$/www/spec/render/textureSpec.js" />
-        <option value="$PROJECT_DIR$/www/spec/render/trailEmitterSpec.js" />
-        <option value="$PROJECT_DIR$/www/spec/render/trailParticleSpec.js" />
-        <option value="$PROJECT_DIR$/www/spec/render/trailSystemSpec.js" />
-        <option value="$PROJECT_DIR$/build/libs/box2d.js" />
-        <option value="$PROJECT_DIR$/www/src/physic/physicEngine.js" />
+        <option value="$PROJECT_DIR$/www/src/core/state.js" />
+        <option value="$PROJECT_DIR$/www/src/core/engine.js" />
+        <option value="$PROJECT_DIR$/www/sample/test_audio.js" />
+        <option value="$PROJECT_DIR$/www/src/input/inputState.js" />
         <option value="$PROJECT_DIR$/www/src/scene/cameraEngine.js" />
-        <option value="$PROJECT_DIR$/www/.eslintrc" />
-        <option value="$PROJECT_DIR$/www/spec/core/mathSpec.js" />
-        <option value="$PROJECT_DIR$/www/spec/render/particleEmitterSpec.js" />
-        <option value="$PROJECT_DIR$/www/spec/scene/sceneNodeSpec.js" />
-        <option value="$PROJECT_DIR$/www/src/callback/callbackEngine.js" />
-        <option value="$PROJECT_DIR$/www/src/audio/audioEngine.js" />
-        <option value="$PROJECT_DIR$/www/src/input/inputEngine.js" />
-        <option value="$PROJECT_DIR$/www/src/input/keyboard.js" />
-        <option value="$PROJECT_DIR$/www/src/input/mouse.js" />
-        <option value="$PROJECT_DIR$/www/src/input/touchScreen.js" />
-        <option value="$PROJECT_DIR$/www/src/render/animationPlayer.js" />
-        <option value="$PROJECT_DIR$/www/spec/render/renderEngineSpec.js" />
-        <option value="$PROJECT_DIR$/www/spec/audio/audioEngineSpec.js" />
         <option value="$PROJECT_DIR$/www/spec/scene/cameraEngineSpec.js" />
-        <option value="$PROJECT_DIR$/www/spec/core/timeEngineSpec.js" />
-        <option value="$PROJECT_DIR$/www/spec/scene/sceneEngineSpec.js" />
+        <option value="$PROJECT_DIR$/www/index.js" />
+        <option value="$PROJECT_DIR$/www/system.config.js" />
+        <option value="$PROJECT_DIR$/www/spec.system.config.js" />
+        <option value="$PROJECT_DIR$/www/src/core/stateMachine.js" />
+        <option value="$PROJECT_DIR$/www/src/render/renderable.js" />
+        <option value="$PROJECT_DIR$/www/sample/test_physic.js" />
+        <option value="$PROJECT_DIR$/www/src/render/particleSystem.js" />
+        <option value="$PROJECT_DIR$/www/src/render/trailSystem.js" />
         <option value="$PROJECT_DIR$/www/spec/callback/callbackEngineSpec.js" />
+        <option value="$PROJECT_DIR$/www/spec/core/timeEngineSpec.js" />
         <option value="$PROJECT_DIR$/www/spec/input/inputEngineSpec.js" />
         <option value="$PROJECT_DIR$/www/spec/physic/physicEngineSpec.js" />
-        <option value="$PROJECT_DIR$/www/spec/input/keyboardSpec.js" />
-        <option value="$PROJECT_DIR$/www/spec/input/mouseSpec.js" />
-        <option value="$PROJECT_DIR$/www/spec/input/touchScreenSpec.js" />
-        <option value="$PROJECT_DIR$/www/spec/input/inputStateSpec.js" />
-        <option value="$PROJECT_DIR$/www/src/core/constants.js" />
-        <option value="$PROJECT_DIR$/www/sample/test_audio.js" />
+        <option value="$PROJECT_DIR$/www/spec/scene/sceneEngineSpec.js" />
+        <option value="$PROJECT_DIR$/www/sample/test_render.js" />
+        <option value="$PROJECT_DIR$/www/src/audio/audioEngine.js" />
+        <option value="$PROJECT_DIR$/www/src/callback/callbackEngine.js" />
+        <option value="$PROJECT_DIR$/www/src/core/timeEngine.js" />
+        <option value="$PROJECT_DIR$/www/src/physic/physicEngine.js" />
+        <option value="$PROJECT_DIR$/www/src/scene/sceneEngine.js" />
+        <option value="$PROJECT_DIR$/www/src/input/touchScreen.js" />
         <option value="$PROJECT_DIR$/www/src/core/application.js" />
-        <option value="$PROJECT_DIR$/www/sample/test_physic.js" />
-        <option value="$PROJECT_DIR$/www/sample/test_parallax.js" />
-        <option value="$PROJECT_DIR$/www/appLauncher.js" />
-        <option value="$PROJECT_DIR$/www/src/render/particleEmitter.js" />
+        <option value="$PROJECT_DIR$/www/src/input/inputEngine.js" />
+        <option value="$PROJECT_DIR$/www/karma.config.js" />
+        <option value="$PROJECT_DIR$/www/spec/input/inputStateSpec.js" />
+        <option value="$PROJECT_DIR$/www/spec/input/keyboardSpec.js" />
+        <option value="$PROJECT_DIR$/www/spec/input/touchScreenSpec.js" />
+        <option value="$PROJECT_DIR$/www/spec/input/mouseSpec.js" />
+        <option value="$PROJECT_DIR$/www/spec/core/applicationSpec.js" />
+        <option value="$PROJECT_DIR$/www/spec/render/renderEngineSpec.js" />
+        <option value="$PROJECT_DIR$/www/spec/core/constantsSpec.js" />
+        <option value="$PROJECT_DIR$/www/src/scene/camera.js" />
+        <option value="$PROJECT_DIR$/www/spec/scene/cameraSpec.js" />
+        <option value="$PROJECT_DIR$/www/src/scene/autoMoveCamera.js" />
+        <option value="$PROJECT_DIR$/www/spec/audio/audioEngineSpec.js" />
+        <option value="$PROJECT_DIR$/www/src/render/animationPlayer.js" />
+        <option value="$PROJECT_DIR$/www/src/render/texture.js" />
         <option value="$PROJECT_DIR$/www/src/render/renderEngine.js" />
-        <option value="$PROJECT_DIR$/gulpfile.js" />
+        <option value="$PROJECT_DIR$/www/src/render/particle.js" />
+        <option value="$PROJECT_DIR$/www/src/render/parallaxLayer.js" />
+        <option value="$PROJECT_DIR$/www/src/render/text2D.js" />
+        <option value="$PROJECT_DIR$/www/src/render/particleEmitter.js" />
         <option value="$PROJECT_DIR$/www/src/render/trailEmitter.js" />
-        <option value="$PROJECT_DIR$/www/sample/test_particle.js" />
+        <option value="$PROJECT_DIR$/www/sample/test_input.js" />
+        <option value="$PROJECT_DIR$/www/src/input/mouse.js" />
+        <option value="$PROJECT_DIR$/www/src/input/keyboard.js" />
       </list>
     </option>
   </component>
@@ -273,7 +262,6 @@
       <pane id="Scope">
         <subPane subId="Project Files" />
       </pane>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -323,10 +311,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scene" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -346,25 +330,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="render" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Demi-Lune" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Demi-Lune" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="input" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -396,7 +362,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="coverage" />
+              <option name="myItemId" value="dist" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -410,16 +376,31 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="coverage" />
+              <option name="myItemId" value="dist" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="report-html" />
+              <option name="myItemId" value="sample" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Demi-Lune" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Demi-Lune" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="build" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -432,7 +413,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="246" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1153" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1152" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="225" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
@@ -440,7 +421,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="242" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1149" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1148" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="js.buildTools.gulp.node_interpreter" value="C:\Program Files\nodejs\node.exe" />
@@ -564,11 +545,19 @@
       <workItem from="1466596316111" duration="5648000" />
       <workItem from="1466606216702" duration="714000" />
       <workItem from="1466658796208" duration="14442000" />
+      <workItem from="1466684211268" duration="1473000" />
+      <workItem from="1466692029808" duration="1030000" />
+      <workItem from="1466764001932" duration="5783000" />
+      <workItem from="1466773563818" duration="975000" />
+      <workItem from="1466777643067" duration="560000" />
+      <workItem from="1467285447616" duration="3169000" />
+      <workItem from="1467301945354" duration="16136000" />
+      <workItem from="1467629627022" duration="2201000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46904000" />
+    <option name="totallyTimeSpent" value="78231000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -581,14 +570,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947146" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947146" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905483" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3282532" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32943925" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3270809" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32590857" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942554" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32590857" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24986793" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3282532" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -615,55 +604,127 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/www/src/core/timeEngine.js">
+    <entry file="file://$PROJECT_DIR$/www/spec/render/spriteSheetSpec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/src/input/inputEngine.js">
+    <entry file="file://$PROJECT_DIR$/www/spec/render/text2DSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/src/input/inputState.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-390">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/src/input/keyboard.js">
+    <entry file="file://$PROJECT_DIR$/www/spec/render/trailParticleSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
-          <folding />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/src/input/mouse.js">
+    <entry file="file://$PROJECT_DIR$/www/spec/render/trailSystemSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="27" column="7" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
-          <folding />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/src/input/touchScreen.js">
+    <entry file="file://$PROJECT_DIR$/www/spec/render/trailEmitterSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="27" column="7" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
+        <state relative-caret-position="44">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/spec/scene/autoMoveCameraSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/spec/scene/sceneNodeSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/spec/core/timeEngineSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="36" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/spec/input/inputEngineSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/spec/physic/physicEngineSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/spec/scene/sceneEngineSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/sample/test_render.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="38" column="36" selection-start-line="38" selection-start-column="36" selection-end-line="38" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/es6-module-loader/test/loader/master.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/sample/test_physic.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/src/audio/audioEngine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="29" column="24" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/src/callback/callbackEngine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="30" column="28" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/src/core/timeEngine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="64" column="43" selection-start-line="64" selection-start-column="43" selection-end-line="64" selection-end-column="43" />
           <folding />
         </state>
       </provider>
@@ -671,392 +732,282 @@
     <entry file="file://$PROJECT_DIR$/www/src/physic/physicEngine.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/src/render/animation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/src/render/animationPlayer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
-          <folding>
-            <element signature="e#1396#1447#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/spec/render/renderEngineSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <element signature="e#15#66#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/spec/audio/audioEngineSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/spec/scene/cameraEngineSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/src/render/particle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/spec/core/timeEngineSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/src/render/particleSystem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
-          <folding>
-            <element signature="e#1396#1441#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/src/render/renderable.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/src/render/spriteSheet.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/src/render/text2D.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
-          <folding>
-            <element signature="e#1396#1447#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/src/render/texture.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
-          <folding>
-            <element signature="e#1396#1447#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/src/render/trailParticle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/src/render/trailSystem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
-          <folding>
-            <element signature="e#1396#1441#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/spec/scene/sceneEngineSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/src/scene/cameraEngine.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="18" />
-          <folding>
-            <element signature="e#1396#1444#0" expanded="true" />
-          </folding>
+          <caret line="63" column="45" selection-start-line="63" selection-start-column="45" selection-end-line="63" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/src/scene/sceneEngine.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1562">
-          <caret line="71" column="7" selection-start-line="71" selection-start-column="7" selection-end-line="71" selection-end-column="7" />
+        <state relative-caret-position="268">
+          <caret line="79" column="31" selection-start-line="79" selection-start-column="31" selection-end-line="79" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/spec/callback/callbackEngineSpec.js">
+    <entry file="file://$PROJECT_DIR$/www/karma.config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/spec/input/inputEngineSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/spec/physic/physicEngineSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="e#15#66#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/spec/input/keyboardSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <element signature="e#15#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/spec/input/mouseSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <element signature="e#15#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/spec/input/touchScreenSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <element signature="e#15#63#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="366">
+          <caret line="86" column="22" selection-start-line="86" selection-start-column="22" selection-end-line="86" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/spec/input/inputStateSpec.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/spec/input/touchScreenSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="17" column="60" selection-start-line="17" selection-start-column="60" selection-end-line="17" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/spec/input/keyboardSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="34" column="49" selection-start-line="34" selection-start-column="49" selection-end-line="34" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/spec/input/mouseSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="36" column="56" selection-start-line="36" selection-start-column="56" selection-end-line="36" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/spec/core/applicationSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/src/scene/sceneNode.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2244">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/sample/test_audio.js">
+    <entry file="file://$PROJECT_DIR$/www/spec/render/renderEngineSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state relative-caret-position="330">
+          <caret line="27" column="42" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/src/core/constants.js">
+    <entry file="file://$PROJECT_DIR$/www/spec/core/constantsSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="39" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/sample/test_physic.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="83" column="35" selection-start-line="83" selection-start-column="35" selection-end-line="83" selection-end-column="35" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
+        <state relative-caret-position="220">
+          <caret line="37" column="46" selection-start-line="37" selection-start-column="46" selection-end-line="37" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/src/core/application.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="185" column="4" selection-start-line="185" selection-start-column="4" selection-end-line="185" selection-end-column="4" />
-          <folding>
-            <element signature="e#1460#1505#0" expanded="true" />
-            <element signature="e#1891#1929#0" expanded="true" />
-          </folding>
+          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/spec/render/textureSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/src/render/renderable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="27" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/src/scene/camera.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="40" column="45" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/spec/scene/cameraSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/src/scene/autoMoveCamera.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-361">
-          <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
+        <state relative-caret-position="388">
+          <caret line="41" column="43" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
           <folding>
-            <element signature="e#1396#1441#0" expanded="true" />
+            <element signature="e#1396#1443#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/src/render/animationPlayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3982">
+          <caret line="183" column="0" selection-start-line="181" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
+          <folding>
+            <element signature="e#1396#1445#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/src/render/texture.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1804">
+          <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/sample/test_physic.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="131" column="4" selection-start-line="131" selection-start-column="4" selection-end-line="131" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/src/render/renderEngine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding>
+            <element signature="e#1396#1438#0" expanded="true" />
+            <marker date="1467373341477" expanded="true" signature="6161:6173" placeholder="/*...*/" />
+            <marker date="1467373341477" expanded="true" signature="6189:6492" placeholder="/*...*/" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/src/render/parallaxLayer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="120" column="36" selection-start-line="120" selection-start-column="36" selection-end-line="120" selection-end-column="36" />
+        <state relative-caret-position="50">
+          <caret line="142" column="0" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
           <folding>
             <element signature="e#1396#1438#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/src/render/parallax.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-889">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/sample/test_parallax1.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/sample/test_parallax4.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/sample/test_parallax3.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/appLauncher.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/sample/test_parallax.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="94" column="38" selection-start-line="94" selection-start-column="38" selection-end-line="94" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-330">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/sample/test_parallax.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-216">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/src/render/renderEngine.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="185" column="30" selection-start-line="185" selection-start-column="4" selection-end-line="185" selection-end-column="30" />
-          <folding>
-            <element signature="e#1396#1438#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gulpfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="192" column="25" selection-start-line="192" selection-start-column="25" selection-end-line="192" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/src/render/particleEmitter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="491" column="16" selection-start-line="491" selection-start-column="16" selection-end-line="496" selection-end-column="17" />
-          <folding>
-            <element signature="e#1396#1438#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/src/render/trailEmitter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="76" column="4" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="4" />
-          <folding>
-            <element signature="e#1396#1438#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/src/scene/sceneNode.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="162" column="10" selection-start-line="162" selection-start-column="4" selection-end-line="162" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/sample/test_particle.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="144" column="45" selection-start-line="144" selection-start-column="45" selection-end-line="144" selection-end-column="45" />
+        <state relative-caret-position="286">
+          <caret line="73" column="37" selection-start-line="73" selection-start-column="37" selection-end-line="73" selection-end-column="37" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/src/render/text2D.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="123" column="0" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/spec/audio/audioEngineSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/src/render/trailEmitter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="265" column="5" selection-start-line="265" selection-start-column="5" selection-end-line="265" selection-end-column="5" />
+          <folding>
+            <element signature="e#1396#1438#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/src/render/particleEmitter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="523" column="42" selection-start-line="523" selection-start-column="42" selection-end-line="523" selection-end-column="42" />
+          <folding>
+            <element signature="e#1396#1438#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/src/render/particle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="77" column="35" selection-start-line="77" selection-start-column="35" selection-end-line="77" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/sample/test_input.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="120" column="24" selection-start-line="120" selection-start-column="24" selection-end-line="120" selection-end-column="24" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/src/input/inputState.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="32" column="17" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/src/input/inputEngine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="115" column="10" selection-start-line="115" selection-start-column="10" selection-end-line="115" selection-end-column="10" />
+          <folding>
+            <element signature="e#1396#1440#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/src/input/mouse.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+          <folding>
+            <element signature="e#1396#1438#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/src/input/keyboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="95" column="31" selection-start-line="95" selection-start-column="31" selection-end-line="95" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/src/input/touchScreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="89" column="9" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>

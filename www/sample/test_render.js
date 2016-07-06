@@ -29,9 +29,9 @@ import "demilune.js";
  * Sample
  ****************************************************************/
 
-var sceneNodeToRotate = null;
-var sceneNodeToScale = null;
-var sceneNodeToTranslate = null;
+let sceneNodeToRotate = null;
+let sceneNodeToScale = null;
+let sceneNodeToTranslate = null;
 
 function initializeTest()
 {
@@ -39,8 +39,8 @@ function initializeTest()
 	demilune.RenderEngine.displayFPS(new demilune.b2Vec2(240, -230));
 
 	// Create 3 texts
-	var text1Pos = new demilune.b2Vec2(-300, 200);
-	var text1 = new demilune.Text2D();
+	let text1Pos = new demilune.b2Vec2(-300, 200);
+	let text1 = new demilune.Text2D();
 	text1.setColor("#000000");
 	text1.setFont("22px arial");
 	text1.setText("Test Text 1 : 22px arial");
@@ -48,8 +48,8 @@ function initializeTest()
 	demilune.SceneEngine.getRootSceneNode().attachSceneNode(text1.getSceneNode());
 	demilune.RenderEngine.addRenderable(text1);
 
-	var text2Pos = new demilune.b2Vec2(-300, 170);
-	var text2 = new demilune.Text2D();
+	let text2Pos = new demilune.b2Vec2(-300, 170);
+	let text2 = new demilune.Text2D();
 	text2.setColor("#ff0000");
 	text2.setFont("italic bold 20px arial");
 	text2.setText("Test Text 2 : italic bold 20px arial");
@@ -57,8 +57,8 @@ function initializeTest()
 	demilune.SceneEngine.getRootSceneNode().attachSceneNode(text2.getSceneNode());
 	demilune.RenderEngine.addRenderable(text2);
 
-	var text3Pos = new demilune.b2Vec2(-300, 140);
-	var text3 = new demilune.Text2D();
+	let text3Pos = new demilune.b2Vec2(-300, 140);
+	let text3 = new demilune.Text2D();
 	text3.setColor("#0000ff");
 	text3.setFont("18px times");
 	text3.setText("Test Text 3 : 18px times");
@@ -67,9 +67,9 @@ function initializeTest()
 	demilune.RenderEngine.addRenderable(text3);
 
 	// Create a texture (translation)
-	var v2TexturePos = new demilune.b2Vec2(-20, -100);
-	var v2TextureScale = new demilune.b2Vec2(200, 200);
-	var texture = new demilune.Texture();
+	let v2TexturePos = new demilune.b2Vec2(-20, -100);
+	let v2TextureScale = new demilune.b2Vec2(200, 200);
+	let texture = new demilune.Texture();
 	texture.m_Image = new Image();
 	texture.m_Image.src = "sample/test_texture.png";
 	texture.m_SceneNode.m_v2Pos = v2TexturePos;
@@ -79,9 +79,9 @@ function initializeTest()
 	demilune.RenderEngine.addRenderable(texture);
 
 	// Create a texture (rotation)
-	var v2Texture2Pos = new demilune.b2Vec2(200, -100);
-	var v2Texture2Scale = new demilune.b2Vec2(200, 200);
-	var texture2 = new demilune.Texture();
+	let v2Texture2Pos = new demilune.b2Vec2(200, -100);
+	let v2Texture2Scale = new demilune.b2Vec2(200, 200);
+	let texture2 = new demilune.Texture();
 	texture2.m_Image = texture.m_Image;
 	texture2.m_SceneNode.m_v2Pos = v2Texture2Pos;
 	texture2.m_SceneNode.m_v2Scale = v2Texture2Scale;
@@ -90,9 +90,9 @@ function initializeTest()
 	demilune.RenderEngine.addRenderable(texture2);
 
 	// Create a texture (scale)
-	var v2Texture3Pos = new demilune.b2Vec2(200, 100);
-	var v2Texture3Scale = new demilune.b2Vec2(200, 200);
-	var texture3 = new demilune.Texture();
+	let v2Texture3Pos = new demilune.b2Vec2(200, 100);
+	let v2Texture3Scale = new demilune.b2Vec2(200, 200);
+	let texture3 = new demilune.Texture();
 	texture3.m_Image = texture.m_Image;
 	texture3.m_SceneNode.m_v2Pos = v2Texture3Pos;
 	texture3.m_SceneNode.m_v2Scale = v2Texture3Scale;
@@ -101,11 +101,11 @@ function initializeTest()
 	demilune.RenderEngine.addRenderable(texture3);
 
 	// Create an animation
-	var v2AnimationPos = new demilune.b2Vec2(-200, -100);
-	var v2AnimationScale = new demilune.b2Vec2(64, 64);
-	var animationPlayer = new demilune.AnimationPlayer();
+	let v2AnimationPos = new demilune.b2Vec2(-200, -100);
+	let v2AnimationScale = new demilune.b2Vec2(64, 64);
+	let animationPlayer = new demilune.AnimationPlayer();
 
-	var spriteSheet = new demilune.SpriteSheet();
+	let spriteSheet = new demilune.SpriteSheet();
 	spriteSheet.m_Image = new Image();
 	spriteSheet.m_Image.src = "sample/test_animation.png";
 	spriteSheet.m_iFrameCount = 25;
@@ -114,7 +114,7 @@ function initializeTest()
 	spriteSheet.m_v2FrameSize.x = 64;
 	spriteSheet.m_v2FrameSize.y = 64;
 
-	var animation = new demilune.Animation();
+	let animation = new demilune.Animation();
 	animation.m_SpriteSheet = spriteSheet;
 	animation.m_aFrameIndexes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
 	animation.m_iFrameCount = 25;
@@ -129,7 +129,7 @@ function initializeTest()
 	demilune.RenderEngine.addRenderable(animationPlayer);
 
 	// Create a text
-	var textTexture = new demilune.Text2D();
+	let textTexture = new demilune.Text2D();
 	textTexture.m_Color = "#000000";
 	textTexture.m_Font = "italic bold 24px arial";
 	textTexture.m_Text = "Test translate";
@@ -138,7 +138,7 @@ function initializeTest()
 	demilune.SceneEngine.getRootSceneNode().attachSceneNode(textTexture.m_SceneNode);
 	demilune.RenderEngine.addRenderable(textTexture);
 
-	var textTexture2 = new demilune.Text2D();
+	let textTexture2 = new demilune.Text2D();
 	textTexture2.m_Color = "#000000";
 	textTexture2.m_Font = "italic bold 24px arial";
 	textTexture2.m_Text = "Test rotate";
@@ -147,7 +147,7 @@ function initializeTest()
 	demilune.SceneEngine.getRootSceneNode().attachSceneNode(textTexture2.m_SceneNode);
 	demilune.RenderEngine.addRenderable(textTexture2);
 
-	var textTexture3 = new demilune.Text2D();
+	let textTexture3 = new demilune.Text2D();
 	textTexture3.m_Color = "#000000";
 	textTexture3.m_Font = "italic bold 24px arial";
 	textTexture3.m_Text = "Test scale";
@@ -156,7 +156,7 @@ function initializeTest()
 	demilune.SceneEngine.getRootSceneNode().attachSceneNode(textTexture3.m_SceneNode);
 	demilune.RenderEngine.addRenderable(textTexture3);
 
-	var textAnimation = new demilune.Text2D();
+	let textAnimation = new demilune.Text2D();
 	textAnimation.m_Color = "#000000";
 	textAnimation.m_Font = "italic bold 24px arial";
 	textAnimation.m_Text = "Test animation";
@@ -169,17 +169,17 @@ function initializeTest()
 function updateTest()
 {
 	// Translate a texture
-	var v2Position = sceneNodeToTranslate.getPosition();
+	let v2Position = sceneNodeToTranslate.getPosition();
 	v2Position.x = -20 + Math.cos(demilune.TimeEngine.getTotalTime()) * 10;
 	v2Position.y = -100 + Math.cos(demilune.TimeEngine.getTotalTime()) * 10;
 	sceneNodeToTranslate.setPosition(v2Position);
 
 	// Rotate a texture
-	var fOrientation = sceneNodeToRotate.getOrientation();
+	let fOrientation = sceneNodeToRotate.getOrientation();
 	sceneNodeToRotate.setOrientation(fOrientation + demilune.TimeEngine.getDeltaTime());
 
 	// Scale a texture
-	var v2Scale = sceneNodeToScale.getScale();
+	let v2Scale = sceneNodeToScale.getScale();
 	v2Scale.x = Math.cos(demilune.TimeEngine.getTotalTime()) * 200;
 	v2Scale.y = Math.cos(demilune.TimeEngine.getTotalTime()) * 200;
 	sceneNodeToScale.setScale(v2Scale);

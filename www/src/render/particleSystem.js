@@ -26,7 +26,7 @@
 
 import {Particle} from "src/render/particle";
 import {ParticleEmitter} from "src/render/particleEmitter";
-import TimeEngine from "src/core/timeEngine";
+import {TimeEngine} from "src/core/timeEngine";
 
 
 export class ParticleSystem
@@ -100,7 +100,7 @@ export class ParticleSystem
     update ()
     {
         // Update particle emission
-        let fdt = TimeEngine.getDeltaTime();
+        let fdt = TimeEngine.getInstance().getDeltaTime();
         for (let i = 0; i < this.m_aParticleEmitters.length; i++)
         {
             let particleEmitter = this.m_aParticleEmitters[i];
@@ -132,7 +132,7 @@ export class ParticleSystem
      */
     removeParticleEmitter (a_ParticleEmitter)
     {
-        for (var i = 0; i < this.m_aParticleEmitters.length; i++)
+        for (let i = 0; i < this.m_aParticleEmitters.length; i++)
         {
             if (this.m_aParticleEmitters[i] == a_ParticleEmitter)
             {
@@ -167,4 +167,4 @@ export class ParticleSystem
     }
 }
 
-console.debug('ParticleSystem.js loaded');
+console.debug('ParticleSystem loaded');

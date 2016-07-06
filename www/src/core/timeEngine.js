@@ -25,9 +25,10 @@
 "use strict";
 
 import {Text2D} from "src/render/text2D";
+import {Engine} from "src/core/engine";
 
 
-class TimeEngine
+export class TimeEngine extends Engine
 {
     //===================================================================
 	// Constructors
@@ -38,6 +39,8 @@ class TimeEngine
      */
     constructor ()
     {
+        super();
+
         this.m_fTime =		(new Date()).getTime();
         this.m_fTotalTime =	0;
         this.m_fDeltaTime =	0;
@@ -50,6 +53,19 @@ class TimeEngine
     //===================================================================
     // Accessors
     //===================================================================
+
+    /**
+     * Get the unique instance of this class.
+     * @returns {*}
+     */
+    static getInstance()
+    {
+        if(!this.instance)
+        {
+            this.instance = new TimeEngine();
+        }
+        return this.instance;
+    }
 
     /**
      * Get the current time (current date).
@@ -103,7 +119,7 @@ class TimeEngine
         this.m_fTime = fNewTime;
         this.m_fTotalTime += this.m_fDeltaTime;
 
-        // TODO : save last 10 fps
+        // Save last 10 fps
         let iFPS = Math.floor(1 / this.m_fDeltaTime);
         this.m_iFps = Math.floor((this.m_iFps * 9 + iFPS) * 0.1);
         this.m_FpsText.m_Text = "FPS : " + this.m_iFps;
@@ -122,6 +138,4 @@ class TimeEngine
     }
 }
 
-export default new TimeEngine();
-
-console.debug('TimeEngine.js loaded');
+console.debug('TimeEngine loaded');

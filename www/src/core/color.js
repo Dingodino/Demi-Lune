@@ -45,6 +45,20 @@ export class Color
         this.b = b;
         this.a = a;
     }
+
+
+    //===================================================================
+    // Operations
+    //===================================================================
+
+    /**
+     * Convert the color to string (to use in CSS).
+     * @returns {string}
+     */
+    toString ()
+    {
+        return 'rgba(' + this.r + ', ' + this.g + ', ' + this.b + ', ' + this.a + ')';
+    }
 }
 
-console.debug('Color.js loaded');
+console.debug('Color loaded');
