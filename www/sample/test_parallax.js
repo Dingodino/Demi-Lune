@@ -34,7 +34,7 @@ let parallax = null;
 function initializeTest()
 {
     demilune.RenderEngine.setClearColor("#ffb21e");
-    demilune.RenderEngine.displayFPS(new demilune.b2Vec2(240, -230));
+    demilune.Application.displayFPS(new demilune.b2Vec2(240, -230));
 
     // Create a parallax
     parallax = new demilune.Parallax();

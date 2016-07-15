@@ -25,7 +25,6 @@
 "use strict";
 
 import {b2Vec2} from "src/core/constants";
-import {TimeEngine} from "src/core/timeEngine";
 import {SceneEngine} from "src/scene/sceneEngine";
 import {Camera} from "src/scene/camera";
 import {Engine} from "src/core/engine";
@@ -205,20 +204,6 @@ export class RenderEngine extends Engine
     {
         let v2CanvasHalfSize = this.getCanvasHalfSize();
         return new b2Vec2(a_v2ScenePos.x - a_v2CamPos.x + v2CanvasHalfSize.x, -(a_v2ScenePos.y - a_v2CamPos.y) + v2CanvasHalfSize.y);
-    }
-
-    /**
-     * Display the number of frames per second.
-     * @param a_v2Position : displaying position.
-     */
-    displayFPS (a_v2Position)
-    {
-        let text = TimeEngine.getInstance().m_FpsText;
-        text.m_Font = "italic small-caps bold 16px arial";
-        text.getSceneNode().setPosition(a_v2Position);
-        text.setPriority(10);
-        this.m_CurrentCamera.m_SceneNode.attachSceneNode(text.getSceneNode());
-        this.addRenderable(text);
     }
 }
 

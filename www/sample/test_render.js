@@ -36,7 +36,7 @@ let sceneNodeToTranslate = null;
 function initializeTest()
 {
 	demilune.RenderEngine.setClearColor('#ffffff');
-	demilune.RenderEngine.displayFPS(new demilune.b2Vec2(240, -230));
+	demilune.Application.displayFPS(new demilune.b2Vec2(240, -230));
 
 	// Create 3 texts
 	let text1Pos = new demilune.b2Vec2(-300, 200);

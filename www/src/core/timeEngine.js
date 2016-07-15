@@ -24,7 +24,7 @@
 
 "use strict";
 
-import {Text2D} from "src/render/text2D";
+//import {Text2D} from "src/render/text2D";
 import {Engine} from "src/core/engine";
 
 
@@ -46,7 +46,6 @@ export class TimeEngine extends Engine
         this.m_fDeltaTime =	0;
 
         this.m_iFps =		60;
-        this.m_FpsText =	new Text2D();
     }
 
 
@@ -122,19 +121,6 @@ export class TimeEngine extends Engine
         // Save last 10 fps
         let iFPS = Math.floor(1 / this.m_fDeltaTime);
         this.m_iFps = Math.floor((this.m_iFps * 9 + iFPS) * 0.1);
-        this.m_FpsText.m_Text = "FPS : " + this.m_iFps;
-        if (this.m_iFps > 50)
-        {
-            this.m_FpsText.m_Color = "#00FF00";
-        }
-        else if (this.m_iFps > 30)
-        {
-            this.m_FpsText.m_Color = "#FFAA00";
-        }
-        else
-        {
-            this.m_FpsText.m_Color = "#FF0000";
-        }
     }
 }
 

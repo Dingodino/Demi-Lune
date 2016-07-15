@@ -24,22 +24,24 @@
 
 "use strict";
 
-import {InputState} from "src/input/inputState";
+import {Engine} from "src/core/engine";
+import {Binding} from "src/core/binding";
 
 
-// Keyboard state
-export class Keyboard
+export class BindingEngine extends Engine
 {
-	//===================================================================
-	// Constructors
-	//===================================================================
+    //===================================================================
+    // Constructors
+    //===================================================================
 
     /**
-     * Create a keyboard.
+     * Create the binding engine.
      */
     constructor ()
     {
-        this.m_aKeys =	new Array(222);
+        super();
+
+        this.m_Bindings = [];
     }
 
 
@@ -55,49 +57,40 @@ export class Keyboard
     {
         if(!this.instance)
         {
-            this.instance = new Keyboard();
+            this.instance = new BindingEngine();
         }
         return this.instance;
     }
 
-    /**
-     * Get the key's state of the given index.
-     * @param a_KeyIndex : index of the key.
-     * @returns {*}
-     */
-    getKeyState (a_KeyIndex)
-    {
-        return this.m_aKeys[a_KeyIndex];
-    }
-    
-    
+
     //===================================================================
     // Operations
     //===================================================================
 
     /**
-     * Update the keyboard state.
+     * Update the binding engine.
      */
     update ()
     {
-        // TODO : parse only !RELEASED keys
-        for (let i = 0; i < this.m_aKeys.length; i++)
+        let index = 0;
+        let length = this.m_Bindings.length;
+        for (; index < length; ++index)
         {
-            let keyState = this.m_aKeys[i];
-            if (keyState == InputState.GOTO_PRESSED)
-            {
-                this.m_aKeys[i] = InputState.PRESSED;
-            }
-            else if (keyState == InputState.PRESSED)
-            {
-                this.m_aKeys[i] = InputState.HOLD;
-            }
-            else if (keyState == InputState.GOTO_RELEASED)
-            {
-                this.m_aKeys[i] = InputState.RELEASED;
-            }
+            this.m_Bindings[index].update();
         }
+    }
+
+    /**
+     * Bind two members.
+     * @param source : source of the binding
+     * @param sourceMemberName : member name of the source of the binding
+     * @param observer : observer of the binding
+     * @param observerMemberName : member name of the observer of the binding
+     */
+    createBinding(source, sourceMemberName, observer, observerMemberName)
+    {
+        this.m_Bindings.push(new Binding(source, sourceMemberName, observer, observerMemberName));
     }
 }
 
-console.debug('Keyboard loaded');
+console.debug('BindingEngine loaded');

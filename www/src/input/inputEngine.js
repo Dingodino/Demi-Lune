@@ -131,6 +131,7 @@ export class InputEngine extends Engine
      */
     onKeyDown(a_Event)
     {
+        a_Event.stopPropagation();
         this.m_Keyboard.m_aKeys[a_Event.keyCode] = InputState.GOTO_PRESSED;
     }
 
@@ -140,6 +141,7 @@ export class InputEngine extends Engine
      */
     onKeyUp(a_Event)
     {
+        a_Event.stopPropagation();
         this.m_Keyboard.m_aKeys[a_Event.keyCode] = InputState.GOTO_RELEASED;
     }
 
@@ -149,7 +151,13 @@ export class InputEngine extends Engine
      */
     onMouseDown(a_Event)
     {
+        a_Event.stopPropagation();
         this.m_Mouse.m_aButtons[a_Event.button] = InputState.GOTO_PRESSED;
+
+        let mousePositionOnScreen = this._getMousePositionOnScreen(a_Event);
+        let mousePositionOnCanvas = this._convertPositionOnScreenToPositionOnCanvas(mousePositionOnScreen);
+        this.m_Mouse.m_v2Pos.x = mousePositionOnCanvas.x;
+        this.m_Mouse.m_v2Pos.y = mousePositionOnCanvas.y;
     }
 
     /**
@@ -158,7 +166,13 @@ export class InputEngine extends Engine
      */
     onMouseUp(a_Event)
     {
+        a_Event.stopPropagation();
         this.m_Mouse.m_aButtons[a_Event.button] = InputState.GOTO_RELEASED;
+
+        let mousePositionOnScreen = this._getMousePositionOnScreen(a_Event);
+        let mousePositionOnCanvas = this._convertPositionOnScreenToPositionOnCanvas(mousePositionOnScreen);
+        this.m_Mouse.m_v2Pos.x = mousePositionOnCanvas.x;
+        this.m_Mouse.m_v2Pos.y = mousePositionOnCanvas.y;
     }
 
     /**
@@ -167,8 +181,73 @@ export class InputEngine extends Engine
      */
     onMouseMove(a_Event)
     {
-        let v2MousePos = this.m_Mouse.m_v2Pos;
+        a_Event.stopPropagation();
 
+        let mousePositionOnScreen = this._getMousePositionOnScreen(a_Event);
+        let mousePositionOnCanvas = this._convertPositionOnScreenToPositionOnCanvas(mousePositionOnScreen);
+        this.m_Mouse.m_v2Pos.x = mousePositionOnCanvas.x;
+        this.m_Mouse.m_v2Pos.y = mousePositionOnCanvas.y;
+    }
+
+    /**
+     * Called when screen is touched.
+     * @param a_Event
+     */
+    onTouchStart(a_Event)
+    {
+        a_Event.stopPropagation();
+        this.m_TouchScreen.m_State = InputState.GOTO_PRESSED;
+
+        let touchPositionOnScreen = this._getTouchPositionOnScreen(a_Event);
+        let touchPositionOnCanvas = this._convertPositionOnScreenToPositionOnCanvas(touchPositionOnScreen);
+        this.m_TouchScreen.m_v2Pos.x = touchPositionOnCanvas.x;
+        this.m_TouchScreen.m_v2Pos.y = touchPositionOnCanvas.y;
+    }
+
+    /**
+     * Called when screen is released.
+     * @param a_Event
+     */
+    onTouchEnd(a_Event)
+    {
+        a_Event.stopPropagation();
+        this.m_TouchScreen.m_State = InputState.GOTO_RELEASED;
+
+        let touchPositionOnScreen = this._getTouchPositionOnScreen(a_Event);
+        let touchPositionOnCanvas = this._convertPositionOnScreenToPositionOnCanvas(touchPositionOnScreen);
+        this.m_TouchScreen.m_v2Pos.x = touchPositionOnCanvas.x;
+        this.m_TouchScreen.m_v2Pos.y = touchPositionOnCanvas.y;
+    }
+
+    /**
+     * Called when touch move.
+     * @param a_Event
+     */
+    onTouchMove(a_Event)
+    {
+        a_Event.stopPropagation();
+        TouchScreen.m_State = InputState.GOTO_PRESSED;
+
+        let touchPositionOnScreen = this._getTouchPositionOnScreen(a_Event);
+        let touchPositionOnCanvas = this._convertPositionOnScreenToPositionOnCanvas(touchPositionOnScreen);
+        this.m_TouchScreen.m_v2Pos.x = touchPositionOnCanvas.x;
+        this.m_TouchScreen.m_v2Pos.y = touchPositionOnCanvas.y;
+    }
+
+
+    //===================================================================
+    // Private Operations
+    //===================================================================
+
+    /**
+     * Get the mouse position on screen.
+     * @param a_Event : mouse event
+     * @returns {*}
+     * @private
+     */
+    _getMousePositionOnScreen(a_Event)
+    {
+        let v2MousePos = new b2Vec2();
         if (a_Event.pageX || a_Event.pageY)
         {
             v2MousePos.x = a_Event.pageX;
@@ -179,6 +258,35 @@ export class InputEngine extends Engine
             v2MousePos.x = a_Event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
             v2MousePos.y = a_Event.clientY + document.body.scrollTop + document.documentElement.scrollTop;
         }
+        return v2MousePos;
+    }
+
+    /**
+     * Get the touch position on screen.
+     * @param a_Event : touch event
+     * @returns {*}
+     * @private
+     */
+    _getTouchPositionOnScreen(a_Event)
+    {
+        let v2TouchPos = new b2Vec2();
+        if (a_Event.touches && a_Event.touches[0])
+        {
+            v2TouchPos.x = a_Event.touches[0].pageX;
+            v2TouchPos.y = a_Event.touches[0].pageY;
+        }
+        return v2TouchPos;
+    }
+
+    /**
+     * Convert the given position on screen to position on canvas.
+     * @param a_v2PositionOnScreen
+     * @returns {*}
+     * @private
+     */
+    _convertPositionOnScreenToPositionOnCanvas(a_v2PositionOnScreen)
+    {
+        let v2PositionOnCanvas = new b2Vec2(a_v2PositionOnScreen.x, a_v2PositionOnScreen.y);
 
         let v2Offset = new b2Vec2();
         v2Offset.x = 0;
@@ -192,41 +300,10 @@ export class InputEngine extends Engine
             currentElement = currentElement.offsetParent
         }
 
-        v2MousePos.x -= v2Offset.x;
-        v2MousePos.y -= v2Offset.y;
-    }
+        v2PositionOnCanvas.x -= v2Offset.x;
+        v2PositionOnCanvas.y -= v2Offset.y;
 
-    /**
-     * Called when screen is touched.
-     * @param a_Event
-     */
-    onTouchStart()
-    {
-        this.m_TouchScreen.m_State = InputState.GOTO_PRESSED;
-    }
-
-    /**
-     * Called when screen is released.
-     * @param a_Event
-     */
-    onTouchEnd()
-    {
-        this.m_TouchScreen.m_State = InputState.GOTO_RELEASED;
-    }
-
-    /**
-     * Called when touch move.
-     * @param a_Event
-     */
-    onTouchMove(a_Event)
-    {
-        let v2TouchPos = this.m_TouchScreen.m_v2Pos;
-        TouchScreen.m_State = InputState.GOTO_PRESSED;
-        if (a_Event.originalEvent && a_Event.originalEvent.touches && a_Event.originalEvent.touches[0])
-        {
-            v2TouchPos.x = a_Event.originalEvent.touches[0].pageX;
-            v2TouchPos.y = a_Event.originalEvent.touches[0].pageY;
-        }
+        return v2PositionOnCanvas;
     }
 }
 

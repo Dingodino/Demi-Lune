@@ -27,9 +27,6 @@ describe("TimeEngine", function ()
         expect(timeEngine.m_iFps).not.toBeUndefined();
         expect(timeEngine.m_iFps).toBe(60);
 
-        expect(timeEngine.m_FpsText).not.toBeNull();
-        expect(timeEngine.m_FpsText).not.toBeUndefined();
-
         done();
     });
 
@@ -58,8 +55,8 @@ describe("TimeEngine", function ()
             let fDeltaTime = timeEngine.getDeltaTime();
             expect(fDeltaTime).not.toBeNull();
             expect(fDeltaTime).not.toBeUndefined();
-            expect(fDeltaTime).toBeGreaterThan(0.95);
-            expect(fDeltaTime).toBeLessThan(2);
+            expect(fDeltaTime).toBeGreaterThan(0.095);
+            expect(fDeltaTime).toBeLessThan(0.200);
 
             let iFps = timeEngine.getFPS();
             expect(iFps).not.toBeNull();

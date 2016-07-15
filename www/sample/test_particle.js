@@ -44,7 +44,7 @@ let textParticleCount = null;
 function initializeTest()
 {
 	// Debug infos
-    demilune.RenderEngine.displayFPS(new demilune.b2Vec2(240, -230));
+    demilune.Application.displayFPS(new demilune.b2Vec2(240, -230));
 
     let textPos = new demilune.b2Vec2(-30, -230);
     textParticleCount = new demilune.Text2D();

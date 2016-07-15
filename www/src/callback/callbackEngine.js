@@ -24,7 +24,7 @@
 
 "use strict";
 
-import "libs/lodash.min.js";
+import * as _ from "libs/lodash.min";
 import {Engine} from "src/core/engine";
 
 
@@ -49,6 +49,9 @@ export class CallbackEngine extends Engine
 
         // Post render callback list
         this.postRenderCallbacks = [];
+
+        // Current callback identifier
+        this.callbackID = 0;
     }
 
 
@@ -75,70 +78,53 @@ export class CallbackEngine extends Engine
     //===================================================================
 
     /**
-     * Initialize the callback engine.
-     */
-    initialize ()
-    {
-
-    }
-
-    /**
      * Update the callback engine.
      */
     update ( dt )
     {
         let deltaTime = dt * 1000;
+        let mustCall = false;
         let self = this;
 
         // Update timeout callbacks
-        let callbackIDsToRemove = [];
-        let callbackIDsToReset = [];
-        let postRenderCallbackIDsToRemove = [];
-        _.forEach(this.timeoutCallbacks, function(obj)
+        _.remove(this.timeoutCallbacks, function(obj)
         {
-            if ( obj ) // TODO : why ?
+            obj.time += deltaTime;
+
+            mustCall = (obj.time >= obj.delay);
+            if ( mustCall )
             {
-                obj.time += deltaTime;
-                if ( obj.time >= obj.delay )
-                {
-                    self._callCallback(obj);
-                    callbackIDsToRemove.push(obj.callbackID);
-                }
+                self._callCallback(obj);
             }
+
+            return mustCall;
         });
 
         // Update interval callbacks
         _.forEach(this.intervalCallbacks, function (obj)
         {
-            if ( obj )
+            obj.time += deltaTime;
+            if ( obj.time >= obj.delay )
             {
-                obj.time += deltaTime;
-                if ( obj.time >= obj.delay )
-                {
-                    self._callCallback(obj);
-                    callbackIDsToReset.push(obj.callbackID);
-                }
+                self._callCallback(obj);
+                obj.time = 0;
             }
         });
 
         // Update post render callbacks
-        _.forEach(this.postRenderCallbacks, function (obj)
+        _.remove(this.postRenderCallbacks, function (obj)
         {
-            if ( obj.count <= 0 )
+            mustCall = (obj.count <= 0);
+            if ( mustCall )
             {
-                if ( !obj.toBeRemoved )
-                {
-                    self._callCallback(obj);
-                }
-                postRenderCallbackIDsToRemove.push(obj.callbackID);
+                self._callCallback(obj);
             }
             else
             {
                 obj.count -= 1;
             }
+            return mustCall;
         });
-
-        this._clear(callbackIDsToRemove, callbackIDsToReset, postRenderCallbackIDsToRemove);
     }
 
     /**
@@ -146,7 +132,7 @@ export class CallbackEngine extends Engine
      */
     terminate ()
     {
-
+        this.reset();
     }
 
     /**
@@ -155,16 +141,12 @@ export class CallbackEngine extends Engine
     subscribeTimeoutCallback ( callback, delay )
     {
         if ( callback == null || delay == null ) return;
-        if ( !this.callbackID )
-        {
-            this.callbackID = 0;
-        }
+
         this.callbackID++;
-        let id = this.callbackID;
 
-        this.timeoutCallbacks.push({callback: callback, callbackID: id, delay: delay, time: 0});
+        this.timeoutCallbacks.push({callback: callback, callbackID: this.callbackID, delay: delay, time: 0});
 
-        return id;
+        return this.callbackID;
     }
 
     /**
@@ -184,18 +166,12 @@ export class CallbackEngine extends Engine
     subscribeIntervalCallback ( callback, delay )
     {
         if ( callback == null || delay == null ) return;
-        if ( !this.callbackID )
-        {
-            this.callbackID = 0;
-        }
+
         this.callbackID++;
 
-        let id = this.callbackID;
-        let obj = {callback: callback, callbackID: id, delay: delay, time: 0};
+        this.intervalCallbacks.push({callback: callback, callbackID: this.callbackID, delay: delay, time: 0});
 
-        this.intervalCallbacks.push(obj);
-
-        return id;
+        return this.callbackID;
     }
 
     /**
@@ -215,16 +191,12 @@ export class CallbackEngine extends Engine
     subscribePostRenderCallback ( callback )
     {
         if ( callback == null ) return;
-        if ( !this.callbackID )
-        {
-            this.callbackID = 0;
-        }
+
         this.callbackID++;
-        let id = this.callbackID;
 
-        this.postRenderCallbacks.push({callback: callback, callbackID: id, count: 0});
+        this.postRenderCallbacks.push({callback: callback, callbackID: this.callbackID, count: 0});
 
-        return id;
+        return this.callbackID;
     }
 
     /**
@@ -252,46 +224,6 @@ export class CallbackEngine extends Engine
     //===================================================================
     // Private Operations
     //===================================================================
-
-    /**
-     * Clear callbacks to remove.
-     * @private
-     */
-    _clear ( callbackIDsToRemove, callbackIDsToReset, postRenderCallbackIDsToRemove )
-    {
-        let self = this;
-
-        // TODO : use a map ?
-        // Remove old timeout callbacks
-        _.forEach(callbackIDsToRemove, function (id)
-        {
-            _.remove(self.timeoutCallbacks, function (obj)
-            {
-                return obj.callbackID == id;
-            });
-        });
-
-        // Reset old interval callbacks
-        _.forEach(callbackIDsToReset, function (id)
-        {
-            _.forEach(self.intervalCallbacks, function (obj)
-            {
-                if (obj.callbackID == id)
-                {
-                    obj.time = 0;
-                }
-            });
-        });
-
-        // Remove old timeout callbacks
-        _.forEach(postRenderCallbackIDsToRemove, function (id)
-        {
-            _.remove(self.postRenderCallbacks, function (obj)
-            {
-                return obj.callbackID == id;
-            });
-        });
-    }
 
     /**
      * Call the given callback and profile it if needed.

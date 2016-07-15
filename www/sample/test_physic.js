@@ -112,7 +112,7 @@ let textBallPos = null;
 function initializeTest()
 {
     demilune.RenderEngine.setClearColor('#ffffff');
-    demilune.RenderEngine.displayFPS(new demilune.b2Vec2(240, -230));
+    demilune.Application.displayFPS(new demilune.b2Vec2(240, -230));
 
     let textPos = new demilune.b2Vec2(-30, -230);
     textMousePos = new demilune.Text2D();

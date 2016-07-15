@@ -22,33 +22,45 @@
  * THE SOFTWARE.
  *******************************************************************************************************************/
 
-import "demilune.js";
+"use strict";
 
 
-/****************************************************************
- * Sample
- ****************************************************************/
-
-let sound = null;
-
-function initializeTest()
+export class Binding
 {
-	demilune.RenderEngine.setClearColor('#ffffff');
-	demilune.Application.displayFPS(new demilune.b2Vec2(240, -230));
+    //===================================================================
+    // Constructors
+    //===================================================================
 
-	sound = new demilune.Sound();
-	let audio = new Audio();
-	audio.src = "sample/test_audio.ogg";
-	sound.setAudio(audio);
-	sound.play();
-	//AudioEngine.getInstance().addSound(sound);
-	//AudioEngine.getInstance().playSound(0);
+    /**
+     * Create a binding.
+     * @param source : bind to this source
+     * @param observer : observe this binding
+     */
+    constructor (source, sourceMemberName, observer, observerMemberName)
+    {
+        this.source = source;
+        this.sourceMemberName = sourceMemberName;
+        this.observer = observer;
+        this.observerMemberName = observerMemberName;
+    }
+
+
+    //===================================================================
+    // Operations
+    //===================================================================
+
+    /**
+     * Update the binding.
+     */
+    update ()
+    {
+        let oldValue = this.observer[this.observerMemberName];
+        let newValue = this.source[this.sourceMemberName];
+        if (newValue != oldValue)
+        {
+            this.observer[this.observerMemberName] = newValue;
+        }
+    }
 }
 
-function updateTest()
-{
-	demilune.CallbackEngine.subscribePostRenderCallback(updateTest);
-}
-
-demilune.CallbackEngine.subscribePostRenderCallback(initializeTest);
-demilune.CallbackEngine.subscribePostRenderCallback(updateTest);
+console.debug('Color loaded');

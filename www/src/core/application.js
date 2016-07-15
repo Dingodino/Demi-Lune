@@ -28,6 +28,7 @@ import * as Box2D from "src/core/constants";
 
 // Import engines
 import {TimeEngine} from "src/core/timeEngine";
+import {BindingEngine} from "src/core/bindingEngine";
 import {SceneEngine} from "src/scene/sceneEngine";
 import {RenderEngine} from "src/render/renderEngine";
 import {CallbackEngine} from "src/callback/callbackEngine";
@@ -84,6 +85,7 @@ class Application
         // Engines
         this.engines = [
             TimeEngine.getInstance(),
+            BindingEngine.getInstance(),
             InputEngine.getInstance(),
             SceneEngine.getInstance(),
             PhysicEngine.getInstance(),
@@ -138,6 +140,19 @@ class Application
         {
             engine.update(dt);
         });
+
+        // Display FPS
+        if (this.m_FpsText != null)
+        {
+            let timeEngine = TimeEngine.getInstance();
+            let color = this.m_FpsText.getColor();
+
+            if (timeEngine.m_iFps >= 50) color = '#00FF00';
+            else if (timeEngine.m_iFps >= 30) color = '#FFAA00';
+            else color = '#FF0000';
+
+            this.m_FpsText.setColor(color);
+        }
     }
 
     /**
@@ -185,6 +200,25 @@ class Application
         };
         this.animationFrameId = window.requestAnimationFrame(callback);
     }
+
+    /**
+     * Display the number of frames per second.
+     * @param a_v2Position : displaying position.
+     */
+    displayFPS (a_v2Position)
+    {
+        if (this.m_FpsText == null)
+        {
+            this.m_FpsText = new Text2D();
+            this.m_FpsText.m_Font = "italic small-caps bold 16px arial";
+            this.m_FpsText.getSceneNode().setPosition(a_v2Position);
+            this.m_FpsText.setPriority(10);
+            RenderEngine.getInstance().m_CurrentCamera.m_SceneNode.attachSceneNode(this.m_FpsText.getSceneNode());
+            RenderEngine.getInstance().addRenderable(this.m_FpsText);
+
+            BindingEngine.getInstance().createBinding(TimeEngine.getInstance(), 'm_iFps', this.m_FpsText, 'm_Text');
+        }
+    }
 }
 
 var app = new Application();
@@ -197,6 +231,7 @@ window.demilune =
     SceneEngine:    SceneEngine.getInstance(),
     CallbackEngine: CallbackEngine.getInstance(),
     TimeEngine:     TimeEngine.getInstance(),
+    BindingEngine:  BindingEngine.getInstance(),
     AudioEngine:    AudioEngine.getInstance(),
     InputEngine:    InputEngine.getInstance(),
     PhysicEngine:   PhysicEngine.getInstance(),

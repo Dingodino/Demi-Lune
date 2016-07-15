@@ -38,7 +38,7 @@ let textTouchPosition = null;
 function initializeTest()
 {
 	demilune.RenderEngine.setClearColor('#ffffff');
-	demilune.RenderEngine.displayFPS(new demilune.b2Vec2(240, -230));
+	demilune.Application.displayFPS(new demilune.b2Vec2(240, -230));
 
 	let textKeyPos = new demilune.b2Vec2(-300, 200);
 	textKey = new demilune.Text2D();
